@@ -11,10 +11,12 @@
 
 #include "sceneManage.hpp"
 
+class sceneManage;
+
 class titleScene : public sceneManage{
-    titleScene();
-    
+       
 public:
+    titleScene();
     void draw();
 };
 

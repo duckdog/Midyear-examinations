@@ -1,5 +1,18 @@
-#include "MawasuhitoApp.hpp"
+#include "common.h"
+#include "sceneManage.hpp"
 
+
+
+class MawasuHitoApp : public AppNative {
+    
+    
+public:
+    void prepareSetting(Settings *settings);
+    void setup();
+    void mouseDown( MouseEvent event );
+    void update();
+    void draw();
+};
 
 void MawasuHitoApp::prepareSetting(Settings *settings)
 {

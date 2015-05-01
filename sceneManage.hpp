@@ -15,6 +15,8 @@
 
 class sceneManage{
 public:
+    sceneManage();
+    ~sceneManage();
     virtual void update() = 0;
     virtual void draw() = 0;
     virtual void MouseDown(MouseEvent event) = 0;

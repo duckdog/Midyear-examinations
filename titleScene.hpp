@@ -9,21 +9,16 @@
 
 #pragma once
 
-#include "sceneManage.hpp"
-
 class sceneManage;
 
 class titleScene : public sceneManage{
        
 public:
-    titleScene();
-    void draw();
+    void draw(){}
+    void update(){}
+    void MouseDown(MouseEvent event){}
+    
+    sceneManage();
 };
 
-titleScene::titleScene(){
-    
-}
 
-void titleScene::draw(){
-    gl::clear(Color(1,0,0));
-}

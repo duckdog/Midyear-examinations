@@ -9,16 +9,15 @@
 
 #pragma once
 
-class sceneManage;
+#include "sceneBase.hpp"
 
-class titleScene : public sceneManage{
+class sceneBase;
+
+class titleScene : public sceneBase{
        
 public:
-    void draw(){}
+    void draw(){} 
     void update(){}
-    void MouseDown(MouseEvent event){}
-    
-    sceneManage();
 };
 
 

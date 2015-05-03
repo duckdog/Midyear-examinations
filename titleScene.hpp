@@ -6,5 +6,5 @@
 class titleScene : public sceneBase{
 public:
 	void draw();
-	void update();
+	void update(){}
 };

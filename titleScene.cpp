@@ -7,9 +7,3 @@
 //
 
 #include "titleScene.hpp"
-
-
-
-void titleScene::draw(){
-    gl::clear(Color(1,1,1));
-}

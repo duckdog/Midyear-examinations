@@ -36,8 +36,8 @@ void MawasuHitoApp::update()
 
 void MawasuHitoApp::draw()
 {
-    GameFrame->draw();
-    //gl::clear( Color( 0, 0, 0 ) );
+    GameFrame->sceneBase::draw();
+   
 }
 
 CINDER_APP_NATIVE( MawasuHitoApp, RendererGl )

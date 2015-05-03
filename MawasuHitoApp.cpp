@@ -36,7 +36,7 @@ void MawasuHitoApp::update()
 
 void MawasuHitoApp::draw()
 {
-    GameFrame->sceneBase::draw();
+    GameFrame->draw();
    
 }
 

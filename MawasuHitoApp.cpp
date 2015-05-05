@@ -22,7 +22,7 @@ void MawasuHitoApp::prepareSetting(Settings *settings)
 
 void MawasuHitoApp::setup()
 {
-    GameFrame = std::make_shared<titleScene>();
+   // GameFrame = std::make_shared<sceneBase>();
 }
 
 void MawasuHitoApp::mouseDown( MouseEvent event )
@@ -35,7 +35,7 @@ void MawasuHitoApp::update()
 }
 void MawasuHitoApp::draw()
 {
-    GameFrame->draw();
+    //GameFrame->draw();
    
 }
 

@@ -1,14 +1,12 @@
-//
-//  mainScene.h
-//  MAWASU_IOS
-//
-//  Created by 佐藤 匠 on 2015/05/04.
-//
-//
+#pragma once
 
-#ifndef __MAWASU_IOS__mainScene__
-#define __MAWASU_IOS__mainScene__
+#include "sceneBase.hpp"
 
-#include <stdio.h>
-
-#endif /* defined(__MAWASU_IOS__mainScene__) */
+class sceneBase;
+class mainScene : public sceneBase{
+public:
+    void draw();
+    void update();
+    
+    void touchBegan(TouchEvent event){}
+};

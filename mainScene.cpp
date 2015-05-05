@@ -1,9 +1,12 @@
-//
-//  mainScene.cpp
-//  MAWASU_IOS
-//
-//  Created by 佐藤 匠 on 2015/05/04.
-//
-//
 
-#include "mainScene.h"
+
+#include "mainScene.hpp"
+
+void mainScene::draw(){
+    gl::clear(Color(1,0,0));
+}
+
+void mainScene::update(){
+    
+}
+

@@ -35,7 +35,7 @@ void MawasuHitoApp::update()
 }
 void MawasuHitoApp::draw()
 {
-    //GameFrame->draw();
+    GameFrame->draw();
    
 }
 

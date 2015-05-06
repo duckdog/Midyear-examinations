@@ -10,8 +10,5 @@ public:
 	void draw();
     void update();
     void touchBegan(TouchEvent event){}
-    
-    
-private:
-    ~
+
 };

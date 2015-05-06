@@ -3,7 +3,7 @@
 #include "titleScene.hpp"
 
 sceneManage::sceneManage(){
- changeScene(std::make_shared<titleScene>());
+ //changeScene(std::make_shared<titleScene>(this));
 }
 
 void sceneManage::draw(){

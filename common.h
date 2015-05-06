@@ -12,8 +12,7 @@ using namespace ci::app;
 #include "cinder/gl/TextureFont.h"
 #include "cinder/Utilities.h"
 
-#include "sceneBase.hpp"
-//#include "sceneBase.hpp"
+#include "sceneManage.hpp"
 
 
 

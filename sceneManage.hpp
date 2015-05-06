@@ -1,6 +1,6 @@
 #pragma once
 #include "common.h"
-#include "sceneBase.hpp"
+#include <memory>
 
 class sceneBase;
 

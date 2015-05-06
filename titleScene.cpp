@@ -1,5 +1,8 @@
-
 #include "titleScene.hpp"
+#include "sceneManage.hpp"
+
+titleScene::titleScene(sceneManage* manage) :
+sceneBase(manage) {}
 
 void titleScene::draw(){
     

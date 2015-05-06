@@ -2,13 +2,13 @@
 
 #include "sceneBase.hpp"
 
-class sceneBase;
 class sceneManage;
 
 class titleScene : public sceneBase{
 public:
+    titleScene(sceneManage*);
 	void draw();
     void update();
-    void touchBegan(TouchEvent event){}
+    void touchBegan(cinder::app::TouchEvent event){}
 
 };

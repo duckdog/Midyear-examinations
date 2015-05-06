@@ -3,7 +3,6 @@
 using namespace ci;
 using namespace ci::app;
 
-#include <memory>
 #include "cinder/app/AppNative.h"
 #include "cinder/gl/gl.h"
 #include "cinder/gl/Texture.h"
@@ -12,7 +11,7 @@ using namespace ci::app;
 #include "cinder/gl/TextureFont.h"
 #include "cinder/Utilities.h"
 
-#include "sceneManage.hpp"
+
 
 
 

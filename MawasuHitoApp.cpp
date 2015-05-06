@@ -1,5 +1,5 @@
 #include "common.h"
-
+#include "titleScene.hpp"
 class MawasuHitoApp : public AppNative {
     
 public:
@@ -9,8 +9,7 @@ public:
     void update();
     void draw();
     
-    
-    //std::shared_ptr<sceneBase> GameFrame;
+    sceneManage Frame;
 };
 
 void MawasuHitoApp::prepareSetting(Settings *settings)
@@ -22,7 +21,8 @@ void MawasuHitoApp::prepareSetting(Settings *settings)
 
 void MawasuHitoApp::setup()
 {
-   // GameFrame = std::make_shared<sceneBase>();
+    Frame.changeScene(std::make_shared<titleScene>());
+
 }
 
 void MawasuHitoApp::mouseDown( MouseEvent event )
@@ -35,7 +35,7 @@ void MawasuHitoApp::update()
 }
 void MawasuHitoApp::draw()
 {
-    //GameFrame->draw();
+    Frame.draw();
    
 }
 

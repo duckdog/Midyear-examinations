@@ -7,7 +7,6 @@ class sceneBase;
 class sceneManage{
 public:
     sceneManage();
-    ~sceneManage();
     
     void update();
     void draw();

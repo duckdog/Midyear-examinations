@@ -13,7 +13,7 @@ public:
     virtual void touchBegan(TouchEvent event) = 0;
 protected:
     sceneBase(sceneManage*);
-    sceneManage* _manage;
+    sceneManage* m_manage;
     
 };
 

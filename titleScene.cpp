@@ -1,9 +1,6 @@
 
 #include "titleScene.hpp"
 
-titleScene::titleScene(){
-    changeScene(std::make_shared<titleScene>());
-}
 
 void titleScene::draw(){
     

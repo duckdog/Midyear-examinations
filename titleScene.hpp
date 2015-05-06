@@ -5,11 +5,12 @@
 class sceneBase;
 class titleScene : public sceneBase{
 public:
+    titleScene();
 	void draw();
     void update();
     void touchBegan(TouchEvent event){}
     
-    titleScene();
+    
 private:
-    titleScene* title;
+    ~titleScene();
 };

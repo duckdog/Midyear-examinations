@@ -1,4 +1,10 @@
 #include "sceneManage.hpp"
+#include "sceneBase.hpp"
+#include "titleScene.hpp"
+
+sceneManage::sceneManage(){
+ changeScene(std::make_shared<titleScene>());
+}
 
 void sceneManage::draw(){
     current_frame->draw();

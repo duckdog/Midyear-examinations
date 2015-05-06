@@ -10,7 +10,7 @@ public:
     void draw();
     
     
-    std::shared_ptr<sceneBase> GameFrame;
+    //std::shared_ptr<sceneBase> GameFrame;
 };
 
 void MawasuHitoApp::prepareSetting(Settings *settings)
@@ -35,7 +35,7 @@ void MawasuHitoApp::update()
 }
 void MawasuHitoApp::draw()
 {
-    GameFrame->draw();
+    //GameFrame->draw();
    
 }
 

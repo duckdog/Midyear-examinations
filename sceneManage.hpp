@@ -1,4 +1,5 @@
 #pragma once
+#include "common.h"
 #include "sceneBase.hpp"
 
 class sceneBase;
@@ -6,6 +7,7 @@ class sceneBase;
 class sceneManage{
 public:
     sceneManage();
+    ~sceneManage();
     
     void update();
     void draw();

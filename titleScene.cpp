@@ -1,7 +1,7 @@
 #include "titleScene.hpp"
 #include "sceneManage.hpp"
 
-titleScene::titleScene(sceneManage* manage) :
+titleScene::titleScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage) {}
 
 void titleScene::draw(){

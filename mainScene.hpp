@@ -2,11 +2,11 @@
 
 #include "sceneBase.hpp"
 
-class sceneManage;
+
 
 class mainScene : public sceneBase{
 public:
-    mainScene(sceneManage*);
+    mainScene(std::shared_ptr<sceneManage>);
     void draw();
     void update();
     

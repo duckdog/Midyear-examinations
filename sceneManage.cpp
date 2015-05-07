@@ -5,7 +5,7 @@
 
 //First loding scene.
 sceneManage::sceneManage(){
-    current_frame = std::make_shared<titleScene>(this);
+    //current_frame = std::make_shared<titleScene>(this);
 }
 
 void sceneManage::draw(){

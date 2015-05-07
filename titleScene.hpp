@@ -2,11 +2,11 @@
 
 #include "sceneBase.hpp"
 
-class sceneManage;
+
 
 class titleScene : public sceneBase{
 public:
-    titleScene(sceneManage*);
+    titleScene(std::shared_ptr<sceneManage>);
 	void draw();
     void update();
     void touchBegan(cinder::app::TouchEvent event){}

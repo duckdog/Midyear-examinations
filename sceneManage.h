@@ -1,8 +1,6 @@
 #pragma once
-#include "common.h"
-#include <memory>
-
-class sceneBase;
+#include "titleScene.h"
+#include "mainScene.h"
 
 class sceneManage{
 public:

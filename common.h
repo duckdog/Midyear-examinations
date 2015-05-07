@@ -1,7 +1,6 @@
 #pragma once
 
-using namespace ci;
-using namespace ci::app;
+
 
 #include "cinder/app/AppNative.h"
 #include "cinder/gl/gl.h"
@@ -12,7 +11,8 @@ using namespace ci::app;
 #include "cinder/Utilities.h"
 
 
-
+using namespace ci;
+using namespace ci::app;
 
 
 

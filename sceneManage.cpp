@@ -1,7 +1,7 @@
-#include "sceneManage.hpp"
-#include "sceneBase.hpp"
-#include "titleScene.hpp"
-#include "mainScene.hpp"
+#include "sceneManage.h"
+#include "sceneBase.h"
+#include "titleScene.h"
+#include "mainScene.h"
 
 //First loding scene.
 sceneManage::sceneManage(){

@@ -31,9 +31,9 @@ void MawasuHitoApp::setup()
 
 
 void MawasuHitoApp::mouseDown( MouseEvent event){
-    if(event.LEFT_DOWN){
+    /*if(event.LEFT_DOWN){
         Frame->changeScene(std::make_shared<mainScene>(Frame));
-    }
+    }*/
     Frame->mouseDown(event);
 }
 

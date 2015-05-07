@@ -9,6 +9,8 @@ public:
     titleScene(std::shared_ptr<sceneManage>);
 	void draw();
     void update();
-    void touchBegan(cinder::app::TouchEvent event){}
+ 
+    void mouseDown(cinder::app::MouseEvent event);
+
 
 };

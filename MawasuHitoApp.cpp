@@ -29,13 +29,19 @@ void MawasuHitoApp::setup()
     Frame->changeScene(std::make_shared<titleScene>(Frame));
 }
 
-void MawasuHitoApp::mouseDown( MouseEvent event )
-{
+
+void MawasuHitoApp::mouseDown( MouseEvent event){
+    if(event.LEFT_DOWN){
+        Frame->changeScene(std::make_shared<mainScene>(Frame));
+    }
+    Frame->mouseDown(event);
 }
+
 
 void MawasuHitoApp::update()
 {
     Frame->update();
+
   
 }
 void MawasuHitoApp::draw()

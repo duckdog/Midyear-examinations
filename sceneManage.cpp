@@ -21,6 +21,10 @@ void sceneManage::mouseDown(cinder::app::MouseEvent event){
     current_frame->mouseDown(event);
 }
 
+void sceneManage::touchesBegun(cinder::app::TouchEvent event){
+    current_frame->touchesBegun(event);
+}
+
 void sceneManage::changeScene(std::shared_ptr<sceneBase> swicth_scene){
  current_frame = swicth_scene;
  }

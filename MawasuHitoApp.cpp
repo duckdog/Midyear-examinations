@@ -8,6 +8,7 @@ public:
     void prepareSetting(Settings *settings);
     void setup();
     void mouseDown( MouseEvent event );
+    void touchesBegun(TouchEvent event);
     void update();
     void draw();
 
@@ -18,6 +19,7 @@ private:
 
 void MawasuHitoApp::prepareSetting(Settings *settings)
 {
+    settings->enableMultiTouch();
     settings->setWindowSize( 1024,768);
     settings->setFrameRate(60.0f);
 }
@@ -25,10 +27,10 @@ void MawasuHitoApp::prepareSetting(Settings *settings)
 
 void MawasuHitoApp::setup()
 {
+    
     Frame = std::make_shared<sceneManage>();
     Frame->changeScene(std::make_shared<titleScene>(Frame));
 }
-
 
 void MawasuHitoApp::mouseDown( MouseEvent event){
     /*if(event.LEFT_DOWN){
@@ -37,6 +39,9 @@ void MawasuHitoApp::mouseDown( MouseEvent event){
     Frame->mouseDown(event);
 }
 
+void MawasuHitoApp::touchesBegun(TouchEvent event){
+    Frame->touchesBegun(event);
+}
 
 void MawasuHitoApp::update()
 {

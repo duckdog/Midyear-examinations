@@ -9,6 +9,7 @@ public:
     void update();
     void draw();
     void mouseDown(cinder::app::MouseEvent event);
+    void touchesBegun(cinder::app::TouchEvent event);
     void changeScene(std::shared_ptr<sceneBase> scene);
     
 private:

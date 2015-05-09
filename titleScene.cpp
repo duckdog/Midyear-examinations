@@ -13,7 +13,13 @@ void titleScene::update(){
     
 }
 
+//
 void titleScene::mouseDown(cinder::app::MouseEvent event){
     if(event.LEFT_DOWN)
+    m_manage->changeScene(std::make_shared<mainScene>(m_manage));
+}
+
+//app用
+void titleScene::touchesBegun(cinder::app::TouchEvent event){
     m_manage->changeScene(std::make_shared<mainScene>(m_manage));
 }

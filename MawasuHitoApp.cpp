@@ -8,7 +8,7 @@ public:
     void prepareSetting(Settings *settings);
     void setup();
     void mouseDown( MouseEvent event );
-    void touchesBegun(TouchEvent event);
+    void touchesBegan(TouchEvent event);
     void update();
     void draw();
 
@@ -39,8 +39,8 @@ void MawasuHitoApp::mouseDown( MouseEvent event){
     Frame->mouseDown(event);
 }
 
-void MawasuHitoApp::touchesBegun(TouchEvent event){
-    Frame->touchesBegun(event);
+void MawasuHitoApp::touchesBegan(TouchEvent event){
+    Frame->touchesBegan(event);
 }
 
 void MawasuHitoApp::update()

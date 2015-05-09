@@ -10,6 +10,6 @@ public:
     void draw();
     void update();
     
-    void touchesBegun(cinder::app::TouchEvent event){}
+    void touchesBegan(cinder::app::TouchEvent event){}
     void mouseDown(cinder::app::MouseEvent event){}
 };

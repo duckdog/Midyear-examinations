@@ -21,7 +21,7 @@ private:
     std::map<SpriteID, gl::Texture> m_graph;//:キーを指定、テクスチャを保持
     
 public:
-    static resourceManage getinstace();
+    static resourceManage& getinstace();
     
    gl::Texture getsprite(const SpriteID);
     

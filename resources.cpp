@@ -19,7 +19,7 @@ resourceManage::resourceManage(){
     
 }
 
-resourceManage resourceManage::getinstace(){
+resourceManage& resourceManage::getinstace(){
     static resourceManage resource;
     return resource;
 }

@@ -1,13 +1,15 @@
 #include "titleScene.h"
 #include "sceneManage.h"
 
+
 titleScene::titleScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage) {
     
-   }
+}
 
 void titleScene::draw(){
     
+       m_player.draw();
        cinder::gl::clear(cinder::Color(0,0,1));
 }
 

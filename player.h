@@ -14,7 +14,6 @@ struct objectData{
 class player : public object{
 
 public:
-
     player(const SpriteID&);
     std::shared_ptr<object> m_player;
     void update();

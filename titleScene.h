@@ -1,8 +1,7 @@
 #pragma once
 
 #include "sceneBase.h"
-
-
+#include "player.h"
 
 class titleScene : public sceneBase{
 public:
@@ -13,5 +12,6 @@ public:
     void touchesBegan(cinder::app::TouchEvent event);
     void mouseDown(cinder::app::MouseEvent event);
 
-
+private:
+    
 };

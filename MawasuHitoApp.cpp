@@ -22,12 +22,12 @@ void MawasuHitoApp::prepareSetting(Settings *settings)
     settings->enableMultiTouch();
     settings->setWindowSize( 1024,768);
     settings->setFrameRate(60.0f);
+     gl::enableAlphaBlending();
 }
 
 
 void MawasuHitoApp::setup()
 {
-    
     Frame = std::make_shared<sceneManage>();
     Frame->changeScene(std::make_shared<titleScene>(Frame));
 }

@@ -1,6 +1,6 @@
 #pragma once
-#include <map>
 #include "common.h"
+#include <map>
 
 enum SpriteID{
     Player,

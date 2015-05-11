@@ -17,6 +17,7 @@ public:
     void draw();
 
 private:
-    const objectData m_own;
+    const spriteInfo m_resinfo;
+    //const objectData m_objdata;
     
 };

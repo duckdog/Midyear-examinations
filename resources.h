@@ -2,17 +2,17 @@
 #include "common.h"
 #include <map>
 
+
 enum SpriteID{
     Player,
     
     ALL_sprite,
 };
-
-enum SpriteSize{
-    player_W = 256,
-    player_H = 256,
-    
+struct spriteInfo{
+    SpriteID m_id;
+    std::string m_pass;
 };
+
 
 class resourceManage{
 private:
@@ -22,6 +22,9 @@ private:
     
 public:
     static resourceManage& getinstace();
+    void add(const spriteInfo&);
+    void remove(const SpriteID);
+    void clear();
     
    gl::Texture getsprite(const SpriteID);
     

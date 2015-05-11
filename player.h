@@ -1,26 +1,22 @@
 #pragma once
 
 #include "object.h"
-#include "resources.h"
 
-struct objectData{
-    SpriteID m_id;
+
+enum SpriteSize{
+    player_W = 256,
+    player_H = 256,
     
-    Vec2f m_pos;
-    Vec2f m_size;
 };
-
 
 class player : public object{
 
 public:
-    player(const SpriteID&);
-    std::shared_ptr<object> m_player;
+    player(const spriteInfo&);
     void update();
     void draw();
 
 private:
-    cinder::gl::Texture sample_player;
-    objectData m_own;
+    const objectData m_own;
     
 };

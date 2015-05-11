@@ -3,14 +3,14 @@
 
 
 titleScene::titleScene(std::shared_ptr<sceneManage> manage) :
-sceneBase(manage) {
+sceneBase(manage),
+m_player(spriteInfo()){
     
 }
 
 void titleScene::draw(){
-    
-       m_player.draw();
-       cinder::gl::clear(cinder::Color(0,0,1));
+    cinder::gl::clear(cinder::Color(0,0,1));
+    m_player.draw();
 }
 
 void titleScene::update(){

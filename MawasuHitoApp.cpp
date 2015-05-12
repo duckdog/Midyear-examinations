@@ -1,7 +1,6 @@
 #include "common.h"
 #include "sceneManage.h"
 #include "titleScene.h"
-#include "resources.h"
 
 class MawasuHitoApp : public AppNative {
     

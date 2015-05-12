@@ -5,7 +5,7 @@
 #include "player.h"
 class titleScene : public sceneBase{
 public:
-    titleScene(std::shared_ptr<sceneManage>);
+    titleScene(std::shared_ptr<sceneManage>,player);
 	void draw();
     void update();
     

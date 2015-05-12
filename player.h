@@ -12,12 +12,12 @@ enum SpriteSize{
 class player : public object{
 
 public:
-    player(const spriteInfo&);
+    player(const objectData&,const spriteInfo&);
     void update();
     void draw();
+    const spriteInfo table_data;
 
 private:
-    const spriteInfo m_resinfo;
-    //const objectData m_objdata;
+        const objectData m_own;
     
 };

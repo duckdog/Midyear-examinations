@@ -9,6 +9,7 @@ enum SpriteID{
     ALL_sprite,
 };
 struct spriteInfo{
+    spriteInfo(SpriteID,std::string);
     SpriteID m_id;
     std::string m_pass;
 };

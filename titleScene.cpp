@@ -2,9 +2,9 @@
 #include "sceneManage.h"
 
 
-titleScene::titleScene(std::shared_ptr<sceneManage> manage) :
-sceneBase(manage),
-m_player(spriteInfo()){
+titleScene::titleScene(std::shared_ptr<sceneManage> manage,player Player) :
+sceneBase(manage),m_player(Player){
+    resourceManage::getinstace().add(m_player.table_data);
     
 }
 

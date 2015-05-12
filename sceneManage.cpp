@@ -3,6 +3,7 @@
 #include "titleScene.h"
 #include "mainScene.h"
 
+
 //First loding scene.
 sceneManage::sceneManage(){
     

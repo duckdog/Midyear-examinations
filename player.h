@@ -15,8 +15,8 @@ public:
     player(const objectData&,const spriteInfo&);
     void update();
     void draw();
+    
     const spriteInfo table_data;
-
 private:
         const objectData m_own;
     

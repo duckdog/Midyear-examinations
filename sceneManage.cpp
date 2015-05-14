@@ -2,7 +2,7 @@
 #include "sceneBase.h"
 #include "titleScene.h"
 #include "mainScene.h"
-
+#include "player.h"
 
 
 sceneManage::sceneManage(){
@@ -26,7 +26,12 @@ void sceneManage::touchesBegan(cinder::app::TouchEvent event){
     current_frame->touchesBegan(event);
 }
 
+
 void sceneManage::changeScene(std::shared_ptr<sceneBase> swicth_scene){
+    current_frame = swicth_scene;
+}
+void sceneManage::changeScene(std::shared_ptr<sceneBase> swicth_scene,
+                              std::shared_ptr<player> Player){
  current_frame = swicth_scene;
 
  }

@@ -16,7 +16,7 @@ public:
 private:
     
     std::shared_ptr<sceneManage> Frame;
-    std::shared_ptr<object> Objects;
+    std::shared_ptr<player> Player;
 };
 
 void MawasuHitoApp::prepareSetting(Settings *settings){
@@ -33,7 +33,8 @@ void MawasuHitoApp::setup(){
     gl::enableDepthWrite();
 
     Frame = std::make_shared<sceneManage>();
-    Frame->changeScene(std::make_shared<titleScene>(Frame));
+    Frame->changeScene(std::make_shared<titleScene>(Frame),
+                       std::make_shared<player> (Player));
     
 }
 

@@ -1,7 +1,9 @@
 
 #pragma once
 #include <memory>
+
 class sceneManage;
+class object;
 
 class sceneBase{
 public:
@@ -11,8 +13,10 @@ public:
     virtual void touchesBegan(cinder::app::TouchEvent event) = 0;
     
 protected:
-    sceneBase(std::shared_ptr<sceneManage>);
+    sceneBase(std::shared_ptr<sceneManage>,
+              std::shared_ptr<object>);
     std::shared_ptr<sceneManage> m_manage;
+    std::shared_ptr<object> m_obj;
 };
 
 

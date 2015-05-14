@@ -1,7 +1,9 @@
 #include "sceneBase.h"
 #include "sceneManage.h"
-
-sceneBase::sceneBase(std::shared_ptr<sceneManage> manager) :
-m_manage(manager){
+#include "object.h"
+sceneBase::sceneBase(std::shared_ptr<sceneManage> manager,
+                     std::shared_ptr<object> objects) :
+m_manage(manager),
+m_obj(objects){
     
 }

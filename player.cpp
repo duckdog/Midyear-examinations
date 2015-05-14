@@ -1,7 +1,9 @@
 #include "player.h"
+#include "objectManage.h"
 
-
-player::player(const objectData& objectdata,const spriteInfo& tabledata) :
+player::player(std::shared_ptr<objectManage> objmanage,
+               const objectData& objectdata,const spriteInfo& tabledata) :
+object(objmanage),
 m_own(Player,Vec2f(.0f,.0f),Vec2f(player_W,player_H)),
 table_data(SpriteID::Player,"daruikoidle.png"){
     

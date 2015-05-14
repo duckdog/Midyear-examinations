@@ -28,4 +28,5 @@ void sceneManage::touchesBegan(cinder::app::TouchEvent event){
 
 void sceneManage::changeScene(std::shared_ptr<sceneBase> swicth_scene){
  current_frame = swicth_scene;
+
  }

@@ -13,7 +13,6 @@ public:
 protected:
     sceneBase(std::shared_ptr<sceneManage>);
     std::shared_ptr<sceneManage> m_manage;
-    
 };
 
 

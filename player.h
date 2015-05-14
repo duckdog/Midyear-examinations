@@ -12,7 +12,8 @@ enum SpriteSize{
 class player : public object{
 
 public:
-    player(const objectData&,const spriteInfo&);
+    player(std::shared_ptr<objectManage>,
+           const objectData&,const spriteInfo&);
     void update();
     void draw();
     

@@ -1,11 +1,11 @@
 #pragma once
 
 #include "sceneBase.h"
-#include "object.h"
-#include "player.h"
+//#include "object.h"
+//#include "player.h"
 class titleScene : public sceneBase{
 public:
-    titleScene(std::shared_ptr<sceneManage>/*,player*/);
+    titleScene(std::shared_ptr<sceneManage>);//,player);
 	void draw();
     void update();
     
@@ -13,5 +13,6 @@ public:
     void mouseDown(cinder::app::MouseEvent event);
 
 private:
+    
     //player m_player;
 };

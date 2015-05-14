@@ -2,7 +2,6 @@
 #include "common.h"
 #include <map>
 
-
 enum SpriteID{
     Player,
     

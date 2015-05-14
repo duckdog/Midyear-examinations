@@ -13,6 +13,7 @@ class player : public object{
 
 public:
     player(const objectData&,const spriteInfo&);
+ 
     void update();
     void draw();
     

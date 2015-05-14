@@ -5,8 +5,7 @@ class player;
 
 class titleScene : public sceneBase{
 public:
-    titleScene(std::shared_ptr<sceneManage>,
-               std::shared_ptr<object>);
+    titleScene(std::shared_ptr<sceneManage>);
 	void draw();
     void update();
     
@@ -14,6 +13,5 @@ public:
     void mouseDown(cinder::app::MouseEvent event);
 
 private:
-    std::shared_ptr<player> m_player;
-    
+       
 };

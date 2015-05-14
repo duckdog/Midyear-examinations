@@ -11,8 +11,7 @@ public:
     void draw();
     void mouseDown(cinder::app::MouseEvent event);
     void touchesBegan(cinder::app::TouchEvent event);
-    void changeScene(std::shared_ptr<sceneBase> scene,
-                     std::shared_ptr<object> objects);
+    void changeScene(std::shared_ptr<sceneBase> scene);
     
 private:
     std::shared_ptr<sceneBase> current_frame;

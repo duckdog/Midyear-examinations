@@ -6,8 +6,7 @@
 
 class mainScene : public sceneBase{
 public:
-    mainScene(std::shared_ptr<sceneManage>,
-              std::shared_ptr<object>);
+    mainScene(std::shared_ptr<sceneManage>);
     void draw();
     void update();
     

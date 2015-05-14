@@ -13,10 +13,9 @@ public:
     virtual void touchesBegan(cinder::app::TouchEvent event) = 0;
     
 protected:
-    sceneBase(std::shared_ptr<sceneManage>,
-              std::shared_ptr<object>);
+    sceneBase(std::shared_ptr<sceneManage>);
     std::shared_ptr<sceneManage> m_manage;
-    std::shared_ptr<object> m_obj;
+   
 };
 
 

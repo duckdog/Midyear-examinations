@@ -2,18 +2,16 @@
 #include "sceneManage.h"
 
 
-titleScene::titleScene(std::shared_ptr<sceneManage> manage,
-                       std::shared_ptr<player> Player) :
-sceneBase(manage),
-m_player(Player){
+titleScene::titleScene(std::shared_ptr<sceneManage> manage) :
+sceneBase(manage){
     
-    
-    resourceManage::getinstace().add(m_player->table_data);
+    resourceManage::getinstace().add(m_player.m_id,
+                                     m_player.m_pass);
 }
 
 void titleScene::draw(){
     cinder::gl::clear(cinder::Color(0,0,1));
-    m_player->draw();
+    m_player.draw();
 }
 
 void titleScene::update(){

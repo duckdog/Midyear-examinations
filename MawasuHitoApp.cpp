@@ -33,8 +33,7 @@ void MawasuHitoApp::setup(){
     gl::enableDepthWrite();
 
     Frame = std::make_shared<sceneManage>();
-    Frame->changeScene(std::make_shared<titleScene>(Frame),
-                       std::make_shared<player> (Player));
+    Frame->changeScene(std::make_shared<titleScene>(Frame));
     
 }
 

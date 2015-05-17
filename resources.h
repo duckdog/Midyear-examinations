@@ -7,12 +7,11 @@ enum SpriteID{
     
     ALL_sprite,
 };
-struct spriteInfo{
-    spriteInfo(SpriteID,std::string);
+
+/*struct spriteInfo{
     SpriteID m_id;
     std::string m_pass;
-};
-
+};*/
 
 class resourceManage{
 private:
@@ -21,8 +20,10 @@ private:
     std::map<SpriteID, gl::Texture> m_graph;//:キーを指定、テクスチャを保持
     
 public:
+    SpriteID m_id;
+    std::string m_pass;
     static resourceManage& getinstace();
-    void add(const spriteInfo&);
+    void add(const SpriteID&,const std::string&);
     void remove(const SpriteID);
     void clear();
     

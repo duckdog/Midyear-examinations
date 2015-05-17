@@ -3,13 +3,13 @@
 #include "resources.h"
 
 
-struct objectData{
+/*struct objectData{
     objectData(SpriteID,Vec2f,Vec2f);
     SpriteID m_id;
     
     Vec2f m_pos;
     Vec2f m_size;
-};
+};*/
 
 class object {
     

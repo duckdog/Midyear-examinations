@@ -25,10 +25,10 @@ resourceManage& resourceManage::getinstace(){
     static resourceManage resource;
     return resource;
 }
-void resourceManage::add(const spriteInfo& spriteinfo){
+void resourceManage::add(const SpriteID& m_id,const std::string& m_pass){
     
     m_graph.insert
-    (std::make_pair(spriteinfo.m_id,gl::Texture(loadImage(loadResource(spriteinfo.m_pass)))));
+    (std::make_pair(m_id,gl::Texture(loadImage(loadResource(m_pass)))));
 }
 
 void resourceManage::remove(const SpriteID id){

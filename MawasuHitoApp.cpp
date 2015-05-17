@@ -1,7 +1,7 @@
 #include "common.h"
 #include "sceneManage.h"
 #include "titleScene.h"
-
+#include "timeManage.h"
 
 class MawasuHitoApp : public AppNative {
     
@@ -14,7 +14,7 @@ public:
     void draw();
  
 private:
-    
+    timeManage m_time;
     std::shared_ptr<sceneManage> Frame;
     std::shared_ptr<player> Player;
 };
@@ -31,7 +31,7 @@ void MawasuHitoApp::setup(){
     resourceManage::getinstace();
     gl::enableAlphaBlending();
     gl::enableDepthWrite();
-
+    m_time.timeget();
     Frame = std::make_shared<sceneManage>();
     Frame->changeScene(std::make_shared<titleScene>(Frame));
     

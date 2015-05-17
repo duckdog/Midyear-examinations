@@ -1,12 +1,11 @@
 #include "titleScene.h"
 #include "sceneManage.h"
-
-
+#include "timeManage.h"
 titleScene::titleScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage){
-    
-    resourceManage::getinstace().add(m_player.m_id,
+        resourceManage::getinstace().add(m_player.m_id,
                                      m_player.m_pass);
+        timeManage::getInstance().timeget();
 }
 
 void titleScene::draw(){
@@ -15,8 +14,7 @@ void titleScene::draw(){
 }
 
 void titleScene::update(){
-    
-}
+ }
 
 //
 void titleScene::mouseDown(cinder::app::MouseEvent event){

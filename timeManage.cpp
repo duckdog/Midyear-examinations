@@ -8,9 +8,14 @@ timeManage::timeManage(){
     
 }
 
-//test 
+timeManage& timeManage::getInstance(){
+    static timeManage timemgr;
+    return timemgr;
+}
+
+//test
 void timeManage::timeget(){
-    console()<<
+    cinder::app::console()<<
            //月は一月をゼロとするため、表示させる場合は１を加算
            //曜日は日曜日がゼロとなる。
             time_object->tm_year + 1900  <<

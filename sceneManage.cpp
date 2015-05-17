@@ -6,7 +6,6 @@
 
 
 sceneManage::sceneManage(){
-    
 }
 
 void sceneManage::draw(){
@@ -15,6 +14,7 @@ void sceneManage::draw(){
 
 void sceneManage::update(){
     current_frame->update();
+
 }
 
 

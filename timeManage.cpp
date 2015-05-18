@@ -32,3 +32,12 @@ void timeManage::loadtime(){
     float year = json["year"].getValue<float>();
     cinder::app::console()<<"json year: " <<year << std::endl;
 }
+
+void timeManage::writetime(){
+    //書き込み
+    ci::JsonTree json_write = JsonTree::makeObject("test");
+    json_write.addChild(JsonTree("year","11"));
+    json_write.write(getAppPath() / "../assets/test.json", JsonTree::WriteOptions().createDocument(true));
+
+    
+}

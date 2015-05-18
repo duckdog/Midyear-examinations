@@ -1,7 +1,7 @@
 #pragma once
 
 #include "sceneBase.h"
-
+#include "earthObject.h"
 
 
 class mainScene : public sceneBase{
@@ -12,4 +12,8 @@ public:
     
     void touchesBegan(cinder::app::TouchEvent event){}
     void mouseDown(cinder::app::MouseEvent event){}
+    
+private:
+    earth m_earth;
+    
 };

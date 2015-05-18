@@ -1,14 +1,29 @@
-//
-//  earthObject.h
-//  MAWASU_IOS
-//
-//  Created by 佐藤 匠 on 2015/05/18.
-//
-//
+#include "object.h"
+#include "common.h"
 
-#ifndef __MAWASU_IOS__earthObject__
-#define __MAWASU_IOS__earthObject__
 
-#include <stdio.h>
-
-#endif /* defined(__MAWASU_IOS__earthObject__) */
+class earth : public object  {
+    
+public:
+    earth();
+    void update();
+    void draw();
+    
+private:
+    // 面情報を定義
+    // 三角形の頂点と色
+    struct earthObj{
+        Vec3f v1,v2,v3;
+        Color color;
+    };
+     std::vector<earthObj> earthobj;
+    
+    float rx;
+    float ry;
+    float rz;
+    
+    
+    Vec3f trans;
+    Vec3f rote;
+    Vec3f scal;
+};

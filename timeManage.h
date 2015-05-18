@@ -8,6 +8,7 @@ public:
     timeManage();
     void timeget();
     void loadtime();
+    void writetime();
     static timeManage& getInstance();
 private:
     time_t timeValue;

@@ -1,6 +1,6 @@
 #include <iostream>
 #include "timeManage.h"
-
+#include "common.h"
 
 timeManage::timeManage(){
     time(&timeValue);
@@ -24,4 +24,11 @@ void timeManage::timeget(){
             time_object->tm_hour<<
             time_object->tm_min <<
             time_object->tm_sec << std::endl;
+}
+
+void timeManage::loadtime(){
+    //読み込み
+    ci::JsonTree json = ci::JsonTree(cinder::app::loadAsset("File.json"));
+    float year = json["year"].getValue<float>();
+    cinder::app::console()<<"json year: " <<year << std::endl;
 }

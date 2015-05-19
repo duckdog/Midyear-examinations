@@ -4,7 +4,7 @@
 
 enum SpriteID{
     Player,
-    
+    main_bg,//
     ALL_sprite,
 };
 

@@ -15,5 +15,9 @@ public:
     
 private:
     earth m_earth;
-    
+    //背景画像と、パス定義用
+    const SpriteID m_id;
+    const std::string& m_pass;
+    const Vec2f bg_pos;
+
 };

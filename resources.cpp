@@ -4,17 +4,7 @@
 
 
 resourceManage::resourceManage(){
-   /* const spriteInfo tableData[]{
-        
-        {Player,"daruikoidle.png"},
-    };
-    
-    for(auto& it : tableData){
-        m_graph.insert(std::make_pair
-        (it.m_id,gl::Texture(loadImage(loadResource(it.m_pass)))));
-    }
-    */
-}
+   }
 
 gl::Texture resourceManage::getsprite(const SpriteID id){
     auto it = m_graph.find(id);
@@ -25,6 +15,7 @@ resourceManage& resourceManage::getinstace(){
     static resourceManage resource;
     return resource;
 }
+
 void resourceManage::add(const SpriteID& m_id,const std::string& m_pass){
     
     m_graph.insert

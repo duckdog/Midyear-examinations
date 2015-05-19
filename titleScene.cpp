@@ -3,8 +3,7 @@
 #include "timeManage.h"
 titleScene::titleScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage){
-    resourceManage::getinstace().add(m_player.m_id,
-                                     m_player.m_pass);
+   // resourceManage::getinstace().add(m_player.m_id,m_player.m_pass);
     timeManage::getInstance().timeget();
     timeManage::getInstance().loadtime();
     timeManage::getInstance().writetime();
@@ -15,11 +14,11 @@ sceneBase(manage){
 
 void titleScene::draw(){
     cinder::gl::clear(cinder::Color(0,0,1));
-    m_player.draw();
+    //m_player.draw();
 }
 
 void titleScene::update(){
-
+    //m_player.update();
  }
 
 //

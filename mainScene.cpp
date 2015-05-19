@@ -7,24 +7,33 @@
 mainScene::mainScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage),
 m_id(SpriteID::main_bg),m_pass("main_bg.png"),
-bg_pos(Vec2f(-getWindowWidth()/2,-getWindowHeight()/2)){
+use_size(Area(-getWindowWidth()/2,-getWindowHeight()/2,getWindowWidth()/2,getWindowHeight()/2)),
+base_size(Area(0,0,640,1435)){
 
     //背景画像を取得.
    resourceManage::getinstace().add(m_id,m_pass);
+   
 }
 
 void mainScene::draw(){
-    cinder::gl::clear(cinder::Color(1,1,1));
+    cinder::gl::clear(cinder::Color(0,0,0));
     
     m_earth.draw();
     
     gl::color(1,1,1);
     gl::draw(resourceManage::getinstace().getsprite(m_id),
-             getWindowBounds());
+             base_size,use_size);
+    m_player.draw();
 
 }
 
 void mainScene::update(){
     m_earth.update();
+    m_player.update();
+}
+
+void mainScene::touchesBegan(cinder::app::TouchEvent event){
+    resourceManage::getinstace().add(m_player.m_id,m_player.m_pass);
+ 
 }
 

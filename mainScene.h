@@ -2,7 +2,7 @@
 
 #include "sceneBase.h"
 #include "earthObject.h"
-
+#include "player.h"
 
 class mainScene : public sceneBase{
 public:
@@ -10,14 +10,15 @@ public:
     void draw();
     void update();
     
-    void touchesBegan(cinder::app::TouchEvent event){}
+    void touchesBegan(cinder::app::TouchEvent event);
     void mouseDown(cinder::app::MouseEvent event){}
     
 private:
     earth m_earth;
+    player m_player;
     //背景画像と、パス定義用
     const SpriteID m_id;
     const std::string& m_pass;
-    const Vec2f bg_pos;
-
+    const Area use_size;
+    const Area base_size;
 };

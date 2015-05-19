@@ -16,12 +16,14 @@ public:
  
     void update();
     void draw();
+    
     const SpriteID m_id;
-    const std::string& m_pass;
+    const std::string m_pass;
 
 private:
       //  const objectData m_own;
-   
+    int m_animationframe;
     Vec2f m_pos;
-    Vec2f m_size;
+    Area m_default_size;
+    Area m_resize;
 };

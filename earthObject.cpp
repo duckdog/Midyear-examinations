@@ -28,7 +28,7 @@ scal(50,50,50),trans(Vec3f(0,-getWindowHeight()/2+ (scal.x * 3),700)),rote(Vec3f
 }
 
 void earth::update(){
-    rote.y += 0.01;
+    rote.y += 0.1;
     
 }
 

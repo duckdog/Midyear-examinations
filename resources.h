@@ -7,6 +7,9 @@
 enum SpriteID{
     Player,
     main_bg,//
+    kobito_s00,
+    kobito_s01,
+    
     ALL_sprite,
 };
 
@@ -31,7 +34,7 @@ public:
     static resourceManage& getinstace();
     void add(const SpriteID&,const std::string&);
     void add(const SpriteID&,const std::string&,
-             const Area,const Area);
+             const Area usearea,const Area posarea);
 
     void remove(const SpriteID);
     void clear();

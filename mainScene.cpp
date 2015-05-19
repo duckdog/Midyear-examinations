@@ -18,22 +18,18 @@ base_size(Area(0,0,640,1435)){
 void mainScene::draw(){
     cinder::gl::clear(cinder::Color(0,0,0));
     
-    m_earth.draw();
-    
     gl::color(1,1,1);
     gl::draw(resourceManage::getinstace().getsprite(m_id),
              base_size,use_size);
-    m_player.draw();
-
+   // m_earth.draw();
 }
 
 void mainScene::update(){
-    m_earth.update();
-    m_player.update();
+   // m_earth.update();
+   
 }
 
 void mainScene::touchesBegan(cinder::app::TouchEvent event){
-    resourceManage::getinstace().add(m_player.m_id,m_player.m_pass);
- 
+   
 }
 

@@ -1,6 +1,7 @@
 #include "titleScene.h"
 #include "sceneManage.h"
 #include "timeManage.h"
+#include "player.h"
 titleScene::titleScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage){
    // resourceManage::getinstace().add(m_player.m_id,m_player.m_pass);
@@ -9,6 +10,7 @@ sceneBase(manage){
     timeManage::getInstance().writetime();
     timeManage::getInstance().loadtime();
     
+
 
 }
 
@@ -19,7 +21,7 @@ void titleScene::draw(){
 
 void titleScene::update(){
     //m_player.update();
- }
+}
 
 //
 void titleScene::mouseDown(cinder::app::MouseEvent event){
@@ -30,4 +32,5 @@ void titleScene::mouseDown(cinder::app::MouseEvent event){
 //app用
 void titleScene::touchesBegan(cinder::app::TouchEvent event){
     m_manage->changeScene(std::make_shared<mainScene>(m_manage));
+    
 }

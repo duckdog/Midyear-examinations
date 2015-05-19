@@ -1,6 +1,7 @@
 #pragma once
 #include "common.h"
-#include "resources.h"
+#include <list>
+//#include "resources.h"
 
 
 /*struct objectData{
@@ -14,9 +15,16 @@
 class object {
     
 public:
+    object();
+    ~object(){}
     virtual void update() = 0;
     virtual void draw() = 0;
-protected:
-    object();
     
+    static void exUpdate();
+    static void exDraw();
+    
+    static void destroy();
+protected:
+   
+    static std::list<object*> m_objects;
 };

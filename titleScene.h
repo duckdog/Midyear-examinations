@@ -1,7 +1,7 @@
 #pragma once
 
 #include "sceneBase.h"
-#include "player.h"
+//#include "player.h"
 
 
 class titleScene : public sceneBase{
@@ -15,7 +15,7 @@ public:
 
 private:
         
-    player m_player;
+    //player m_player;
     
     
 };

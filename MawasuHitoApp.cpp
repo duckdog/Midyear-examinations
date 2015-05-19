@@ -15,8 +15,7 @@ public:
 private:
    
     std::shared_ptr<sceneManage> Frame;
-    std::shared_ptr<player> Player;
-};
+ };
 
 void MawasuHitoApp::prepareSetting(Settings *settings){
     settings->enableMultiTouch();
@@ -46,8 +45,7 @@ void MawasuHitoApp::touchesBegan(TouchEvent event){
 
 void MawasuHitoApp::update()
 {
-    
-    Frame->update();
+        Frame->update();
 
   
 }

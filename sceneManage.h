@@ -1,7 +1,7 @@
 #pragma once
 #include "titleScene.h"
 #include "mainScene.h"
-#include "object.h"
+
 
 class sceneManage{
 public:

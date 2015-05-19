@@ -2,7 +2,7 @@
 #include "sceneBase.h"
 #include "titleScene.h"
 #include "mainScene.h"
-#include "player.h"
+
 
 
 sceneManage::sceneManage(){

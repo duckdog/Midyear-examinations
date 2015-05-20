@@ -1,7 +1,6 @@
 #pragma once
 
 #include "sceneBase.h"
-#include "earthObject.h"
 #include "resources.h"
 class mainScene : public sceneBase{
 public:

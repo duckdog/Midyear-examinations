@@ -25,6 +25,7 @@ scal(50,50,50),trans(Vec3f(0,-getWindowHeight()/2+ (scal.x * 3),700)),rote(Vec3f
     earthobj.push_back({ {  1,  1,  1 }, { -1,  1,  1 }, { -1, -1,  1 }, { 1, 0, 1 } });
     earthobj.push_back({ {  1,  1,  1 }, { -1, -1,  1 }, {  1, -1,  1 }, { 1, 0, 1 } });
     
+    m_objects.push_back(this);
 }
 
 void earth::update(){

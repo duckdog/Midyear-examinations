@@ -9,16 +9,17 @@ enum SpriteSize{
     kobito_sResize = 30,
 };
 
-
+class player;
+typedef std::shared_ptr<player> playerSP;
 
 class player : public object{
-
+    
 public:
-    player();
     ~player(){}
     
     void update();
     void draw();
+    static playerSP create();
     void touchesBegan(TouchEvent event);
     void touchesMoved(TouchEvent event);
     const SpriteID m_id;
@@ -30,5 +31,5 @@ public:
     Area m_default_size;
     Area m_resize;
 private:
-    
+     player();
 };

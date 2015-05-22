@@ -10,7 +10,6 @@ sceneBase(manage){
     timeManage::getInstance().loadtime();
     
 
-
 }
 
 void titleScene::draw(){

@@ -3,6 +3,9 @@
 #include "object.h"
 #include "common.h"
 
+class earth;
+typedef std::shared_ptr<earth> earthSP;
+
 
 class earth : public object  {
     
@@ -10,6 +13,7 @@ public:
     earth();
     void update();
     void draw();
+    static earthSP create();
     void touchesBegan(TouchEvent event){}
     void touchesMoved(TouchEvent event){}
     

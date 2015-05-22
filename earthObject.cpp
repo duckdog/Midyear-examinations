@@ -6,26 +6,34 @@ earth::earth() :
 rx(20),ry(0),rz(0),
 scal(50,50,50),trans(Vec3f(0,-getWindowHeight()/2+ (scal.x * 3),700)),rote(Vec3f(rx,ry,rz)){
     
+    }
+
+earthSP earth::create(){
+    
+    earthSP obj = earthSP(new earth());
+    
     // 地球（立方体）の面情報を生成
-    earthobj.push_back({ { -1, -1, -1 }, {  1,  1, -1 }, {  1, -1, -1 }, { 0, 1, 1 } });
-    earthobj.push_back({ { -1, -1, -1 }, { -1,  1, -1 }, {  1,  1, -1 }, { 0, 1, 1 } });
+    obj->earthobj.push_back({ { -1, -1, -1 }, {  1,  1, -1 }, {  1, -1, -1 }, { 0, 1, 1 } });
+    obj->earthobj.push_back({ { -1, -1, -1 }, { -1,  1, -1 }, {  1,  1, -1 }, { 0, 1, 1 } });
     
-    earthobj.push_back({ { -1,  1, -1 }, { -1,  1,  1 }, {  1,  1,  1 }, { 1, 0, 0 } });
-    earthobj.push_back({ { -1,  1, -1 }, {  1,  1,  1 }, {  1,  1, -1 }, { 1, 0, 0 } });
+    obj->earthobj.push_back({ { -1,  1, -1 }, { -1,  1,  1 }, {  1,  1,  1 }, { 1, 0, 0 } });
+    obj->earthobj.push_back({ { -1,  1, -1 }, {  1,  1,  1 }, {  1,  1, -1 }, { 1, 0, 0 } });
     
-    earthobj.push_back({ {  1, -1, -1 }, {  1,  1, -1 }, {  1,  1,  1 }, { 0, 1, 0 } });
-    earthobj.push_back({ {  1, -1, -1 }, {  1,  1,  1 }, {  1, -1,  1 }, { 0, 1, 0 } });
+    obj->earthobj.push_back({ {  1, -1, -1 }, {  1,  1, -1 }, {  1,  1,  1 }, { 0, 1, 0 } });
+    obj->earthobj.push_back({ {  1, -1, -1 }, {  1,  1,  1 }, {  1, -1,  1 }, { 0, 1, 0 } });
     
-    earthobj.push_back({ { -1, -1, -1 }, { -1, -1,  1 }, { -1,  1,  1 }, { 0, 0, 1 } });
-    earthobj.push_back({ { -1, -1, -1 }, { -1,  1,  1 }, { -1,  1, -1 }, { 0, 0, 1 } });
+    obj->earthobj.push_back({ { -1, -1, -1 }, { -1, -1,  1 }, { -1,  1,  1 }, { 0, 0, 1 } });
+    obj->earthobj.push_back({ { -1, -1, -1 }, { -1,  1,  1 }, { -1,  1, -1 }, { 0, 0, 1 } });
     
-    earthobj.push_back({ { -1, -1, -1 }, {  1, -1, 1 }, { -1, -1,  1 }, { 1, 1, 0 } });
-    earthobj.push_back({ { -1, -1, -1 }, {  1, -1, -1 }, {  1, -1,  1 }, { 1, 1, 0 } });
+    obj->earthobj.push_back({ { -1, -1, -1 }, {  1, -1, 1 }, { -1, -1,  1 }, { 1, 1, 0 } });
+    obj->earthobj.push_back({ { -1, -1, -1 }, {  1, -1, -1 }, {  1, -1,  1 }, { 1, 1, 0 } });
     
-    earthobj.push_back({ {  1,  1,  1 }, { -1,  1,  1 }, { -1, -1,  1 }, { 1, 0, 1 } });
-    earthobj.push_back({ {  1,  1,  1 }, { -1, -1,  1 }, {  1, -1,  1 }, { 1, 0, 1 } });
+    obj->earthobj.push_back({ {  1,  1,  1 }, { -1,  1,  1 }, { -1, -1,  1 }, { 1, 0, 1 } });
+    obj->earthobj.push_back({ {  1,  1,  1 }, { -1, -1,  1 }, {  1, -1,  1 }, { 1, 0, 1 } });
     
-    m_objects.push_back(this);
+     m_objects.push_back(obj);
+
+    return obj;
 }
 
 void earth::update(){
@@ -35,6 +43,7 @@ void earth::update(){
 
 void earth::draw(){
    //回転用の行列を作成.
+    console() << "地球描画なう" << std::endl;
     Matrix44f translate = Matrix44f::createTranslation(trans);
     Matrix44f scale     = Matrix44f::createScale(scal);
     Matrix44f rotate    = Matrix44f::createRotation(rote);

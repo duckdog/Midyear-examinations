@@ -1,12 +1,12 @@
 
 #include "object.h"
 
-std::list<object*>object::m_objects;
+std::list<objectSP>object::m_objects;
 object::object(){}
 
 
 void object::exUpdate(){
-    std::list<object*>::iterator it = m_objects.begin();
+    std::list<objectSP>::iterator it = m_objects.begin();
     
     while(it != m_objects.end()){
         //update 実行.
@@ -18,7 +18,7 @@ void object::exUpdate(){
 
 void object::exDraw(){
     
-    std::list<object*>::iterator it = m_objects.begin();
+    std::list<objectSP>::iterator it = m_objects.begin();
     
     while(it != m_objects.end()){
         //draw実行.
@@ -31,7 +31,7 @@ void object::exDraw(){
 
 void object::exTouchesBegan(TouchEvent event){
     
-    std::list<object*>::iterator it = m_objects.end();
+    std::list<objectSP>::iterator it = m_objects.end();
     
     while(it != m_objects.end()){
         //draw実行.
@@ -44,7 +44,7 @@ void object::exTouchesBegan(TouchEvent event){
 
 void object::exToucehesMoved(TouchEvent event){
     
-    std::list<object*>::iterator it = m_objects.end();
+    std::list<objectSP>::iterator it = m_objects.end();
     
     while(it != m_objects.end()){
         //touchevent実行.
@@ -58,10 +58,9 @@ void object::exToucehesMoved(TouchEvent event){
 
 //一応用意。つかわないかも？
 void object::destroy(){
-    std::list<object*>::iterator it = m_objects.begin();
+    std::list<objectSP>::iterator it = m_objects.begin();
     while(it != m_objects.end()){
-        delete(*it);
-        it++;
+                it++;
     }
     m_objects.clear();
 }

@@ -14,7 +14,7 @@ base_size(Area(0,0,640,1435)){
     //背景画像を取得.
    resourceManage::getinstace().add(m_id,m_pass);
    //地球（立方体）を取得.
-    new earth();
+    earth::create();
 }
 
 void mainScene::draw(){
@@ -24,15 +24,14 @@ void mainScene::draw(){
     gl::draw(resourceManage::getinstace().getsprite(m_id),
              base_size,use_size);
     object::exDraw();
-   // m_earth.draw();
 }
 
 void mainScene::update(){
-   // m_earth.update();
-    object::exUpdate();
+      object::exUpdate();
 }
 
 void mainScene::touchesBegan(cinder::app::TouchEvent event){
-    new player();
+    player::create();
+
 }
 

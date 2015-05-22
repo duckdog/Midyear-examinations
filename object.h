@@ -1,22 +1,15 @@
 #pragma once
 #include "common.h"
 #include <list>
-//#include "resources.h"
+#include <memory>
 
-
-/*struct objectData{
-    objectData(SpriteID,Vec2f,Vec2f);
-    SpriteID m_id;
-    
-    Vec2f m_pos;
-    Vec2f m_size;
-};*/
-
+class object;
+typedef std::shared_ptr<object> objectSP;
 class object {
     
 public:
     object();
-    ~object(){}
+    virtual ~object(){}
     virtual void update() = 0;
     virtual void draw() = 0;
     virtual void touchesBegan(TouchEvent event) = 0;
@@ -32,5 +25,5 @@ public:
     static void destroy();
 protected:
    
-    static std::list<object*> m_objects;
+    static std::list<objectSP> m_objects;
 };

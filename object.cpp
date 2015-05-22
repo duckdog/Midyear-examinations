@@ -28,6 +28,34 @@ void object::exDraw(){
     }
     
 }
+
+void object::exTouchesBegan(TouchEvent event){
+    
+    std::list<object*>::iterator it = m_objects.end();
+    
+    while(it != m_objects.end()){
+        //draw実行.
+        (*it)->touchesBegan(event);
+        //次のオブジェクトへ.
+        it++;
+    }
+    
+}
+
+void object::exToucehesMoved(TouchEvent event){
+    
+    std::list<object*>::iterator it = m_objects.end();
+    
+    while(it != m_objects.end()){
+        //touchevent実行.
+        (*it)->touchesBegan(event);
+        //次のオブジェクトへ.
+        it++;
+    }
+    
+}
+
+
 //一応用意。つかわないかも？
 void object::destroy(){
     std::list<object*>::iterator it = m_objects.begin();
@@ -37,3 +65,6 @@ void object::destroy(){
     }
     m_objects.clear();
 }
+
+
+

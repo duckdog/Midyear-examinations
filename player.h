@@ -19,7 +19,8 @@ public:
     
     void update();
     void draw();
-    
+    void touchesBegan(TouchEvent event);
+    void touchesMoved(TouchEvent event);
     const SpriteID m_id;
     const std::string m_pass;
 

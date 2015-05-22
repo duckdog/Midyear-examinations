@@ -5,7 +5,7 @@ player::player() :
 m_id(SpriteID::kobito_s00),m_pass(("kobito_s00.png"))
 {
     m_animationframe = 0;
-    m_pos = Vec2f(.0f,getWindowHeight()/2 - (kobito_sResize * 3));
+    m_pos = Vec2f(.0f + randFloat(-100,100),getWindowHeight()/2 - (kobito_sResize * 3) + randFloat(-100,100));
     resourceManage::getinstace().add(m_id,m_pass);
     m_resize = Area(m_pos.x,m_pos.y,kobito_sResize + m_pos.x,kobito_sResize + m_pos.y);
     
@@ -25,13 +25,22 @@ void player::update(){
     //移動
     m_resize = Area(m_pos.x,m_pos.y,kobito_sResize + m_pos.x,kobito_sResize + m_pos.y);
     
+    console() << m_pos << std::endl;
 }
 
 void player::draw(){
     gl::color(Color(1,1,1));
   gl::draw(resourceManage::getinstace().getsprite(m_id),
-             m_default_size,m_resize);
+            m_default_size,m_resize);
 
 }
 
 
+void player::touchesBegan(cinder::app::TouchEvent event){
+    event.getTouches().begin();
+    
+}
+
+void player::touchesMoved(cinder::app::TouchEvent event){
+    
+}

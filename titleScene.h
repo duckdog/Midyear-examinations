@@ -14,8 +14,5 @@ public:
     void mouseDown(cinder::app::MouseEvent event);
 
 private:
-        
-    //player m_player;
-    
     
 };

@@ -28,9 +28,10 @@ void timeManage::timeget(){
 
 void timeManage::loadtime(){
     //読み込み
-    ci::JsonTree json = ci::JsonTree(cinder::app::loadAsset("File.json"));
+    ci::JsonTree json = ci::JsonTree(cinder::app::loadAsset("test.json"));
     float year = json["year"].getValue<float>();
-    cinder::app::console()<<"json year: " <<year << std::endl;
+    cinder::app::console()<<"json year : " <<year << std::endl;
+   
 }
 
 void timeManage::writetime(){
@@ -38,6 +39,7 @@ void timeManage::writetime(){
     ci::JsonTree json_write = JsonTree::makeObject("test");
     json_write.addChild(JsonTree("year","11"));
     json_write.write(getAppPath() / "../assets/test.json", JsonTree::WriteOptions().createDocument(true));
+    console() << (getAppPath() / "../assets/test.json") << std::endl;
 
     
 }

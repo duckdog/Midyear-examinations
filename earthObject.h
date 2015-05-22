@@ -10,6 +10,8 @@ public:
     earth();
     void update();
     void draw();
+    void touchesBegan(TouchEvent event){}
+    void touchesMoved(TouchEvent event){}
     
 private:
     // 面情報を定義

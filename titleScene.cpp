@@ -5,8 +5,7 @@
 titleScene::titleScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage){
    // resourceManage::getinstace().add(m_player.m_id,m_player.m_pass);
-    timeManage::getInstance().timeget();
-    timeManage::getInstance().loadtime();
+   // timeManage::getInstance().timeget();
     timeManage::getInstance().writetime();
     timeManage::getInstance().loadtime();
     

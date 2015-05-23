@@ -8,7 +8,7 @@ enum SpriteID{
     Player,
     main_bg,//
     kobito_s00,
-    kobito_s01,
+    Mahojin,
     
     ALL_sprite,
 };

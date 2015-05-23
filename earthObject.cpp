@@ -43,7 +43,7 @@ void earth::update(){
 
 void earth::draw(){
    //回転用の行列を作成.
-    console() << "地球描画なう" << std::endl;
+   // console() << "地球描画なう" << std::endl;
     Matrix44f translate = Matrix44f::createTranslation(trans);
     Matrix44f scale     = Matrix44f::createScale(scal);
     Matrix44f rotate    = Matrix44f::createRotation(rote);

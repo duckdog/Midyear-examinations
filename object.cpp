@@ -11,8 +11,7 @@ void object::exUpdate(){
     while(it != m_objects.end()){
         //update 実行.
         (*it)->update();
-        //次のオブジェクト.
-        it++;
+                it++;
     }
 }
 
@@ -31,10 +30,11 @@ void object::exDraw(){
 
 void object::exTouchesBegan(TouchEvent event){
     
-    std::list<objectSP>::iterator it = m_objects.end();
+    std::list<objectSP>::iterator it = m_objects.begin();
     
     while(it != m_objects.end()){
-        //draw実行.
+        //touchesBegan実行.
+        console() << "tochesBegan　実行" << std::endl;
         (*it)->touchesBegan(event);
         //次のオブジェクトへ.
         it++;
@@ -48,6 +48,7 @@ void object::exToucehesMoved(TouchEvent event){
     
     while(it != m_objects.end()){
         //touchevent実行.
+        console() << *it << std::endl;
         (*it)->touchesBegan(event);
         //次のオブジェクトへ.
         it++;

@@ -32,6 +32,7 @@ void mainScene::update(){
 
 void mainScene::touchesBegan(cinder::app::TouchEvent event){
     player::create();
+    object::exTouchesBegan(event);
 
-}
+ }
 

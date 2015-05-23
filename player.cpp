@@ -18,7 +18,7 @@ playerSP player::create(){
     
     playerSP obj = playerSP(new player());
     obj->m_animationframe = 0;
-    obj->m_pos = Vec2f(.0f + randFloat(-100,100),getWindowHeight()/2 - (kobito_sResize * 3) + randFloat(-100,100));
+    obj->m_pos = Vec2f(.0f,getWindowHeight()/2 - (kobito_sResize * 3));
     resourceManage::getinstace().add(obj->m_id,obj->m_pass);
     obj->m_resize = Area(obj->m_pos.x,obj->m_pos.y,
                          kobito_sResize + obj->m_pos.x,kobito_sResize + obj->m_pos.y);
@@ -42,7 +42,7 @@ void player::update(){
     //移動
     m_resize = Area(m_pos.x,m_pos.y,kobito_sResize + m_pos.x,kobito_sResize + m_pos.y);
     
-    console() << m_pos << std::endl;
+    console() << " m_pos[X,Y] : " << m_pos  << std::endl;
 }
 
 void player::draw(){
@@ -53,18 +53,38 @@ void player::draw(){
 }
 
 
-void player::touchesBegan(cinder::app::TouchEvent event){
-    //
+void player::touchesBegan(TouchEvent event){
+    //vector 型だったので、タッチイベントの要素（関数）を取り出すために　touchIter を作成。かな？
     for (std::vector<TouchEvent::Touch>::const_iterator touchIter = event.getTouches().begin();
          touchIter != event.getTouches().end();
          touchIter++) {
         
+        //タッチの位置を取得。
+        Vec2f Window   = Vec2f(getWindowWidth() * 0.5, getWindowHeight() * 0.5);
+        Vec2f TouchPos = Vec2f(touchIter->getX() - Window.x,
+                               touchIter->getY() - Window.y);
         
+        
+        console() << "mouse_PosX :" << TouchPos.x << std::endl;
+        console() << "mouse_PosY :" << TouchPos.y << std::endl;
+
+        //取得したタッチ位置とオブジェクトの位置の当たり判定,
+        //オブジェクトの領域にはいっていればremove.
+        if(TouchPos.x > m_pos.x && TouchPos.x < m_pos.x + kobito_sResize &&
+               TouchPos.y > m_pos.y && TouchPos.y < m_pos.x + kobito_sResize){
+            
+                m_objects.remove( playerSP (playerSP(this)));
+            
+            }
          }
 
     
 }
 
 void player::touchesMoved(cinder::app::TouchEvent event){
-    
+    for(std::vector<TouchEvent::Touch>::const_iterator touchIter = event.getTouches().begin();
+        touchIter != event.getTouches().end();
+        touchIter++){
+        
+    }
 }

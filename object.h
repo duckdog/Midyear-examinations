@@ -21,7 +21,6 @@ public:
     static void exTouchesBegan(TouchEvent event);
     static void exToucehesMoved(TouchEvent event);
 
-    
     static void destroy();
 protected:
    

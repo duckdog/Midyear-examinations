@@ -22,6 +22,8 @@ public:
     static playerSP create();
     void touchesBegan(TouchEvent event);
     void touchesMoved(TouchEvent event);
+    
+    //スプライトデータ
     const SpriteID m_id;
     const std::string m_pass;
 

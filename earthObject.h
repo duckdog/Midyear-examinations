@@ -1,24 +1,25 @@
 #pragma once
 
 #include "object.h"
-#include "common.h"
+#include "resources.h"
 
 class earth;
 typedef std::shared_ptr<earth> earthSP;
 
-
 class earth : public object  {
     
 public:
-    earth();
+    ~earth(){}
+    
     void update();
     void draw();
     static earthSP create();
     void touchesBegan(TouchEvent event){}
     void touchesMoved(TouchEvent event){}
-    void touhesEnded(TouchEvent event){}
+    void touchesEnded(TouchEvent event){}
     
 private:
+    earth();
     // 面情報を定義
     // 三角形の頂点と色
     struct earthObj{

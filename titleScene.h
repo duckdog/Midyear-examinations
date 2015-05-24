@@ -1,7 +1,7 @@
 #pragma once
 
 #include "sceneBase.h"
-//#include "player.h"
+//#include "kobito_00.h"
 
 
 class titleScene : public sceneBase{

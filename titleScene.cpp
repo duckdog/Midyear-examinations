@@ -1,10 +1,10 @@
 #include "titleScene.h"
 #include "sceneManage.h"
 #include "timeManage.h"
-#include "player.h"
+#include "kobito_00.h"
 titleScene::titleScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage){
-   // resourceManage::getinstace().add(m_player.m_id,m_player.m_pass);
+   // resourceManage::getinstace().add(m_kobito_00.m_id,m_kobito_00.m_pass);
    // timeManage::getInstance().timeget();
     timeManage::getInstance().writetime();
     timeManage::getInstance().loadtime();
@@ -14,11 +14,11 @@ sceneBase(manage){
 
 void titleScene::draw(){
     cinder::gl::clear(cinder::Color(0,0,1));
-    //m_player.draw();
+    //m_kobito_00.draw();
 }
 
 void titleScene::update(){
-    //m_player.update();
+    //m_kobito_00.update();
 }
 
 //

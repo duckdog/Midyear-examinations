@@ -1,21 +1,26 @@
 #include "earthObject.h"
 
 
-
-earth::earth() :
-rx(20),ry(0),rz(0),
-scal(50,50,50),trans(Vec3f(0,-getWindowHeight()/2+ (scal.x * 3),700)),rote(Vec3f(rx,ry,rz)){
-    
-    }
+earth::earth(){
+}
 
 earthSP earth::create(){
-    
+
     earthSP obj = earthSP(new earth());
     
     // 地球（立方体）の面情報を生成
+    
+    obj->rx = 20;
+    obj->ry = 0;
+    obj->rz = 0;
+    obj->scal  = Vec3f(50,50,50);
+    obj->trans = Vec3f(0,-getWindowHeight()/2+ (obj->scal.x * 3),700);
+    obj->rote  = Vec3f(obj->rx,obj->ry,obj->rz);
+    
+    
     obj->earthobj.push_back({ { -1, -1, -1 }, {  1,  1, -1 }, {  1, -1, -1 }, { 0, 1, 1 } });
     obj->earthobj.push_back({ { -1, -1, -1 }, { -1,  1, -1 }, {  1,  1, -1 }, { 0, 1, 1 } });
-    
+
     obj->earthobj.push_back({ { -1,  1, -1 }, { -1,  1,  1 }, {  1,  1,  1 }, { 1, 0, 0 } });
     obj->earthobj.push_back({ { -1,  1, -1 }, {  1,  1,  1 }, {  1,  1, -1 }, { 1, 0, 0 } });
     
@@ -31,7 +36,7 @@ earthSP earth::create(){
     obj->earthobj.push_back({ {  1,  1,  1 }, { -1,  1,  1 }, { -1, -1,  1 }, { 1, 0, 1 } });
     obj->earthobj.push_back({ {  1,  1,  1 }, { -1, -1,  1 }, {  1, -1,  1 }, { 1, 0, 1 } });
     
-     m_objects.push_back(obj);
+    object::m_objects.push_back(obj);
 
     return obj;
 }

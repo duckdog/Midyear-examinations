@@ -1,7 +1,7 @@
 #include "common.h"
 #include "mainScene.h"
 #include "sceneManage.h"
-#include "player.h"
+#include "kobito_00.h"
 #include "earthObject.h"
 #include "summonsCircle.h"
 

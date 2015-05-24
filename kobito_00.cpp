@@ -1,14 +1,14 @@
-#include "player.h"
+#include "kobito_00.h"
 #include "cinder/Rand.h"
 #include <vector>
-player::player() :
+kobito_00::kobito_00() :
 m_id(SpriteID::kobito_s00),m_pass(("kobito_s00.png")){
   
 }
 
-playerSP player::create(){
+kobito_00SP kobito_00::create(){
     
-    playerSP obj = playerSP(new player());
+    kobito_00SP obj = kobito_00SP(new kobito_00());
     obj->m_animationframe = 0;
     obj->m_pos = Vec2f(.0f,getWindowHeight()/2 - (kobito_sResize * 3));
     resourceManage::getinstace().add(obj->m_id,obj->m_pass);
@@ -22,7 +22,7 @@ playerSP player::create(){
 }
 
 
-void player::update(){
+void kobito_00::update(){
     
     //小人画像のアニメーション
     m_animationframe++;
@@ -31,13 +31,21 @@ void player::update(){
     }
     else{
         m_default_size = Area(0,0,kobito_sW,kobito_sH);
+       
+    }
+    //アニメーションようなので、増えすぎるを防止。（気づかない程度に.）
+    if(m_animationframe > 60){ m_animationframe = 0;}
+    //
+    console() << m_animationframe << std::endl;
+    
+    if(  m_pos.x > 0){
+        
     }
     
-    m_pos.y--;
-    console() << " m_pos[X,Y] : " << m_pos  << std::endl;
+    
 }
 
-void player::draw(){
+void kobito_00::draw(){
     m_resize = Area(m_pos.x,m_pos.y,kobito_sResize + m_pos.x,kobito_sResize + m_pos.y);
     gl::color(Color(1,1,1));
     gl::draw(resourceManage::getinstace().getsprite(m_id),
@@ -46,7 +54,7 @@ void player::draw(){
 }
 
 
-void player::touchesBegan(TouchEvent event){
+void kobito_00::touchesBegan(TouchEvent event){
     //vector 型だったので、タッチイベントの要素（関数）を取り出すために　touchIter を作成。かな？
     for (std::vector<TouchEvent::Touch>::const_iterator touchIter = event.getTouches().begin();
          touchIter != event.getTouches().end();
@@ -67,7 +75,7 @@ void player::touchesBegan(TouchEvent event){
                TouchPos.y > m_pos.y && TouchPos.y < m_pos.y + kobito_sResize){
             
               //エラーでう
-              //  m_objects.erase(( playerSP (playerSP(this));
+              //  m_objects.erase(( kobito_00SP (kobito_00SP(this));
             
             }
          }
@@ -75,7 +83,7 @@ void player::touchesBegan(TouchEvent event){
     
 }
 
-void player::touchesMoved(TouchEvent event){
+void kobito_00::touchesMoved(TouchEvent event){
     for(std::vector<TouchEvent::Touch>::const_iterator touchIter = event.getTouches().begin();
         touchIter != event.getTouches().end();
         touchIter++){

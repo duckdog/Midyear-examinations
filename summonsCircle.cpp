@@ -1,5 +1,5 @@
 #include "summonsCircle.h"
-#include "player.h"
+#include "kobito_00.h"
 #include <vector>
 summonsCircle::summonsCircle():
 m_id(SpriteID::summons_circle),m_pass("summons_circle.png"){
@@ -53,7 +53,7 @@ void summonsCircle::touchesBegan(TouchEvent event){
         if(TouchPos.x > m_pos.x && TouchPos.x < m_pos.x + summons_W * 0.4 &&
            TouchPos.y > m_pos.y && TouchPos.y < m_pos.y + summons_H * 0.4){
             
-            player::create();
+            kobito_00::create();
             
         }
     }
@@ -71,7 +71,7 @@ void summonsCircle::touchesMoved(TouchEvent event){
         if(TouchPos.x > m_pos.x && TouchPos.x < m_pos.x + summons_W * 0.4 &&
            TouchPos.y > m_pos.y && TouchPos.y < m_pos.y + summons_H * 0.4){
             
-            player::create();
+            kobito_00::create();
             
         }
     }

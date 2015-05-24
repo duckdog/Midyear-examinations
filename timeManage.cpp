@@ -38,7 +38,7 @@ void timeManage::writetime(){
     //書き込み
     ci::JsonTree json_write = JsonTree::makeObject("test");
     json_write.addChild(JsonTree("year","11"));
-    json_write.write(getAppPath() / "../assets/test.json", JsonTree::WriteOptions().createDocument(true));
+   // json_write.write(getAppPath() / "../assets/test.json", JsonTree::WriteOptions().createDocument(true));
     console() << (getAppPath() / "../assets/test.json") << std::endl;
 
     

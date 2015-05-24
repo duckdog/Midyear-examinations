@@ -14,7 +14,7 @@ earthSP earth::create(){
     obj->ry = 0;
     obj->rz = 0;
     obj->scal  = Vec3f(50,50,50);
-    obj->trans = Vec3f(0,-getWindowHeight()/2+ (obj->scal.x * 3),700);
+    obj->trans = Vec3f(0,-getWindowHeight() * 0.5,700);
     obj->rote  = Vec3f(obj->rx,obj->ry,obj->rz);
     
     
@@ -42,7 +42,7 @@ earthSP earth::create(){
 }
 
 void earth::update(){
-    rote.y += 0.1;
+    rote.y += 0.01;
     
 }
 

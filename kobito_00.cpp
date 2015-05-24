@@ -26,7 +26,7 @@ void kobito_00::update(){
     
     //小人画像のアニメーション
     m_animationframe++;
-    if((m_animationframe / 6) % 2 == 0){
+    if((m_animationframe / 30) % 2 == 0){
         m_default_size = Area(0 + kobito_sW,0,kobito_sW * 2,kobito_sH);
     }
     else{
@@ -38,8 +38,8 @@ void kobito_00::update(){
     //
     console() << m_animationframe << std::endl;
     
-    if(  m_pos.x > 0){
-        
+    if(  m_pos.y > 0){
+        m_pos.y--;
     }
     
     

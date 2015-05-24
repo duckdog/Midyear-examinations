@@ -23,8 +23,8 @@ private:
 void MawasuHitoApp::prepareSetting(Settings *settings){
     settings->enableMultiTouch();
     settings->setResizable( false );
-    settings->setWindowSize( 1024,768);
-    settings->setFrameRate(30.0f);
+    settings->setWindowSize(getWindowSize());// FIXME :オブジェクトが横の伸びる危険性。後で直す
+    settings->setFrameRate(20.0f);
     
 }
 

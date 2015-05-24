@@ -6,7 +6,7 @@
 enum SpriteSize{
     kobito_sW = 128,
     kobito_sH = 128,
-    kobito_sResize = 30,
+    kobito_sResize = 35,
 };
 
 class kobito_00;

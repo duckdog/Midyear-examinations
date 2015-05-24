@@ -42,14 +42,27 @@ void object::exTouchesBegan(TouchEvent event){
     
 }
 
-void object::exToucehesMoved(TouchEvent event){
+void object::exTouchesMoved(TouchEvent event){
     
-    std::list<objectSP>::iterator it = m_objects.end();
+    std::list<objectSP>::iterator it = m_objects.begin();
     
     while(it != m_objects.end()){
         //touchevent実行.
         console() << *it << std::endl;
-        (*it)->touchesBegan(event);
+        (*it)->touchesMoved(event);
+        //次のオブジェクトへ.
+        it++;
+    }
+    
+}
+void object::exTouchesEnded(TouchEvent event){
+    
+    std::list<objectSP>::iterator it = m_objects.begin();
+    
+    while(it != m_objects.end()){
+        //touchevent実行.
+        console() << *it << std::endl;
+        (*it)->touchesEnded(event);
         //次のオブジェクトへ.
         it++;
     }

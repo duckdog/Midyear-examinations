@@ -2,16 +2,8 @@
 #include "cinder/Rand.h"
 #include <vector>
 player::player() :
-m_id(SpriteID::kobito_s00),m_pass(("kobito_s00.png"))
-{
-   /*     obj->m_animationframe = 0;
-    obj->m_pos = Vec2f(.0f + randFloat(-100,100),getWindowHeight()/2 - (kobito_sResize * 3) + randFloat(-100,100));
-    obj->resourceManage::getinstace().add(m_id,m_pass);
-    obj->m_resize = Area(m_pos.x,m_pos.y,kobito_sResize + m_pos.x,kobito_sResize + m_pos.y);
-    
-    
-    object::m_objects.push_back(this);
-    */
+m_id(SpriteID::kobito_s00),m_pass(("kobito_s00.png")){
+  
 }
 
 playerSP player::create(){
@@ -31,6 +23,7 @@ playerSP player::create(){
 
 
 void player::update(){
+    
     //小人画像のアニメーション
     m_animationframe++;
     if((m_animationframe / 6) % 2 == 0){
@@ -39,15 +32,15 @@ void player::update(){
     else{
         m_default_size = Area(0,0,kobito_sW,kobito_sH);
     }
-    //移動
-    m_resize = Area(m_pos.x,m_pos.y,kobito_sResize + m_pos.x,kobito_sResize + m_pos.y);
     
+    m_pos.y--;
     console() << " m_pos[X,Y] : " << m_pos  << std::endl;
 }
 
 void player::draw(){
+    m_resize = Area(m_pos.x,m_pos.y,kobito_sResize + m_pos.x,kobito_sResize + m_pos.y);
     gl::color(Color(1,1,1));
-  gl::draw(resourceManage::getinstace().getsprite(m_id),
+    gl::draw(resourceManage::getinstace().getsprite(m_id),
             m_default_size,m_resize);
 
 }
@@ -71,9 +64,10 @@ void player::touchesBegan(TouchEvent event){
         //取得したタッチ位置とオブジェクトの位置の当たり判定,
         //オブジェクトの領域にはいっていればremove.
         if(TouchPos.x > m_pos.x && TouchPos.x < m_pos.x + kobito_sResize &&
-               TouchPos.y > m_pos.y && TouchPos.y < m_pos.x + kobito_sResize){
+               TouchPos.y > m_pos.y && TouchPos.y < m_pos.y + kobito_sResize){
             
-                m_objects.remove( playerSP (playerSP(this)));
+              //エラーでう
+              //  m_objects.erase(( playerSP (playerSP(this));
             
             }
          }
@@ -81,7 +75,7 @@ void player::touchesBegan(TouchEvent event){
     
 }
 
-void player::touchesMoved(cinder::app::TouchEvent event){
+void player::touchesMoved(TouchEvent event){
     for(std::vector<TouchEvent::Touch>::const_iterator touchIter = event.getTouches().begin();
         touchIter != event.getTouches().end();
         touchIter++){

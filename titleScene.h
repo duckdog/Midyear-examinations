@@ -11,6 +11,9 @@ public:
     void update();
     
     void touchesBegan(cinder::app::TouchEvent event);
+    void touchesMoved(cinder::app::TouchEvent event){}
+    void touchesEnded(cinder::app::TouchEvent event){}
+
     void mouseDown(cinder::app::MouseEvent event);
 
 private:

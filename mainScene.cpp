@@ -3,7 +3,7 @@
 #include "sceneManage.h"
 #include "player.h"
 #include "earthObject.h"
-
+#include "summonsCircle.h"
 
 mainScene::mainScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage),
@@ -12,9 +12,11 @@ use_size(Area(-getWindowWidth()/2,-getWindowHeight()/2,getWindowWidth()/2,getWin
 base_size(Area(0,0,640,1435)){
 
     //背景画像を取得.
+    
    resourceManage::getinstace().add(m_id,m_pass);
    //地球（立方体）を取得.
     earth::create();
+    summonsCircle::create();
 }
 
 void mainScene::draw(){
@@ -31,8 +33,12 @@ void mainScene::update(){
 }
 
 void mainScene::touchesBegan(cinder::app::TouchEvent event){
-    player::create();
     object::exTouchesBegan(event);
 
  }
+void mainScene::touchesMoved(cinder::app::TouchEvent event){
+    object::exTouchesMoved(event);
+    
+}
+
 

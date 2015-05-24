@@ -11,6 +11,8 @@ public:
     virtual void draw()= 0;
     virtual void mouseDown(cinder::app::MouseEvent event) = 0;
     virtual void touchesBegan(cinder::app::TouchEvent event) = 0;
+    virtual void touchesMoved(cinder::app::TouchEvent event) = 0;
+    virtual void touchesEnded(cinder::app::TouchEvent event) = 0;
     
 protected:
     sceneBase(std::shared_ptr<sceneManage>);

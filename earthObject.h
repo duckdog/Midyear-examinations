@@ -16,6 +16,7 @@ public:
     static earthSP create();
     void touchesBegan(TouchEvent event){}
     void touchesMoved(TouchEvent event){}
+    void touhesEnded(TouchEvent event){}
     
 private:
     // 面情報を定義

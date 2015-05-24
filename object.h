@@ -14,12 +14,14 @@ public:
     virtual void draw() = 0;
     virtual void touchesBegan(TouchEvent event) = 0;
     virtual void touchesMoved(TouchEvent event) = 0;
+    virtual void touchesEnded(TouchEvent event) = 0;
 
     
     static void exUpdate();
     static void exDraw();
     static void exTouchesBegan(TouchEvent event);
-    static void exToucehesMoved(TouchEvent event);
+    static void exTouchesMoved(TouchEvent event);
+    static void exTouchesEnded(TouchEvent event);
 
     static void destroy();
 protected:

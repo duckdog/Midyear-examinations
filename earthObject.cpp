@@ -9,7 +9,7 @@ earthSP earth::create(){
     earthSP obj = earthSP(new earth());
     
     // 地球（立方体）の面情報を生成
-    
+    obj->m_life = -1;
     obj->rx = 20;
     obj->ry = 0;
     obj->rz = 0;

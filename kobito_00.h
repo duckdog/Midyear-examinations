@@ -29,6 +29,11 @@ public:
 
     //const objectData m_own;
     int m_animationframe;
+    int m_life;
+    int obj_number;
+    Color m_color;
+    bool random_dir;
+    
     Vec2f m_pos;
     Area m_default_size;
     Area m_resize;

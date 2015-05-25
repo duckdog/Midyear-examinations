@@ -27,6 +27,7 @@ private:
     Vec2f m_pos;
     Area m_default_size; //使用する画像の切り取り
     Area m_resize;       //画像の位置、サイズ.
+    int m_life;
     summonsCircle();
     
 };

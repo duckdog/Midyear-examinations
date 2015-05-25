@@ -2,7 +2,7 @@
 #include "object.h"
 
 std::list<objectSP>object::m_objects;
-object::object(){}
+object::object(): m_life(-1){}
 
 
 void object::exUpdate(){
@@ -69,6 +69,17 @@ void object::exTouchesEnded(TouchEvent event){
     
 }
 
+void object::remove(){
+    std::list<objectSP>::iterator it = m_objects.begin();
+    while(it != m_objects.end()){
+        
+        if(0 == (*it)->m_life){
+            it = m_objects.erase(it);
+            continue;
+        }
+        it++;
+    }
+}
 
 //一応用意。つかわないかも？
 void object::destroy(){

@@ -14,6 +14,7 @@ summonsCircleSP summonsCircle::create(){
     //位置
     //元画像の切り取り位置
     //切り取った画像をひょうじさせる、位置、サイズ
+    obj->m_life = -1;
     float ratio =  0.4f;
     obj->m_pos = Vec2f(-(summons_W *  ratio) * 0.5,getWindowHeight() * 0.5 - (summons_H *  ratio) * 3);
     obj->m_default_size = Area(0,0,summons_W,summons_H);

@@ -33,25 +33,11 @@ void kobito_00::update(){
 //   移動、画像アニメーション等
 //
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    //小人画像のアニメーション
-    m_animationframe++;
-    if((m_animationframe / 10) % 2 == 0){
-        m_default_size = Area(0 + kobito_sW,0,kobito_sW * 2,kobito_sH);
-    }
-    else{
-        m_default_size = Area(0,0,kobito_sW,kobito_sH);
-       
-    }
-    //アニメーションカウントが増えすぎるを防止.
-    if(m_animationframe > 60){ m_animationframe = 0;}
-    //移動設定
-    if(  m_pos.y >= 0 + obj_number){
-        m_pos.y--;
-    }
+    
+    
     // 画面内を左右に移動。
     if(m_pos.x >= -getWindowWidth() * 0.5 && m_pos.x <= getWindowWidth() * 0.5 - kobito_sResize){
        
-    
         if(m_animationframe == 0){
             random_dir = randBool();
 
@@ -60,15 +46,42 @@ void kobito_00::update(){
             if(random_dir) m_pos.x += 1;
             else m_pos.x -= 1;
         }
-        //画面外に出たら、画面内に強制的に戻す.
-        if(m_pos.x < -getWindowWidth() * 0.5) m_pos.x =  -getWindowWidth() * 0.5;
-        if(m_pos.x > getWindowWidth() * 0.5 - kobito_sResize) m_pos.x = getWindowWidth() * 0.5 - kobito_sResize;
-        
     }
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-//
-    
+    //画面外に出たら、画面内に強制的に戻す.
+    if(m_pos.x < -getWindowWidth() * 0.5) m_pos.x =  -getWindowWidth() * 0.5;
+    if(m_pos.x > getWindowWidth() * 0.5 - kobito_sResize) m_pos.x = getWindowWidth() * 0.5 - kobito_sResize;
+        
+    //小人画像のアニメーション
+    m_animationframe++;
+
+    if(random_dir){
+        if((m_animationframe / 10) % 2 == 0){
+            m_default_size = Area(0 + kobito_sW,0,kobito_sW * 2,kobito_sH);
+        }
+        else{
+            m_default_size = Area(0,0,kobito_sW,kobito_sH);
+        }
+    }else if(!random_dir){
+        if((m_animationframe / 10) % 2 == 0){
+            m_default_size = Area(0 + kobito_sW,kobito_sH,kobito_sW * 2,kobito_sH * 2);
+        }
+        else{
+            m_default_size = Area(0,kobito_sH,kobito_sW,kobito_sH * 2);
+        }
+    }else{
+        if((m_animationframe / 30) % 2 == 0){
+            m_default_size = Area(0 + kobito_sW,kobito_sH * 2,kobito_sW * 2,kobito_sH *  3);
+        }
+        else{
+            m_default_size = Area(0,kobito_sH * 2,kobito_sW,kobito_sH * 3);
+        }
+
+    }
+        
+    //アニメーションカウントが増えすぎるを防止.
+    if(m_animationframe > 60) m_animationframe = 0;
+    //移動設定
+    if(  m_pos.y >= 0 + obj_number) m_pos.y--;
   
 }
 

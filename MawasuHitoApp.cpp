@@ -62,10 +62,11 @@ void MawasuHitoApp::draw()
 {
     
     gl::pushModelView();
+    
     gl::translate(getWindowCenter());
 
     Frame->draw();
-    //gl::drawSolidCircle(Vec2f(0,0),100);
+
     gl::popModelView();
 }
 

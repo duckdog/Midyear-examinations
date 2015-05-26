@@ -10,6 +10,7 @@ class object {
 public:
     
     int m_life;
+    double m_rote_power;
     
     object();
     virtual ~object(){}
@@ -24,11 +25,11 @@ public:
     static void exTouchesBegan(TouchEvent event);
     static void exTouchesMoved(TouchEvent event);
     static void exTouchesEnded(TouchEvent event);
-    static void remove();
     static void destroy();
     
 protected:
    
     static std::list<objectSP> m_objects;
+  
     
 };

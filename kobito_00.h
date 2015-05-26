@@ -20,6 +20,7 @@ public:
     void update();
     void draw();
     static kobito_00SP create();
+   
     void touchesBegan(TouchEvent event);
     void touchesMoved(TouchEvent event);
     void touchesEnded(TouchEvent event){}
@@ -27,9 +28,11 @@ public:
     const SpriteID m_id;
     const std::string m_pass;
 
+   
+private:
+     kobito_00();
     //const objectData m_own;
     int m_animationframe;
-    int m_life;
     int obj_number;
     Color m_color;
     bool random_dir;
@@ -37,6 +40,4 @@ public:
     Vec2f m_pos;
     Area m_default_size;
     Area m_resize;
-private:
-     kobito_00();
 };

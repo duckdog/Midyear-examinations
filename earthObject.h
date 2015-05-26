@@ -31,8 +31,6 @@ private:
     float rx;
     float ry;
     float rz;
-    int m_life;
-    
     Vec3f trans;
     Vec3f rote;
     Vec3f scal;

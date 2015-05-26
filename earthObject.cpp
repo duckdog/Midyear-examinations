@@ -9,7 +9,6 @@ earthSP earth::create(){
     earthSP obj = earthSP(new earth());
     
     // 地球（立方体）の面情報を生成
-    obj->m_life = -1;
     obj->rx = 20;
     obj->ry = 0;
     obj->rz = 0;
@@ -42,9 +41,17 @@ earthSP earth::create(){
 }
 
 void earth::update(){
-    rote.y += 0.01;
-    
+    //オブジェクトが持つm_rote_powerの分だけ地球を回す。
+    std::list<objectSP>::iterator it = m_objects.begin();
+    while(it != m_objects.end()){
+        rote.y += (*it)->m_rote_power;
+        console()  << "m_rote_power"<<(*it)->m_rote_power << std::endl;
+        it++;
+    }
+
 }
+
+
 
 void earth::draw(){
    //回転用の行列を作成.

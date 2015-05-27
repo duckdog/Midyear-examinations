@@ -12,6 +12,8 @@ public:
     void writetime();
     static timeManage& getInstance();
 private:
+   
+    ci::fs::path Path;
     time_t timeValue;
     struct tm* time_object;
 

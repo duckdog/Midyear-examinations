@@ -17,23 +17,23 @@ earthSP earth::create(){
     obj->rote  = Vec3f(obj->rx,obj->ry,obj->rz);
     
     
-    obj->earthobj.push_back({ { -1, -1, -1 }, {  1,  1, -1 }, {  1, -1, -1 }, { 0, 1, 1 } });
-    obj->earthobj.push_back({ { -1, -1, -1 }, { -1,  1, -1 }, {  1,  1, -1 }, { 0, 1, 1 } });
+    obj->earthobj.push_back({ { -1, -1, -1 }, {  1,  1, -1 }, {  1, -1, -1 }, { 0, 1, 0.2 } });
+    obj->earthobj.push_back({ { -1, -1, -1 }, { -1,  1, -1 }, {  1,  1, -1 }, { 0, 1, 0.2 } });
 
-    obj->earthobj.push_back({ { -1,  1, -1 }, { -1,  1,  1 }, {  1,  1,  1 }, { 1, 0, 0 } });
-    obj->earthobj.push_back({ { -1,  1, -1 }, {  1,  1,  1 }, {  1,  1, -1 }, { 1, 0, 0 } });
+    obj->earthobj.push_back({ { -1,  1, -1 }, { -1,  1,  1 }, {  1,  1,  1 }, { 0, 1, 0.2 } });
+    obj->earthobj.push_back({ { -1,  1, -1 }, {  1,  1,  1 }, {  1,  1, -1 }, { 0, 0, 1 } });
     
-    obj->earthobj.push_back({ {  1, -1, -1 }, {  1,  1, -1 }, {  1,  1,  1 }, { 0, 1, 0 } });
-    obj->earthobj.push_back({ {  1, -1, -1 }, {  1,  1,  1 }, {  1, -1,  1 }, { 0, 1, 0 } });
+    obj->earthobj.push_back({ {  1, -1, -1 }, {  1,  1, -1 }, {  1,  1,  1 }, { 0, 0, 1 } });
+    obj->earthobj.push_back({ {  1, -1, -1 }, {  1,  1,  1 }, {  1, -1,  1 }, { 0, 0.2, 1 } });
     
-    obj->earthobj.push_back({ { -1, -1, -1 }, { -1, -1,  1 }, { -1,  1,  1 }, { 0, 0, 1 } });
+    obj->earthobj.push_back({ { -1, -1, -1 }, { -1, -1,  1 }, { -1,  1,  1 }, { 0, 0.2, 1 } });
     obj->earthobj.push_back({ { -1, -1, -1 }, { -1,  1,  1 }, { -1,  1, -1 }, { 0, 0, 1 } });
     
-    obj->earthobj.push_back({ { -1, -1, -1 }, {  1, -1, 1 }, { -1, -1,  1 }, { 1, 1, 0 } });
-    obj->earthobj.push_back({ { -1, -1, -1 }, {  1, -1, -1 }, {  1, -1,  1 }, { 1, 1, 0 } });
+    obj->earthobj.push_back({ { -1, -1, -1 }, {  1, -1, 1 }, { -1, -1,  1 }, { 0, 1, 0.2 } });
+    obj->earthobj.push_back({ { -1, -1, -1 }, {  1, -1, -1 }, {  1, -1,  1 }, { 0, 1, 0.2 } });
     
-    obj->earthobj.push_back({ {  1,  1,  1 }, { -1,  1,  1 }, { -1, -1,  1 }, { 1, 0, 1 } });
-    obj->earthobj.push_back({ {  1,  1,  1 }, { -1, -1,  1 }, {  1, -1,  1 }, { 1, 0, 1 } });
+    obj->earthobj.push_back({ {  1,  1,  1 }, { -1,  1,  1 }, { -1, -1,  1 }, { 0, 1, 0.2 } });
+    obj->earthobj.push_back({ {  1,  1,  1 }, { -1, -1,  1 }, {  1, -1,  1 }, { 0, 0.1, 1 } });
     
     object::m_objects.push_back(obj);
 
@@ -86,7 +86,6 @@ void earth::draw(){
         gl::color(earth.color);
         gl::drawSolidTriangle(t1, t2, t3);
 
-        
     }
 
 }

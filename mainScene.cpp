@@ -4,6 +4,7 @@
 #include "kobito_00.h"
 #include "earthObject.h"
 #include "summonsCircle.h"
+#include "touchPaticle.h"
 
 mainScene::mainScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage),
@@ -33,6 +34,7 @@ void mainScene::update(){
 }
 
 void mainScene::touchesBegan(cinder::app::TouchEvent event){
+    
     object::exTouchesBegan(event);
 
  }

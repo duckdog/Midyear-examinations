@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "timeManage.h"
 #include "common.h"
 
@@ -12,6 +13,9 @@ timeManage& timeManage::getInstance(){
     static timeManage timemgr;
     return timemgr;
 }
+
+
+
 
 //test
 void timeManage::timeget(){
@@ -28,18 +32,30 @@ void timeManage::timeget(){
 
 void timeManage::loadtime(){
     //読み込み
-    ci::JsonTree json = ci::JsonTree(cinder::app::loadAsset("test.json"));
-    float year = json["year"].getValue<float>();
-    cinder::app::console()<<"json year : " <<year << std::endl;
-   
+    
+  /*  ci::JsonTree json = ci::JsonTree(cinder::app::loadAsset("test.json"));
+    float year = json["test"]["year"].getValue<float>();
+    cinder::app::console()<<"test get Value : " <<year << std::endl;
+   */
+    
+    extern ci::fs::path getDocumentPath();
+    Path = getDocumentPath();
+    ci::JsonTree json_load = ci::JsonTree(loadFile(Path / "hoge.json"));
+    float a = json_load["test"]["year"].getValue<float>();
+    
+    cinder::app::console()<<"test get Value : " << a << std::endl;
+    
+
+    
 }
 
 void timeManage::writetime(){
     //書き込み
+    extern ci::fs::path getDocumentPath();
+    Path = getDocumentPath();
     ci::JsonTree json_write = JsonTree::makeObject("test");
-    json_write.addChild(JsonTree("year","11"));
-   // json_write.write(getAppPath() / "../assets/test.json", JsonTree::WriteOptions().createDocument(true));
-    console() << (getAppPath() / "../assets/test.json") << std::endl;
-
+    json_write.addChild(JsonTree("year",time_object->tm_hour));
+    json_write.write(Path / "hoge.json",JsonTree::WriteOptions().createDocument(true));
+ 
     
 }

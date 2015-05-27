@@ -2,7 +2,7 @@
 #include "sceneBase.h"
 #include "titleScene.h"
 #include "mainScene.h"
-
+#include "touchPaticle.h"
 
 
 sceneManage::sceneManage(){
@@ -23,7 +23,7 @@ void sceneManage::mouseDown(cinder::app::MouseEvent event){
 }
 
 void sceneManage::touchesBegan(cinder::app::TouchEvent event){
-    current_frame->touchesBegan(event);
+        current_frame->touchesBegan(event);
 }
 
 void sceneManage::touchesMoved(cinder::app::TouchEvent event){

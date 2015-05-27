@@ -1,6 +1,7 @@
 #include "common.h"
 #include "sceneManage.h"
 #include "titleScene.h"
+#include "touchPaticle.h"
 
 class MawasuHitoApp : public AppNative {
     
@@ -16,7 +17,7 @@ public:
     void draw();
  
 private:
-   
+    std::shared_ptr<touchParticle> Particle;
     std::shared_ptr<sceneManage> Frame;
  };
 
@@ -30,11 +31,14 @@ void MawasuHitoApp::prepareSetting(Settings *settings){
 
 
 void MawasuHitoApp::setup(){
-    resourceManage::getinstace();
+    
     gl::enableAlphaBlending();
     gl::enableDepthWrite();
-        Frame = std::make_shared<sceneManage>();
+    Frame = std::make_shared<sceneManage>();
+    Particle = std::make_shared<touchParticle>();
     Frame->changeScene(std::make_shared<titleScene>(Frame));
+    
+    
     
 }
 
@@ -44,7 +48,7 @@ void MawasuHitoApp::mouseDown( MouseEvent event){
 
 void MawasuHitoApp::touchesBegan(TouchEvent event){
     Frame->touchesBegan(event);
-}
+  }
 void MawasuHitoApp::touchesMoved(TouchEvent event){
     Frame->touchesMoved(event);
 }
@@ -60,14 +64,13 @@ void MawasuHitoApp::update()
 }
 void MawasuHitoApp::draw()
 {
-    
+
+    Particle->draw();
     gl::pushModelView();
-    
     gl::translate(getWindowCenter());
 
     Frame->draw();
-
-    gl::popModelView();
+       gl::popModelView();
 }
 
 CINDER_APP_NATIVE( MawasuHitoApp, RendererGl )

@@ -1,6 +1,7 @@
 #include "kobito_00.h"
 #include "earthObject.h"
 #include "cinder/Rand.h"
+#include "timeManage.h"
 #include <vector>
 kobito_00::kobito_00() :
 m_id(SpriteID::kobito_s00),m_pass(("kobito_s00.png")){
@@ -10,6 +11,7 @@ m_id(SpriteID::kobito_s00),m_pass(("kobito_s00.png")){
 kobito_00SP kobito_00::create(){
     
     kobito_00SP obj = kobito_00SP(new kobito_00());
+    obj->condition = 60 * 5;
     obj->random_dir = randBool();
     obj->obj_number = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
     obj->m_color = Color(randFloat(0.2,0.4),randFloat(0.8,1),randFloat(0.7,1));
@@ -21,8 +23,16 @@ kobito_00SP kobito_00::create(){
     
     obj->m_rote_power = 0.0001f;
     object::m_objects.push_back(obj);
+
+ /*   extern ci::fs::path getDocumentPath();
+    fs::path Path = getDocumentPath();
+    JsonTree json_write = JsonTree::makeObject("Kobito_s");
+    json_write.addChild
+     (JsonTree(toString(obj->obj_number),timeManage::getInstance().timeget()));
+   */ 
     
     return obj;
+    
 
 }
 
@@ -33,10 +43,16 @@ void kobito_00::update(){
 //   移動、画像アニメーション等
 //
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
+    condition--;
+    if(condition <= 0){
+        condition = 0;
+        m_rote_power = 0;
+        
+    }
     
     // 画面内を左右に移動。
-    if(m_pos.x >= -getWindowWidth() * 0.5 && m_pos.x <= getWindowWidth() * 0.5 - kobito_sResize){
+    if(m_pos.x >= -getWindowWidth() * 0.5 && m_pos.x <= getWindowWidth() * 0.5 - kobito_sResize
+       && condition != 0){
        
         if(m_animationframe == 0){
             random_dir = randBool();
@@ -54,14 +70,14 @@ void kobito_00::update(){
     //小人画像のアニメーション
     m_animationframe++;
 
-    if(random_dir){
+    if(random_dir && condition > 0){
         if((m_animationframe / 10) % 2 == 0){
             m_default_size = Area(0 + kobito_sW,0,kobito_sW * 2,kobito_sH);
         }
         else{
             m_default_size = Area(0,0,kobito_sW,kobito_sH);
         }
-    }else if(!random_dir){
+    }else if(!random_dir && condition > 0){
         if((m_animationframe / 10) % 2 == 0){
             m_default_size = Area(0 + kobito_sW,kobito_sH,kobito_sW * 2,kobito_sH * 2);
         }
@@ -130,7 +146,8 @@ void kobito_00::touchesMoved(TouchEvent event){
         
         if(TouchPos.x > m_pos.x && TouchPos.x < m_pos.x + kobito_sResize &&
            TouchPos.y > m_pos.y && TouchPos.y < m_pos.y + kobito_sResize){
-            m_life = 0;
+            
+            if(condition == 0) m_life = 0;
             // object::remove();
         }
 

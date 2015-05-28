@@ -12,12 +12,13 @@ m_id(SpriteID::main_bg),m_pass("main_bg.png"),
 use_size(Area(-getWindowWidth()/2,-getWindowHeight()/2,getWindowWidth()/2,getWindowHeight()/2)),
 base_size(Area(0,0,640,1435)){
 
-    //背景画像を取得.
-    
-   resourceManage::getinstace().add(m_id,m_pass);
-   //地球（立方体）を取得.
-    earth::create();
-    summonsCircle::create();
+ //背景画像を取得
+ resourceManage::getinstace().add(m_id,m_pass);
+ 
+ //地球（立方体）を取得.
+  
+  summonsCircle::create();
+  earth::create();
 }
 
 void mainScene::draw(){

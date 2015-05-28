@@ -1,22 +1,21 @@
 #include "earthObject.h"
 
 
-earth::earth(){
+earth::earth():
+m_id(SpriteID::tikyu),
+m_pass("tikyu.png"){
 }
 
 earthSP earth::create(){
 
-    earthSP obj = earthSP(new earth());
-    
-    // 地球（立方体）の面情報を生成
-    obj->rx = 20;
-    obj->ry = 0;
-    obj->rz = 0;
-    obj->scal  = Vec3f(50,50,50);
-    obj->trans = Vec3f(0,-getWindowHeight() * 0.5,700);
-    obj->rote  = Vec3f(obj->rx,obj->ry,obj->rz);
-    
-    
+  earthSP obj = earthSP(new earth());
+  /*obj->rx = 20;
+  obj->ry = 0;
+  obj->rz = 0;
+  obj->scal  = Vec3f(50,50,50);
+  obj->trans = Vec3f(0,-getWindowHeight() * 0.5,700);
+  obj->rote  = Vec3f(obj->rx,obj->ry,obj->rz);
+  
     obj->earthobj.push_back({ { -1, -1, -1 }, {  1,  1, -1 }, {  1, -1, -1 }, { 0, 1, 0.2 } });
     obj->earthobj.push_back({ { -1, -1, -1 }, { -1,  1, -1 }, {  1,  1, -1 }, { 0, 1, 0.2 } });
 
@@ -34,8 +33,11 @@ earthSP earth::create(){
     
     obj->earthobj.push_back({ {  1,  1,  1 }, { -1,  1,  1 }, { -1, -1,  1 }, { 0, 1, 0.2 } });
     obj->earthobj.push_back({ {  1,  1,  1 }, { -1, -1,  1 }, {  1, -1,  1 }, { 0, 0.1, 1 } });
-    
-    object::m_objects.push_back(obj);
+    */
+  obj->rotation = 0;
+  obj->is_move = false;
+  resourceManage::getinstace().add(obj->m_id,obj->m_pass);
+  object::m_objects.push_back(obj);//push_back(obj);
 
     return obj;
 }
@@ -44,48 +46,74 @@ void earth::update(){
     //オブジェクトが持つm_rote_powerの分だけ地球を回す。
     std::list<objectSP>::iterator it = m_objects.begin();
     while(it != m_objects.end()){
-        rote.y += (*it)->m_rote_power;
-        console()  << "m_rote_power"<<(*it)->m_rote_power << std::endl;
+      rotation += (*it)->m_rote_power;
+      console()  << "m_rote_power :"<< rotation << std::endl;
         it++;
     }
+  
 
 }
 
 
 
 void earth::draw(){
-   //回転用の行列を作成.
-   // console() << "地球描画なう" << std::endl;
-    Matrix44f translate = Matrix44f::createTranslation(trans);
-    Matrix44f scale     = Matrix44f::createScale(scal);
-    Matrix44f rotate    = Matrix44f::createRotation(rote);
     
-    
-    Matrix44f transform_matrix = translate * rotate * scale;
-    
-    
-    for(auto& earth : earthobj){
-        // 頂点の座標を行列を使って変換
-        auto v1 = transform_matrix * earth.v1;
-        auto v2 = transform_matrix * earth.v2;
-        auto v3 = transform_matrix * earth.v3;
-        
-        
-        //Zで割る.
-        auto t1 = Vec2f(v1.x,v1.y)/(v1.z * 0.003f);
-        auto t2 = Vec2f(v2.x,v2.y)/(v2.z * 0.003f);
-        auto t3 = Vec2f(v3.x,v3.y)/(v3.z * 0.003f);
-        
-        
-        //表と裏の計算、二つのべくとるをもとめる
-        //TIPS: 外積を使って判定できる.
-        Vec2f a = t2 -t1;
-        Vec2f b = t3 -t1;
-        if(b.cross(a) < 0.0f) continue;
-        
-        gl::color(earth.color);
-        gl::drawSolidTriangle(t1, t2, t3);
+  
+  gl::pushModelView();
+  gl::enableDepthWrite();
+  gl::enableDepthRead();
 
-    }
+ 
+  Vec3f translate = Vec3f(0,-3.3,0);
+  Vec3f cube_translate = Vec3f(0.2,0.2,0.2);
+  
+  gl::scale(Vec3f(40,40,40));
+  gl::rotate(Vec3f(0,-rotation * 200,1));
+  gl::translate(translate);
+  
+  
+  resourceManage::getinstace().getsprite(m_id).bind();
+  
+  //地球
+  gl::drawSphere(Vec3f(0,0,0),1);
+  resourceManage::getinstace().getsprite(m_id).unbind();
+
+  //なんかぐるぐるまわるドーナツ。
+  gl::color(Color(1,1,0));
+  gl::rotate(Vec3f(100,rotation * 200,0));
+  gl::drawTorus(1.1f,0.05f);
+  
+  gl::drawCube(Vec3f( 1.2, 0.0,  0.0),cube_translate);
+  gl::drawCube(Vec3f(-1.2, 0.0,  0.0),cube_translate);
+  gl::drawCube(Vec3f(  .0, 1.2, 0.0),cube_translate);
+  gl::drawCube(Vec3f(  .0,-1.2, 0.0),cube_translate);
+  
+  gl::rotate(Vec3f(145,rotation * 200,0));
+  gl::color(Color(1,1,1));
+  gl::drawCube(Vec3f( 1.0, 1.0, 0.0),cube_translate * 0.5);
+  gl::drawCube(Vec3f(-1.0,-1.0, 0.0),cube_translate * 0.5);
+  
+  //なんかぐるぐるまわるドーナツ2
+  gl::color(Color(1,0,0));
+  gl::rotate(Vec3f(0,rotation * 200,100));
+  gl::drawTorus(1.2f,0.06f);
+  
+  gl::drawCube(Vec3f( 1.2, 0.0,  0.0),cube_translate);
+  gl::drawCube(Vec3f(-1.2, 0.0,  0.0),cube_translate);
+  gl::drawCube(Vec3f(  .0, 1.2, 0.0),cube_translate);
+  gl::drawCube(Vec3f(  .0,-1.2, 0.0),cube_translate);
+  
+  gl::rotate(Vec3f(145,rotation * 200,100));
+  gl::color(Color(1,1,0));
+  gl::drawSphere(Vec3f( 1.0, 1.0, 0.0),0.1);
+  gl::drawSphere(Vec3f(-1.0,-1.0, 0.0),0.1);
+
+ 
+  gl::disableDepthRead();
+  gl::disableDepthWrite();
+
+  gl::popModelView();
+  
+
 
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "common.h"
+#include "cinder/Json.h"
 #include <list>
 #include <memory>
 

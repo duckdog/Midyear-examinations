@@ -13,6 +13,7 @@ sceneBase(manage){
 
 void titleScene::draw(){
     cinder::gl::clear(cinder::Color(0,0,1));
+    gl::drawString("Mawasukobito_ios",Vec2f(0,0));    
     //m_kobito_00.draw();
 }
 

@@ -30,7 +30,7 @@ summonsCircleSP summonsCircle::create(){
 
 void summonsCircle::draw(){
     gl::color(Color(1,1,1));
-    gl::draw(resourceManage::getinstace().getsprite(m_id),
+      gl::draw(resourceManage::getinstace().getsprite(m_id),
          m_default_size,
          m_resize);
 }

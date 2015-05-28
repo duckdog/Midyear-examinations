@@ -36,6 +36,7 @@ private:
     int obj_number;
     Color m_color;
     bool random_dir;
+    int condition;
     
     Vec2f m_pos;
     Area m_default_size;

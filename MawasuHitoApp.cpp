@@ -26,11 +26,12 @@ void MawasuHitoApp::prepareSetting(Settings *settings){
     settings->setResizable( false );
     settings->setWindowSize(getWindowSize());// FIXME :オブジェクトが横の伸びる危険性。後で直す
     settings->setFrameRate(20.0f);
-    
-}
+    }
 
 
 void MawasuHitoApp::setup(){
+    // テクスチャON
+    gl::enable(GL_TEXTURE_2D);
     
     gl::enableAlphaBlending();
     gl::enableDepthWrite();
@@ -70,7 +71,8 @@ void MawasuHitoApp::draw()
     gl::translate(getWindowCenter());
 
     Frame->draw();
-       gl::popModelView();
+
+    gl::popModelView();
 }
 
 CINDER_APP_NATIVE( MawasuHitoApp, RendererGl )

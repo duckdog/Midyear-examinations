@@ -9,6 +9,7 @@ enum SpriteID{
     main_bg,//
     kobito_s00,
     summons_circle,
+    tikyu,
     
     ALL_sprite,
 };

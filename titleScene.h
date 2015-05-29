@@ -17,5 +17,5 @@ public:
     void mouseDown(cinder::app::MouseEvent event);
 
 private:
-    
+    bool test;
 };

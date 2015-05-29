@@ -5,15 +5,13 @@
 titleScene::titleScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage){
     timeManage::getInstance().timeget();
-    timeManage::getInstance().writetime();
-    timeManage::getInstance().loadtime();
-    
+    test = timeManage::getInstance().is_firstplay();
 
 }
 
 void titleScene::draw(){
     cinder::gl::clear(cinder::Color(0,0,1));
-    gl::drawString("Mawasukobito_ios",Vec2f(0,0));    
+    if(test){ gl::drawString("Mawasukobito_ios",Vec2f(0,0));}
     //m_kobito_00.draw();
 }
 

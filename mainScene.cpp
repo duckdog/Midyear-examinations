@@ -5,6 +5,7 @@
 #include "earthObject.h"
 #include "summonsCircle.h"
 #include "touchPaticle.h"
+#include "timeManage.h"
 
 mainScene::mainScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage),
@@ -31,6 +32,8 @@ void mainScene::draw(){
 }
 
 void mainScene::update(){
+    timeManage::getInstance().timeget();
+   // timeManage::getInstance().loadtime();
       object::exUpdate();
 }
 
@@ -41,6 +44,7 @@ void mainScene::touchesBegan(cinder::app::TouchEvent event){
  }
 void mainScene::touchesMoved(cinder::app::TouchEvent event){
     object::exTouchesMoved(event);
+     m_manage->changeScene(std::make_shared<titleScene>(m_manage));
     
 }
 

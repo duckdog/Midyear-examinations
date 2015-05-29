@@ -24,12 +24,11 @@ kobito_00SP kobito_00::create(){
     obj->m_rote_power = 0.0001f;
     object::m_objects.push_back(obj);
 
- /*   extern ci::fs::path getDocumentPath();
-    fs::path Path = getDocumentPath();
-    JsonTree json_write = JsonTree::makeObject("Kobito_s");
-    json_write.addChild
-     (JsonTree(toString(obj->obj_number),timeManage::getInstance().timeget()));
-   */ 
+//    extern ci::fs::path getDocumentPath();
+//    fs::path Path = getDocumentPath();
+//    JsonTree json_write = ci::JsonTree(loadFile(Path / "Test.json"));
+//    json_write.addChild(JsonTree(toString(obj->obj_number),10));
+    
     
     return obj;
     

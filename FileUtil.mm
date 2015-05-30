@@ -12,3 +12,4 @@ ci::fs::path getDocumentPath() {
     return ci::fs::path([[paths objectAtIndex:0] UTF8String]);
 
 }
+

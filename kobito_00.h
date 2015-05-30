@@ -1,6 +1,6 @@
 #pragma once
 
-#include "object.h"
+#include "earthObject.h"
 #include "resources.h"
 
 enum SpriteSize{
@@ -31,7 +31,8 @@ public:
    
 private:
      kobito_00();
-    //const objectData m_own;
+    
+  
     int m_animationframe;
     int obj_number;
     Color m_color;
@@ -41,4 +42,8 @@ private:
     Vec2f m_pos;
     Area m_default_size;
     Area m_resize;
+    
+    
+    
+    
 };

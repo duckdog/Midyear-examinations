@@ -44,7 +44,6 @@ void mainScene::touchesBegan(cinder::app::TouchEvent event){
  }
 void mainScene::touchesMoved(cinder::app::TouchEvent event){
     object::exTouchesMoved(event);
-     m_manage->changeScene(std::make_shared<titleScene>(m_manage));
     
 }
 

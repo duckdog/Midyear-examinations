@@ -4,6 +4,7 @@
 #include <list>
 #include <memory>
 
+
 class object;
 typedef std::shared_ptr<object> objectSP;
 class object {

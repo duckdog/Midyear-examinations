@@ -42,20 +42,22 @@ earthSP earth::create(){
     return obj;
 }
 
+
 void earth::update(){
-    //オブジェクトが持つm_rote_powerの分だけ地球を回す。
+  /*  //オブジェクトが持つm_rote_powerの分だけ地球を回す。
     std::list<objectSP>::iterator it = m_objects.begin();
     while(it != m_objects.end()){
       rotation += (*it)->m_rote_power;
-      console()  << "m_rote_power :"<< rotation << std::endl;
         it++;
     }
-  
+  */
 
 }
 
 
-
+void earth::add_rotation(float add_power){
+  rotation += add_power;
+}
 void earth::draw(){
     
   

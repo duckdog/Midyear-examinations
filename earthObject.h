@@ -14,10 +14,11 @@ public:
     void update();
     void draw();
     static earthSP create();
+    
     void touchesBegan(TouchEvent event){}
     void touchesMoved(TouchEvent event){}
     void touchesEnded(TouchEvent event){}
-    
+    void add_rotation(float);
     
     const SpriteID m_id;
     const std::string m_pass;

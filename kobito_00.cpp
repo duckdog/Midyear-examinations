@@ -1,5 +1,4 @@
 #include "kobito_00.h"
-#include "earthObject.h"
 #include "cinder/Rand.h"
 #include "timeManage.h"
 #include <vector>
@@ -42,13 +41,16 @@ void kobito_00::update(){
 //   移動、画像アニメーション等
 //
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    condition--;
-    if(condition <= 0){
-        condition = 0;
-        m_rote_power = 0;
-        
-    }
     
+    for(int i = 0; i <= timeManage::getInstance().check_lag(); i++ ){
+        condition--;
+       
+        if(condition <= 0){
+            condition = 0;
+            m_rote_power = 0;
+            break;
+        }
+    }
     // 画面内を左右に移動。
     if(m_pos.x >= -getWindowWidth() * 0.5 && m_pos.x <= getWindowWidth() * 0.5 - kobito_sResize
        && condition != 0){

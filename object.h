@@ -12,6 +12,7 @@ class object {
 public:
     
     int m_life;
+    float m_rotation;
     double m_rote_power;
     
     object();

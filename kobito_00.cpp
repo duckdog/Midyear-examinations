@@ -42,9 +42,15 @@ void kobito_00::update(){
 //
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-    for(int i = 0; i <= timeManage::getInstance().check_lag(); i++ ){
+    for(int i = 0; i <= timeManage::getInstance().gaptime * 60; i++ ){
+        
         condition--;
-       
+        
+        //地球にrotation.
+        std::list<objectSP>::iterator it = m_objects.begin();
+        (*it)->m_rotation += m_rote_power;
+    
+        
         if(condition <= 0){
             condition = 0;
             m_rote_power = 0;

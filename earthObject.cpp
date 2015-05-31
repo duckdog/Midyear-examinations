@@ -34,29 +34,29 @@ earthSP earth::create(){
     obj->earthobj.push_back({ {  1,  1,  1 }, { -1,  1,  1 }, { -1, -1,  1 }, { 0, 1, 0.2 } });
     obj->earthobj.push_back({ {  1,  1,  1 }, { -1, -1,  1 }, {  1, -1,  1 }, { 0, 0.1, 1 } });
     */
-  obj->rotation = 0;
+  obj->m_rotation = 0;
   obj->is_move = false;
   resourceManage::getinstace().add(obj->m_id,obj->m_pass);
-  object::m_objects.push_back(obj);//push_back(obj);
+  object::m_objects.push_front(obj);//push_back(obj);
 
     return obj;
 }
 
+earth& earth::getInstance(){
+  static earth obj;
+
+   return obj;
+}
 
 void earth::update(){
-  /*  //オブジェクトが持つm_rote_powerの分だけ地球を回す。
-    std::list<objectSP>::iterator it = m_objects.begin();
-    while(it != m_objects.end()){
-      rotation += (*it)->m_rote_power;
-        it++;
-    }
-  */
-
+   //オブジェクトが持つm_rote_powerの分だけ地球を回す。
+  
+  
 }
 
 
 void earth::add_rotation(float add_power){
-  rotation += add_power;
+  m_rotation += add_power;
 }
 void earth::draw(){
     
@@ -70,7 +70,7 @@ void earth::draw(){
   Vec3f cube_translate = Vec3f(0.2,0.2,0.2);
   
   gl::scale(Vec3f(40,40,40));
-  gl::rotate(Vec3f(0,-rotation * 200,1));
+  gl::rotate(Vec3f(0,-m_rotation * 200,1));
   gl::translate(translate);
   
   
@@ -82,7 +82,7 @@ void earth::draw(){
 
   //なんかぐるぐるまわるドーナツ。
   gl::color(Color(1,1,0));
-  gl::rotate(Vec3f(100,rotation * 200,0));
+  gl::rotate(Vec3f(100,m_rotation * 200,0));
   gl::drawTorus(1.1f,0.05f);
   
   gl::drawCube(Vec3f( 1.2, 0.0,  0.0),cube_translate);
@@ -90,14 +90,14 @@ void earth::draw(){
   gl::drawCube(Vec3f(  .0, 1.2, 0.0),cube_translate);
   gl::drawCube(Vec3f(  .0,-1.2, 0.0),cube_translate);
   
-  gl::rotate(Vec3f(145,rotation * 200,0));
+  gl::rotate(Vec3f(145,m_rotation * 200,0));
   gl::color(Color(1,1,1));
   gl::drawCube(Vec3f( 1.0, 1.0, 0.0),cube_translate * 0.5);
   gl::drawCube(Vec3f(-1.0,-1.0, 0.0),cube_translate * 0.5);
   
   //なんかぐるぐるまわるドーナツ2
   gl::color(Color(1,0,0));
-  gl::rotate(Vec3f(0,rotation * 200,100));
+  gl::rotate(Vec3f(0,m_rotation * 200,100));
   gl::drawTorus(1.2f,0.06f);
   
   gl::drawCube(Vec3f( 1.2, 0.0,  0.0),cube_translate);
@@ -105,7 +105,7 @@ void earth::draw(){
   gl::drawCube(Vec3f(  .0, 1.2, 0.0),cube_translate);
   gl::drawCube(Vec3f(  .0,-1.2, 0.0),cube_translate);
   
-  gl::rotate(Vec3f(145,rotation * 200,100));
+  gl::rotate(Vec3f(145,m_rotation * 200,100));
   gl::color(Color(1,1,0));
   gl::drawSphere(Vec3f( 1.0, 1.0, 0.0),0.1);
   gl::drawSphere(Vec3f(-1.0,-1.0, 0.0),0.1);

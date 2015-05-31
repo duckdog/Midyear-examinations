@@ -2,7 +2,7 @@
 #include "object.h"
 
 std::list<objectSP>object::m_objects;
-object::object(): m_life(-1),m_rote_power(.0f){}
+object::object(): m_life(-1),m_rote_power(.0f),m_rotation(0){}
 
 
 void object::exUpdate(){

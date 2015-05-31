@@ -3,6 +3,7 @@
 #include "titleScene.h"
 #include "touchPaticle.h"
 #include "timeManage.h"
+
 class MawasuHitoApp : public AppNative {
     
 public:
@@ -65,7 +66,10 @@ void MawasuHitoApp::shutdown(){
 
 void MawasuHitoApp::update()
 {
+    console() << "起動時間"<< static_cast<int>(getElapsedSeconds()) << std::endl;
+    console() << "ゲーム内時間"<<timeManage::getInstance().gameworld_time / 60 << std::endl;
     timeManage::getInstance().gameworld_time++;
+    timeManage::getInstance().check_lag();
         Frame->update();
    
   

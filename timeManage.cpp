@@ -72,11 +72,13 @@ void timeManage::check_lag(){
 */
     
     //ゲーム内時間と、app起動時間の差を計算. 1秒以上のズレがあるかを判定.
-    if(static_cast<int>(getElapsedSeconds()  - gameworld_time * 2) >= 1){
+    if(static_cast<int>(getElapsedSeconds()   - gameworld_time/ 60) > 1){
         //１秒以上のズレがある場合、ズレ秒数を取得.
         //ゲーム内時間と、起動時間のズレを修正.
-        gaptime = getElapsedSeconds()  - gameworld_time * 2;
-        gameworld_time = getElapsedSeconds() * 0.5;
+        
+        gaptime = (getElapsedSeconds()  - gameworld_time / 60);
+        console() << "gap_time" << gaptime <<std::endl;
+        gameworld_time = getElapsedSeconds() * 60;
     }
     else{
         gaptime= 0;

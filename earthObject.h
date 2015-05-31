@@ -14,7 +14,8 @@ public:
     void update();
     void draw();
     static earthSP create();
-    
+    static earth& getInstance();
+   
     void touchesBegan(TouchEvent event){}
     void touchesMoved(TouchEvent event){}
     void touchesEnded(TouchEvent event){}
@@ -22,8 +23,9 @@ public:
     
     const SpriteID m_id;
     const std::string m_pass;
+    float rotation;
+
 private:
     earth();
-    float rotation;
     bool is_move;
  };

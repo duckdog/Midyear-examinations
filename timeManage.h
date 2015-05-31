@@ -16,7 +16,8 @@ public:
     void check_lag();
     static timeManage& getInstance();
     int gameworld_time;
-    
+    int gaptime;
+
 private:
     
     ci::fs::path Path;
@@ -25,8 +26,6 @@ private:
     cinder::JsonTree json_object;
     time_t timeValue;
     struct tm* time_object;
-    
-    int gaptime;
     
     int m_year;
     int m_month;

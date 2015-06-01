@@ -16,10 +16,10 @@ base_size(Area(0,0,640,1435)){
  //背景画像を取得
  resourceManage::getinstace().add(m_id,m_pass);
  
- //地球（立方体）を取得.
-  
+ //残像オブジェクトを取得.
   summonsCircle::create();
   earth::create();
+  object::survivor_kobitocreate();
 }
 
 void mainScene::draw(){
@@ -32,9 +32,9 @@ void mainScene::draw(){
 }
 
 void mainScene::update(){
-    timeManage::getInstance().timeget();
-   // timeManage::getInstance().loadtime();
-      object::exUpdate();
+    
+    object::exUpdate();
+    timeManage::getInstance().checking_lag();
 }
 
 void mainScene::touchesBegan(cinder::app::TouchEvent event){

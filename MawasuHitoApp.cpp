@@ -2,6 +2,7 @@
 #include "sceneManage.h"
 #include "titleScene.h"
 #include "touchPaticle.h"
+#include "object.h"
 #include "timeManage.h"
 
 class MawasuHitoApp : public AppNative {
@@ -35,12 +36,13 @@ void MawasuHitoApp::prepareSetting(Settings *settings){
 void MawasuHitoApp::setup(){
         // テクスチャON
     gl::enable(GL_TEXTURE_2D);
-    timeManage::getInstance();
+    timeManage::getInstance().is_firstplay();
     gl::enableAlphaBlending();
     gl::enableDepthWrite();
     Frame = std::make_shared<sceneManage>();
     Particle = std::make_shared<touchParticle>();
     Frame->changeScene(std::make_shared<titleScene>(Frame));
+    
     
     
     
@@ -60,17 +62,16 @@ void MawasuHitoApp::touchesEnded(TouchEvent event){
     Frame->touchesEnded(event);
 }
 void MawasuHitoApp::shutdown(){
-    console()<< "check time :" << getElapsedSeconds() << std::endl;
 
+    
 }
 
 void MawasuHitoApp::update()
 {
-    console() << "起動時間"<< static_cast<int>(getElapsedSeconds()) << std::endl;
-    console() << "ゲーム内時間"<<timeManage::getInstance().gameworld_time / 60 << std::endl;
     timeManage::getInstance().gameworld_time++;
-    timeManage::getInstance().check_lag();
-        Frame->update();
+    timeManage::getInstance().save_shutdown();
+   // object::shutdown();
+    Frame->update();
    
   
 }

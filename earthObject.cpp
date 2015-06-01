@@ -9,6 +9,8 @@ m_pass("tikyu.png"){
 earthSP earth::create(){
 
   earthSP obj = earthSP(new earth());
+  obj->m_object_id = ObjectID::Earth;
+
   /*obj->rx = 20;
   obj->ry = 0;
   obj->rz = 0;
@@ -40,6 +42,8 @@ earthSP earth::create(){
   object::m_objects.push_front(obj);//push_back(obj);
 
     return obj;
+  
+  
 }
 
 earth& earth::getInstance(){

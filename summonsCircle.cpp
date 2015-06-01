@@ -10,6 +10,7 @@ m_id(SpriteID::summons_circle),m_pass("summons_circle.png"){
 summonsCircleSP summonsCircle::create(){
     
     summonsCircleSP obj = summonsCircleSP(new summonsCircle());
+    obj->m_object_id = ObjectID::SummonsCircle;
     //画像の表示比率（倍率？）
     //位置
     //元画像の切り取り位置

@@ -4,19 +4,16 @@
 #include "kobito_00.h"
 titleScene::titleScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage){
-    timeManage::getInstance().timeget();
-    test = timeManage::getInstance().is_firstplay();
-
-}
+    test = true;
+  }
 
 void titleScene::draw(){
     cinder::gl::clear(cinder::Color(0,0,1));
     if(test){ gl::drawString("Mawasukobito_ios",Vec2f(0,0));}
-    //m_kobito_00.draw();
+  
 }
 
 void titleScene::update(){
-    //m_kobito_00.update();
 }
 
 //

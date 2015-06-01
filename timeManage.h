@@ -10,10 +10,13 @@ public:
     timeManage();
     
     bool is_firstplay();
-    
+    void checking_lag();
     void check_timelag();
+    void save_shutdown();
+    
+    
+    
     void timeget();
-    void check_lag();
     static timeManage& getInstance();
     int gameworld_time;
     int gaptime;

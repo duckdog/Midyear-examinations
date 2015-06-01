@@ -1,6 +1,7 @@
 #include "kobito_00.h"
 #include "cinder/Rand.h"
 #include "timeManage.h"
+
 #include <vector>
 kobito_00::kobito_00() :
 m_id(SpriteID::kobito_s00),m_pass(("kobito_s00.png")){
@@ -10,7 +11,11 @@ m_id(SpriteID::kobito_s00),m_pass(("kobito_s00.png")){
 kobito_00SP kobito_00::create(){
     
     kobito_00SP obj = kobito_00SP(new kobito_00());
-    obj->condition = 60 * 5;
+    
+    obj->m_object_id = ObjectID::Kobito_s00;
+    obj->m_rote_power = 0.0001f;
+    
+    obj->m_condition = 60 * 5;
     obj->random_dir = randBool();
     obj->obj_number = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
     obj->m_color = Color(randFloat(0.2,0.4),randFloat(0.8,1),randFloat(0.7,1));
@@ -20,7 +25,7 @@ kobito_00SP kobito_00::create(){
     obj->m_resize = Area(obj->m_pos.x,obj->m_pos.y,
                          kobito_sResize + obj->m_pos.x,kobito_sResize + obj->m_pos.y);
     
-    obj->m_rote_power = 0.0001f;
+   
     object::m_objects.push_back(obj);
 
 //    extern ci::fs::path getDocumentPath();
@@ -33,6 +38,36 @@ kobito_00SP kobito_00::create(){
     
 
 }
+kobito_00SP kobito_00::create(Vec2f pos,int condition){
+    
+    kobito_00SP obj = kobito_00SP(new kobito_00());
+    
+    obj->m_object_id = ObjectID::Kobito_s00;
+    obj->m_rote_power = 0.0001f;
+    
+    obj->m_condition = 60 * 5;
+    obj->random_dir = randBool();
+    obj->obj_number = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
+    obj->m_color = Color(randFloat(0.2,0.4),randFloat(0.8,1),randFloat(0.7,1));
+    obj->m_animationframe = 0;
+    obj->m_pos = Vec2f(.0f,getWindowHeight()/2 - (kobito_sResize * 3));
+    resourceManage::getinstace().add(obj->m_id,obj->m_pass);
+    obj->m_resize = Area(obj->m_pos.x,obj->m_pos.y,
+                         kobito_sResize + obj->m_pos.x,kobito_sResize + obj->m_pos.y);
+    
+    
+    object::m_objects.push_back(obj);
+    
+    //    extern ci::fs::path getDocumentPath();
+    //    fs::path Path = getDocumentPath();
+    //    JsonTree json_write = ci::JsonTree(loadFile(Path / "Test.json"));
+    //    json_write.addChild(JsonTree(toString(obj->obj_number),10));
+    
+    
+    return obj;
+    
+    
+}
 
 
 void kobito_00::update(){
@@ -44,22 +79,22 @@ void kobito_00::update(){
     
     for(int i = 0; i <= timeManage::getInstance().gaptime * 60; i++ ){
         
-        condition--;
+        m_condition--;
         
         //地球にrotation.
         std::list<objectSP>::iterator it = m_objects.begin();
         (*it)->m_rotation += m_rote_power;
     
         
-        if(condition <= 0){
-            condition = 0;
+        if(m_condition <= 0){
+            m_condition = 0;
             m_rote_power = 0;
             break;
         }
     }
     // 画面内を左右に移動。
     if(m_pos.x >= -getWindowWidth() * 0.5 && m_pos.x <= getWindowWidth() * 0.5 - kobito_sResize
-       && condition != 0){
+       && m_condition != 0){
        
         if(m_animationframe == 0){
             random_dir = randBool();
@@ -77,14 +112,14 @@ void kobito_00::update(){
     //小人画像のアニメーション
     m_animationframe++;
 
-    if(random_dir && condition > 0){
+    if(random_dir && m_condition > 0){
         if((m_animationframe / 10) % 2 == 0){
             m_default_size = Area(0 + kobito_sW,0,kobito_sW * 2,kobito_sH);
         }
         else{
             m_default_size = Area(0,0,kobito_sW,kobito_sH);
         }
-    }else if(!random_dir && condition > 0){
+    }else if(!random_dir && m_condition > 0){
         if((m_animationframe / 10) % 2 == 0){
             m_default_size = Area(0 + kobito_sW,kobito_sH,kobito_sW * 2,kobito_sH * 2);
         }
@@ -154,7 +189,7 @@ void kobito_00::touchesMoved(TouchEvent event){
         if(TouchPos.x > m_pos.x && TouchPos.x < m_pos.x + kobito_sResize &&
            TouchPos.y > m_pos.y && TouchPos.y < m_pos.y + kobito_sResize){
             
-            if(condition == 0) m_life = 0;
+            if(m_condition == 0) m_life = 0;
             // object::remove();
         }
 

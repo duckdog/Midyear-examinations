@@ -20,6 +20,7 @@ public:
     void update();
     void draw();
     static kobito_00SP create();
+    static kobito_00SP create(Vec2f m_pos,int m_condition);
    
     void touchesBegan(TouchEvent event);
     void touchesMoved(TouchEvent event);
@@ -37,7 +38,7 @@ private:
     int obj_number;
     Color m_color;
     bool random_dir;
-    int condition;
+ 
     
     Vec2f m_pos;
     Area m_default_size;

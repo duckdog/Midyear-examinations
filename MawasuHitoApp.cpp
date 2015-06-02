@@ -30,7 +30,7 @@ void MawasuHitoApp::prepareSetting(Settings *settings){
     settings->setResizable( false );
     settings->setWindowSize(getWindowSize());// FIXME :オブジェクトが横の伸びる危険性。後で直す
     settings->setFrameRate(30.0f);
-    }
+}
 
 
 void MawasuHitoApp::setup(){
@@ -53,24 +53,28 @@ void MawasuHitoApp::mouseDown( MouseEvent event){
 }
 
 void MawasuHitoApp::touchesBegan(TouchEvent event){
+    Particle->touchesBegan(event);
     Frame->touchesBegan(event);
   }
 void MawasuHitoApp::touchesMoved(TouchEvent event){
+    Particle->touchesMoved(event);
     Frame->touchesMoved(event);
 }
 void MawasuHitoApp::touchesEnded(TouchEvent event){
+    Particle->touchesEnded(event);
     Frame->touchesEnded(event);
 }
 void MawasuHitoApp::shutdown(){
 
+    //  timeManage::getInstance().save_shutdown();
+    // object::shutdown();
     
 }
 
 void MawasuHitoApp::update()
 {
     timeManage::getInstance().gameworld_time++;
-    timeManage::getInstance().save_shutdown();
-   // object::shutdown();
+    Particle->update();
     Frame->update();
    
   
@@ -78,12 +82,11 @@ void MawasuHitoApp::update()
 void MawasuHitoApp::draw()
 {
 
-    Particle->draw();
+    
     gl::pushModelView();
     gl::translate(getWindowCenter());
-
     Frame->draw();
-
+    Particle->draw();
     gl::popModelView();
 }
 

@@ -10,6 +10,7 @@ enum SpriteID{
     kobito_s00,
     summons_circle,
     tikyu,
+    number,
     
     ALL_sprite,
 };

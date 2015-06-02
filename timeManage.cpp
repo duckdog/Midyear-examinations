@@ -47,7 +47,7 @@ bool timeManage::is_firstplay(){
     //続きからならロード、はじめからならセーブデータを書き込み.
     if(ci::fs::is_regular_file(Path / "First.json")) {
        
-        check_timelag();
+       // check_timelag();
         return true;
     }
     else{

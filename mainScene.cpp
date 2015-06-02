@@ -9,7 +9,7 @@
 
 mainScene::mainScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage),
-m_id(SpriteID::main_bg),m_pass("main_bg.png"),
+m_id(SpriteID::main_bg),m_pass("gamemain.png"),
 use_size(Area(-getWindowWidth()/2,-getWindowHeight()/2,getWindowWidth()/2,getWindowHeight()/2)),
 base_size(Area(0,0,640,1435)){
 

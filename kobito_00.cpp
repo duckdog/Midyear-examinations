@@ -10,11 +10,13 @@ m_id(SpriteID::kobito_s00),m_pass(("kobito_s00.png")){
 
 kobito_00SP kobito_00::create(){
     
+    
+    if((object::m_objects.size() - 2) <= 50){
     kobito_00SP obj = kobito_00SP(new kobito_00());
     
     obj->m_object_id = ObjectID::Kobito_s00;
     obj->m_rote_power = 0.0001f;
-    
+    obj->ry = 0;
     obj->m_condition = 60 * 5;
     obj->random_dir = randBool();
     obj->obj_number = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
@@ -35,7 +37,9 @@ kobito_00SP kobito_00::create(){
     
     
     return obj;
+    }
     
+    return nullptr;
 
 }
 kobito_00SP kobito_00::create(Vec2f pos,int condition){
@@ -44,7 +48,7 @@ kobito_00SP kobito_00::create(Vec2f pos,int condition){
     
     obj->m_object_id = ObjectID::Kobito_s00;
     obj->m_rote_power = 0.0001f;
-    
+    obj->ry = 0;
     obj->m_condition = 60 * 5;
     obj->random_dir = randBool();
     obj->obj_number = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
@@ -71,6 +75,7 @@ kobito_00SP kobito_00::create(Vec2f pos,int condition){
 
 
 void kobito_00::update(){
+    
 //
 //   animatons
 //   移動、画像アニメーション等
@@ -87,7 +92,7 @@ void kobito_00::update(){
     
         
         if(m_condition <= 0){
-            m_condition = 0;
+            m_condition  = 0;
             m_rote_power = 0;
             break;
         }
@@ -144,11 +149,12 @@ void kobito_00::update(){
 }
 
 void kobito_00::draw(){
+    gl::pushModelView();
     gl::color(m_color);
     m_resize = Area(m_pos.x,m_pos.y,kobito_sResize + m_pos.x,kobito_sResize + m_pos.y);
     gl::draw(resourceManage::getinstace().getsprite(m_id),
             m_default_size,m_resize);
-
+    gl::popModelView();
 }
 
 
@@ -168,7 +174,7 @@ void kobito_00::touchesBegan(TouchEvent event){
         //取得したタッチ位置とオブジェクトの位置の当たり判定,
         //オブジェクトの領域にはいっていればremove.
         if(TouchPos.x > m_pos.x && TouchPos.x < m_pos.x + kobito_sResize &&
-               TouchPos.y > m_pos.y && TouchPos.y < m_pos.y + kobito_sResize){
+           TouchPos.y > m_pos.y && TouchPos.y < m_pos.y + kobito_sResize){
            
 
             }
@@ -189,7 +195,10 @@ void kobito_00::touchesMoved(TouchEvent event){
         if(TouchPos.x > m_pos.x && TouchPos.x < m_pos.x + kobito_sResize &&
            TouchPos.y > m_pos.y && TouchPos.y < m_pos.y + kobito_sResize){
             
-            if(m_condition == 0) m_life = 0;
+            if(m_condition == 0){
+              m_life = 0;
+            }
+            
             // object::remove();
         }
 

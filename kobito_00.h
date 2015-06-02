@@ -39,7 +39,7 @@ private:
     Color m_color;
     bool random_dir;
  
-    
+    float ry;
     Vec2f m_pos;
     Area m_default_size;
     Area m_resize;

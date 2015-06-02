@@ -70,12 +70,12 @@ void earth::draw(){
   gl::enableDepthRead();
 
  
-  Vec3f translate = Vec3f(0,-3.3,0);
+  Vec3f translate = Vec3f(0,-180,-100);
   Vec3f cube_translate = Vec3f(0.2,0.2,0.2);
-  
-  gl::scale(Vec3f(40,40,40));
-  gl::rotate(Vec3f(0,-m_rotation * 200,1));
+ 
   gl::translate(translate);
+  gl::scale(Vec3f(50,50,50));
+  gl::rotate(Vec3f(0,-m_rotation * 200,1));
   
   
   resourceManage::getinstace().getsprite(m_id).bind();

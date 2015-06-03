@@ -16,9 +16,9 @@ kobito_00SP kobito_00::create(){
       
     resourceManage::getinstace().add(obj->m_id,obj->m_pass);
     obj->m_object_id      = ObjectID::Kobito_s00;
-    obj->m_rote_power     = 1.0f;
+    obj->m_rote_power     = 0.6f;
     obj->ry               = 0;
-    obj->m_condition      = 60 * 1000;
+    obj->m_condition      = 60 * 10;
     obj->random_dir       = randBool();
     obj->obj_number       = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
     obj->m_color          = Color(randFloat(0.2,0.4),randFloat(0.8,1),randFloat(0.7,1));
@@ -26,7 +26,8 @@ kobito_00SP kobito_00::create(){
     obj->m_pos            = Vec2f(.0f,getWindowHeight()/2 - (kobito_sResize * 3));
     obj->m_resize         = Area(obj->m_pos.x,obj->m_pos.y,
                              kobito_sResize + obj->m_pos.x,kobito_sResize + obj->m_pos.y);
-    
+    obj->move_interval  = randInt(0,60);
+
    
     object::m_objects.push_back(obj);
 
@@ -41,9 +42,9 @@ kobito_00SP kobito_00::create(Vec2f pos,int condition){
     kobito_00SP obj = kobito_00SP(new kobito_00());
     
     obj->m_object_id    = ObjectID::Kobito_s00;
-    obj->m_rote_power   = 0.01f;
+    obj->m_rote_power   = 0.6f;
     obj->ry             = 0;
-    obj->m_condition    = 60 * 1000;
+    obj->m_condition    = 60 * 10;
     obj->random_dir     = randBool();
     obj->obj_number     = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
     obj->m_color        = Color(randFloat(0.2,0.4),randFloat(0.8,1),randFloat(0.7,1));
@@ -53,7 +54,7 @@ kobito_00SP kobito_00::create(Vec2f pos,int condition){
     obj->m_resize       = Area(obj->m_pos.x,obj->m_pos.y,
                                kobito_sResize + obj->m_pos.x,kobito_sResize + obj->m_pos.y);
     
-    
+    obj->move_interval  = randInt(0,60);
     object::m_objects.push_back(obj);
     
   
@@ -92,9 +93,9 @@ void kobito_00::update(){
        
         if(m_animationframe == 0){
             random_dir = randBool();
-
+          move_interval = randInt(-20,60);
         }
-        else if(m_animationframe < 30){
+        else if(m_animationframe < 30 + move_interval){
             if(random_dir) m_pos.x += 1;
             else m_pos.x -= 1;
         }
@@ -144,7 +145,6 @@ void kobito_00::draw(){
             m_default_size,m_resize);
     gl::popModelView();
 }
-
 
 
 

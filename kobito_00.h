@@ -19,6 +19,7 @@ public:
     
     void update();
     void draw();
+
     static kobito_00SP create();
     static kobito_00SP create(Vec2f m_pos,int m_condition);
    
@@ -38,6 +39,7 @@ private:
     int obj_number;
     Color m_color;
     bool random_dir;
+    int  move_interval;
  
     float ry;
     Vec2f m_pos;

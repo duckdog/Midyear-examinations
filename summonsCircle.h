@@ -14,12 +14,14 @@ typedef std::shared_ptr<summonsCircle> summonsCircleSP;
 
 class summonsCircle : public object{
 public:
+    
+   static summonsCircleSP create();
+   void createinterval();
    void update();
    void draw();
-   static summonsCircleSP create();
    void touchesBegan(TouchEvent event);
    void touchesMoved(TouchEvent event);
-    void touchesEnded(TouchEvent event){}
+   void touchesEnded(TouchEvent event){}
  
 private:
     const SpriteID m_id;
@@ -28,5 +30,6 @@ private:
     Area m_default_size; //使用する画像の切り取り
     Area m_resize;       //画像の位置、サイズ.
     summonsCircle();
-    
+    bool is_create;
+    int  interval_count;
 };

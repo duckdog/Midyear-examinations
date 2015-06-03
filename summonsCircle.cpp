@@ -20,7 +20,7 @@ summonsCircleSP summonsCircle::create(){
     obj->m_default_size = Area(0,0,summons_W,summons_H);
     obj->m_resize = Area(obj->m_pos.x,obj->m_pos.y,
                          (summons_W *  ratio) + obj->m_pos.x,(summons_H *  ratio) + obj->m_pos.y);
-
+    obj->is_create = false;
     resourceManage::getinstace().add(obj->m_id,obj->m_pass);
 
     object::m_objects.push_back(obj);
@@ -28,6 +28,14 @@ summonsCircleSP summonsCircle::create(){
     return obj;
 }
 
+void summonsCircle::createinterval(){
+   
+    interval_count++;
+    if(interval_count > 15){
+        is_create = false;
+        interval_count = 0;
+    }
+}
 
 void summonsCircle::draw(){
     gl::color(Color(1,1,1));
@@ -37,7 +45,7 @@ void summonsCircle::draw(){
 }
 
 void summonsCircle::update(){
-    
+    if(is_create) createinterval();
 }
 
 
@@ -53,9 +61,12 @@ void summonsCircle::touchesBegan(TouchEvent event){
      
         if(TouchPos.x > m_pos.x && TouchPos.x < m_pos.x + summons_W * 0.4 &&
            TouchPos.y > m_pos.y && TouchPos.y < m_pos.y + summons_H * 0.4){
-            
-            kobito_00::create();
-            
+           
+            if(interval_count == 0){
+              kobito_00::create();
+              is_create = true;
+              interval_count++;
+            }
         }
     }
 }
@@ -72,7 +83,11 @@ void summonsCircle::touchesMoved(TouchEvent event){
         if(TouchPos.x > m_pos.x && TouchPos.x < m_pos.x + summons_W * 0.4 &&
            TouchPos.y > m_pos.y && TouchPos.y < m_pos.y + summons_H * 0.4){
             
-            kobito_00::create();
+            if(interval_count == 0){
+                kobito_00::create();
+                is_create = true;
+                interval_count++;
+            }
             
         }
     }

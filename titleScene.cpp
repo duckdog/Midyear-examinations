@@ -2,16 +2,18 @@
 #include "sceneManage.h"
 #include "timeManage.h"
 #include "kobito_00.h"
+#include "common.h"
+#include "cinder/Font.h"
+
 titleScene::titleScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage){
     test = true;
-  }
-
-void titleScene::draw(){
-    cinder::gl::clear(cinder::Color(0,0,1));
-    if(test){ gl::drawString("Mawasukobito_ios",Vec2f(0,0));}
   
 }
+
+void titleScene::draw(){
+    
+   }
 
 void titleScene::update(){
 }

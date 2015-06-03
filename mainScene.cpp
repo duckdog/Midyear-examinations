@@ -11,7 +11,8 @@ mainScene::mainScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage),
 m_id(SpriteID::main_bg),m_pass("gamemain.png"),
 use_size(Area(-getWindowWidth()/2,-getWindowHeight()/2,getWindowWidth()/2,getWindowHeight()/2)),
-base_size(Area(0,0,640,1435)){
+base_size(Area(0,0,640,1435)),
+m_draw_number_ref(drawNumberSP(new drawNumber())){
 
  //背景画像を取得
  resourceManage::getinstace().add(m_id,m_pass);
@@ -29,12 +30,19 @@ void mainScene::draw(){
     gl::draw(resourceManage::getinstace().getsprite(m_id),
              base_size,use_size);
     object::exDraw();
+    m_draw_number_ref->draw();
+
 }
 
 void mainScene::update(){
     
     object::exUpdate();
     timeManage::getInstance().checking_lag();
+    
+    //if()
+    //timeManage::getInstance().save_shutdown();
+    //object::shutdown();
+    
 }
 
 void mainScene::touchesBegan(cinder::app::TouchEvent event){

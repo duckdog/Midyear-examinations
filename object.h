@@ -32,6 +32,7 @@ public:
     virtual void touchesMoved(TouchEvent event) = 0;
     virtual void touchesEnded(TouchEvent event) = 0;
 
+    static std::list<objectSP>::iterator earth_date();
     static void exUpdate();
     static void exDraw();
     static void exTouchesBegan(TouchEvent event);

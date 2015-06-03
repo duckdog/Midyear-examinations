@@ -47,7 +47,7 @@ bool timeManage::is_firstplay(){
     //続きからならロード、はじめからならセーブデータを書き込み.
     if(ci::fs::is_regular_file(Path / "First.json")) {
        
-       // check_timelag();
+        check_timelag();
         return true;
     }
     else{
@@ -61,21 +61,22 @@ void timeManage::save_shutdown(){
     JsonTree ex_json;
     
     if(ci::fs::is_regular_file(Path / "Save.json")){
+      
       JsonTree ex_json = JsonTree(loadFile(Path / "Save.json"));
-      console() <<"  aa" << ex_json["Time.year"].getValue<int>();
-
-      ex_json.makeObject("Time");
+      
+      ex_json = ci::JsonTree::makeObject(("Time"));
       ex_json.addChild(JsonTree("year",time_object->tm_year));
       ex_json.addChild(JsonTree("month",time_object->tm_mon));
       ex_json.addChild(JsonTree("day",time_object->tm_mday));
       ex_json.addChild(JsonTree("hour",time_object->tm_hour));
       ex_json.addChild(JsonTree("minute",time_object->tm_min));
       ex_json.addChild(JsonTree("second",time_object->tm_sec));
+    
       ex_json.write(Path / "Save.json",JsonTree::WriteOptions().createDocument(true));
         
     }
     else{
-      ex_json.makeObject("Time");
+      ex_json = ci::JsonTree::makeObject(("Time"));
       ex_json.addChild(JsonTree("year",1));
       ex_json.addChild(JsonTree("month",time_object->tm_mon));
       ex_json.addChild(JsonTree("day",time_object->tm_mday));
@@ -115,16 +116,14 @@ void timeManage::check_timelag(){
     if(ci::fs::is_regular_file(Path / "Save.json")) {
     
     JsonTree ex_json(loadFile(Path / "Save.json"));
-      auto json_time = ex_json["Time"];
-      console()<< json_time["year"].getValue<int>()<<std::endl;
-      
-        int year,month,day,hour,minute,sec;
-      year   = ex_json["year"].getValue<float>();
-      month  = ex_json["month"].getValue<float>();
-      day    = ex_json["day"].getValue<int>();
-      hour   = ex_json["hour"].getValue<int>();
-      minute = ex_json["minute"].getValue<int>();
-      sec    = ex_json["second"].getValue<int>();
+        
+      int year,month,day,hour,minute,sec;
+      year   = ex_json["Time"]["year"].getValue<float>();
+      month  = ex_json["Time"]["month"].getValue<float>();
+      day    = ex_json["Time"]["day"].getValue<int>();
+      hour   = ex_json["Time"]["hour"].getValue<int>();
+      minute = ex_json["Time"]["minute"].getValue<int>();
+      sec    = ex_json["Time"]["second"].getValue<int>();
     
     
       long past_time =
@@ -153,35 +152,6 @@ void timeManage::check_timelag(){
       }
     }
     
-/*
-    year   = (json_load["Time"]["year"].getValue<float>()) - year;
-    
-    month   = (json_load["Time"]["year"].getValue<float>()) - month;
-    day    = (json_load["Time"]["year"].getValue<float>())  - day;
-    hour   = (json_load["Time"]["year"].getValue<float>())  - hour;
-    minute = (json_load["Time"]["year"].getValue<float>())  - minute;
-    sec    = (json_load["Time"]["year"].getValue<float>())  - sec;
-    
-    
-  
-
-     
-     
-     JsonTree ex_json;
-     
-     ex_json = JsonTree::makeObject("Time");
-     ex_json.JsonTree::makeObject("Object");
-     
-     ex_json.addChild(JsonTree("year",time_object->tm_year));
-     ex_json.addChild(JsonTree("month",time_object->tm_mon));
-     ex_json.addChild(JsonTree("day",time_object->tm_mday));
-     ex_json.addChild(JsonTree("hour",time_object->tm_hour));
-     ex_json.addChild(JsonTree("minute",time_object->tm_min));
-     ex_json.addChild(JsonTree("second",time_object->tm_sec));
-     
-     ex_json.write(Path / "Time.json",JsonTree::WriteOptions().createDocument(true));
-     */
-
     
    
 }

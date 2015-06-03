@@ -68,7 +68,8 @@ void MawasuHitoApp::shutdown(){
 
     //  timeManage::getInstance().save_shutdown();
     // object::shutdown();
-    
+    object::shutdown();
+    timeManage::getInstance().save_shutdown();
 }
 
 void MawasuHitoApp::update()

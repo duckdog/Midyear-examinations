@@ -1,6 +1,5 @@
 
 #include "resources.h"
-
 #include <iostream>
 #include <sstream>
 #include <vector>

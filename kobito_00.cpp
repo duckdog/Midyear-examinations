@@ -13,29 +13,23 @@ kobito_00SP kobito_00::create(){
     
     if((object::m_objects.size() - 2) <= 50){
     kobito_00SP obj = kobito_00SP(new kobito_00());
-    
-    obj->m_object_id = ObjectID::Kobito_s00;
-    obj->m_rote_power = 0.0001f;
-    obj->ry = 0;
-    obj->m_condition = 60 * 5;
-    obj->random_dir = randBool();
-    obj->obj_number = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
-    obj->m_color = Color(randFloat(0.2,0.4),randFloat(0.8,1),randFloat(0.7,1));
-    obj->m_animationframe = 0;
-    obj->m_pos = Vec2f(.0f,getWindowHeight()/2 - (kobito_sResize * 3));
+      
     resourceManage::getinstace().add(obj->m_id,obj->m_pass);
-    obj->m_resize = Area(obj->m_pos.x,obj->m_pos.y,
-                         kobito_sResize + obj->m_pos.x,kobito_sResize + obj->m_pos.y);
+    obj->m_object_id      = ObjectID::Kobito_s00;
+    obj->m_rote_power     = 1.0f;
+    obj->ry               = 0;
+    obj->m_condition      = 60 * 1000;
+    obj->random_dir       = randBool();
+    obj->obj_number       = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
+    obj->m_color          = Color(randFloat(0.2,0.4),randFloat(0.8,1),randFloat(0.7,1));
+    obj->m_animationframe = 0;
+    obj->m_pos            = Vec2f(.0f,getWindowHeight()/2 - (kobito_sResize * 3));
+    obj->m_resize         = Area(obj->m_pos.x,obj->m_pos.y,
+                             kobito_sResize + obj->m_pos.x,kobito_sResize + obj->m_pos.y);
     
    
     object::m_objects.push_back(obj);
 
-//    extern ci::fs::path getDocumentPath();
-//    fs::path Path = getDocumentPath();
-//    JsonTree json_write = ci::JsonTree(loadFile(Path / "Test.json"));
-//    json_write.addChild(JsonTree(toString(obj->obj_number),10));
-    
-    
     return obj;
     }
     
@@ -46,31 +40,24 @@ kobito_00SP kobito_00::create(Vec2f pos,int condition){
     
     kobito_00SP obj = kobito_00SP(new kobito_00());
     
-    obj->m_object_id = ObjectID::Kobito_s00;
-    obj->m_rote_power = 0.0001f;
-    obj->ry = 0;
-    obj->m_condition = 60 * 5;
-    obj->random_dir = randBool();
-    obj->obj_number = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
-    obj->m_color = Color(randFloat(0.2,0.4),randFloat(0.8,1),randFloat(0.7,1));
+    obj->m_object_id    = ObjectID::Kobito_s00;
+    obj->m_rote_power   = 0.01f;
+    obj->ry             = 0;
+    obj->m_condition    = 60 * 1000;
+    obj->random_dir     = randBool();
+    obj->obj_number     = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
+    obj->m_color        = Color(randFloat(0.2,0.4),randFloat(0.8,1),randFloat(0.7,1));
     obj->m_animationframe = 0;
-    obj->m_pos = Vec2f(.0f,getWindowHeight()/2 - (kobito_sResize * 3));
+    obj->m_pos          = Vec2f(pos);
     resourceManage::getinstace().add(obj->m_id,obj->m_pass);
-    obj->m_resize = Area(obj->m_pos.x,obj->m_pos.y,
-                         kobito_sResize + obj->m_pos.x,kobito_sResize + obj->m_pos.y);
+    obj->m_resize       = Area(obj->m_pos.x,obj->m_pos.y,
+                               kobito_sResize + obj->m_pos.x,kobito_sResize + obj->m_pos.y);
     
     
     object::m_objects.push_back(obj);
     
-    //    extern ci::fs::path getDocumentPath();
-    //    fs::path Path = getDocumentPath();
-    //    JsonTree json_write = ci::JsonTree(loadFile(Path / "Test.json"));
-    //    json_write.addChild(JsonTree(toString(obj->obj_number),10));
-    
-    
+  
     return obj;
-    
-    
 }
 
 
@@ -97,6 +84,8 @@ void kobito_00::update(){
             break;
         }
     }
+     //移動設定
+     if(  m_pos.y >= 0 + obj_number && m_condition != 0) m_pos.y--;
     // 画面内を左右に移動。
     if(m_pos.x >= -getWindowWidth() * 0.5 && m_pos.x <= getWindowWidth() * 0.5 - kobito_sResize
        && m_condition != 0){
@@ -143,8 +132,7 @@ void kobito_00::update(){
         
     //アニメーションカウントが増えすぎるを防止.
     if(m_animationframe > 60) m_animationframe = 0;
-    //移動設定
-    if(  m_pos.y >= 0 + obj_number) m_pos.y--;
+  
   
 }
 
@@ -179,8 +167,8 @@ void kobito_00::touchesBegan(TouchEvent event){
 
             }
          }
-
-    
+  
+  
 }
 
 void kobito_00::touchesMoved(TouchEvent event){

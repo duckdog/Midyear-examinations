@@ -2,6 +2,7 @@
 
 #include "sceneBase.h"
 #include "resources.h"
+#include "drawNumber.h"
 class mainScene : public sceneBase{
 public:
     mainScene(std::shared_ptr<sceneManage>);
@@ -21,4 +22,8 @@ private:
     const std::string& m_pass;
     const Area use_size;
     const Area base_size;
+    
+    drawNumberSP m_draw_number_ref;
+    
+    
 };

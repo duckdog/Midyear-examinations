@@ -22,8 +22,5 @@ private:
     const std::string& m_pass;
     const Area use_size;
     const Area base_size;
-    
-    drawNumberSP m_draw_number_ref;
-    
-    
+    drawNumberSP m_drawnumber;
 };

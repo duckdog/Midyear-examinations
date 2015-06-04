@@ -3,7 +3,9 @@
 #include "kobito_00.h"
 #include "cinder/Rand.h"
 std::list<objectSP>object::m_objects;
-object::object(): m_life(-1),m_condition(-1),m_rote_power(.0f),m_rotation(0),m_object_id(ObjectID::Null_object){}
+object::object(): m_life(-1),m_condition(-1),m_rote_power(.0f),m_rotation(0),m_object_id(ObjectID::Null_object){
+    //m_kobitorimit = 50;
+}
 
 
 void object::shutdown(){
@@ -56,18 +58,20 @@ void object::survivor_kobitocreate(){
       if(ex_json.hasChild("Kobito_s00")){
           
           int kobito_s_count = ex_json["Kobito_s00"]["kobito_s_count"].getValue<int>();
-          for(int i = 0; i < kobito_s_count; i++){
-            kobito_00::create(Vec2f(randFloat(-100,100),randFloat(-100,100)),ex_json["Kobito_s00"][toString(i)].getValue<int>());
+          for(int i = 0; i <= kobito_s_count; i++){
+            kobito_00::create(Vec2f(randFloat(-150,150),randFloat(0,200)),ex_json["Kobito_s00"][toString(i)].getValue<int>());
           }
     }
     }
 }
+
 
 std::list<objectSP>::iterator object::earth_date(){
     
     std::list<objectSP>::iterator it = m_objects.begin();
     return (it);
 }
+
 void object::exUpdate(){
     std::list<objectSP>::iterator it = m_objects.begin();
     

@@ -21,6 +21,7 @@ class object {
 public:
     int m_condition;
     int m_life;
+    //static int m_kobitorimit;
     float m_rotation;
     double m_rote_power;
     ObjectID m_object_id;
@@ -46,6 +47,6 @@ public:
 protected:
    
     static std::list<objectSP> m_objects;
-  
+    
     
 };

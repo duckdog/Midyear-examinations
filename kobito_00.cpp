@@ -16,7 +16,7 @@ kobito_00SP kobito_00::create(){
       
     resourceManage::getinstace().add(obj->m_id,obj->m_pass);
     obj->m_object_id      = ObjectID::Kobito_s00;
-    obj->m_rote_power     = 0.6f;
+    obj->m_rote_power     = 10.6f;
     obj->ry               = 0;
     obj->m_condition      = 60 * 10;
     obj->random_dir       = randBool();

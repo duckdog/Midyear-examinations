@@ -30,7 +30,7 @@ public:
     const SpriteID m_id;
     const std::string m_pass;
 
-   
+    
 private:
      kobito_00();
     

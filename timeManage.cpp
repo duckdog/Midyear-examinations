@@ -90,13 +90,13 @@ void timeManage::save_shutdown(){
 
 void timeManage::checking_lag(){
     //ゲーム内時間と、app起動時間の差を計算. 1秒以上のズレがあるかを判定.
-    if(static_cast<int>(getElapsedSeconds()   - gameworld_time/ 60) > 1){
+    if(static_cast<int>(getElapsedSeconds() - gameworld_time / 60) > 1){
         //１秒以上のズレがある場合、ズレ秒数を取得.
         //ゲーム内時間と、起動時間のズレを修正.
-        
         gaptime = (getElapsedSeconds()  - gameworld_time / 60);
         console() << "gap_time" << gaptime <<std::endl;
         gameworld_time = getElapsedSeconds() * 60;
+        
     }
     else{
         gaptime= 0;
@@ -127,20 +127,20 @@ void timeManage::check_timelag(){
     
     
       long past_time =
-      (year * 315360000) +
-      (month  * 2592000) +
+      (year * 315360000)     +
+      ((month +1) * 2592000) +
       (day * 86400) +
       (hour * 3600) +
       (minute * 60) +
       (sec);
    
       long current_time =
-      (time_object->tm_year * 315360000) +
-      (time_object->tm_mon  * 2592000) +
+      (time_object->tm_year       * 315360000) +
+      ((time_object->tm_mon + 1)  * 2592000) +
       (time_object->tm_mday * 86400) +
       (time_object->tm_hour * 3600) +
       (time_object->tm_min * 60)  +
-      (time_object->tm_sec)* 60;
+      (time_object->tm_sec);
     
       long time_lag = current_time - past_time;
     

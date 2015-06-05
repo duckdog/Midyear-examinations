@@ -3,6 +3,7 @@
 #include "sceneBase.h"
 #include "resources.h"
 #include "drawNumber.h"
+#include "chooceKobitoIcon.h"
 class mainScene : public sceneBase{
 public:
     mainScene(std::shared_ptr<sceneManage>);
@@ -23,4 +24,5 @@ private:
     const Area use_size;
     const Area base_size;
     drawNumberSP m_drawnumber;
+    KobitoIconSP m_kobitoicon;
 };

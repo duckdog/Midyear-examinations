@@ -3,12 +3,15 @@
 #include "earthObject.h"
 #include "resources.h"
 
+
+
 enum SpriteSize{
     kobito_sW = 128,
     kobito_sH = 128,
-    kobito_sResize = 35,
+    kobito_sResize = 26,
 };
 
+class drawNumber;
 class kobito_00;
 typedef std::shared_ptr<kobito_00> kobito_00SP;
 
@@ -45,8 +48,5 @@ private:
     Vec2f m_pos;
     Area m_default_size;
     Area m_resize;
-    
-    
-    
     
 };

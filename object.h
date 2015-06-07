@@ -10,6 +10,8 @@ enum ObjectID{
     Earth,
     SummonsCircle,
     Kobito_s00,
+    Kobito_m00,
+    Kobito_l00,
     
     ALL_Object,
 };
@@ -43,10 +45,11 @@ public:
     static void survivor_kobitocreate();
     static void shutdown();
 
-    
+ //   int getObjRimit(){return object_kobito_limit;}
+    static int getKobitoamount(){return (m_objects.size() - 2);}
 protected:
    
     static std::list<objectSP> m_objects;
-    
+  //  static int object_kobito_limit;
     
 };

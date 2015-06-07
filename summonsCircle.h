@@ -1,7 +1,7 @@
 #pragma once
 #include "object.h"
 #include "resources.h"
-
+#include "chooceKobitoIcon.h"
 enum summonsSpriteInfo{
     summons_W = 416,
     summons_H = 68,
@@ -21,7 +21,7 @@ public:
    void draw();
    void touchesBegan(TouchEvent event);
    void touchesMoved(TouchEvent event);
-   void touchesEnded(TouchEvent event){}
+   void touchesEnded(TouchEvent event);
  
 private:
     const SpriteID m_id;
@@ -32,4 +32,6 @@ private:
     summonsCircle();
     bool is_create;
     int  interval_count;
+    
+    KobitoIconSP m_kobito_icon_ref;
 };

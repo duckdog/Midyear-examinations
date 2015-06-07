@@ -5,9 +5,11 @@
 #include <map>
 
 enum SpriteID{
-    Player,
-    main_bg,//
+    main_bg,
     kobito_s00,
+    kobito_m00,
+    kobito_l00,
+    kobito_icon,
     summons_circle,
     tikyu,
     number,

@@ -8,7 +8,7 @@
 enum kobito_M00SpriteSize{
     kobito_M00W = 128,
     kobito_M00H = 128,
-    kobito_M00Resize = 35,
+    kobito_M00Resize = 42,
 };
 
 

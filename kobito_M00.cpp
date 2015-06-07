@@ -21,10 +21,10 @@ kobito_M00SP kobito_M00::create(){
         obj->m_rote_power     = 0.6f;
         obj->ry               = 0;
         obj->m_condition      = 60 * 10;
+        obj->m_animationframe = 0;
         obj->random_dir       = randBool();
         obj->obj_number       = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
-        obj->m_color          = Color(randFloat(0.2,0.4),randFloat(0.8,1),randFloat(0.7,1));
-        obj->m_animationframe = 0;
+        obj->m_color          = Color(1,1,1);
         obj->m_pos            = Vec2f(.0f,getWindowHeight()/2 - (kobito_M00Resize * 3));
         obj->m_resize         = Area(obj->m_pos.x,obj->m_pos.y,
                                      kobito_M00Resize + obj->m_pos.x,kobito_M00Resize + obj->m_pos.y);
@@ -49,7 +49,7 @@ kobito_M00SP kobito_M00::create(Vec2f pos,int condition){
     obj->m_condition    = 60 * 10;
     obj->random_dir     = randBool();
     obj->obj_number     = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
-    obj->m_color        = Color(randFloat(0.2,0.4),randFloat(0.8,1),randFloat(0.7,1));
+    obj->m_color        = Color(1,1,1);
     obj->m_animationframe = 0;
     obj->m_pos          = Vec2f(pos);
     resourceManage::getinstace().add(obj->m_id,obj->m_pass);
@@ -107,24 +107,24 @@ void kobito_M00::update(){
     if(m_pos.x > getWindowWidth() * 0.5 - kobito_M00Resize) m_pos.x = getWindowWidth() * 0.5 - kobito_M00Resize;
     
     //小人画像のアニメーション
-    m_animationframe++;
+    m_animationframe += 1;
     
     if(random_dir && m_condition > 0){
-        if((m_animationframe / 10) % 2 == 0){
+        if((m_animationframe / 20) % 2 == 0){
             m_default_size = Area(0 + kobito_M00W,0,kobito_M00W * 2,kobito_M00H);
         }
         else{
             m_default_size = Area(0,0,kobito_M00W,kobito_M00H);
         }
     }else if(!random_dir && m_condition > 0){
-        if((m_animationframe / 10) % 2 == 0){
+        if((m_animationframe / 20) % 2 == 0){
             m_default_size = Area(0 + kobito_M00W,kobito_M00H,kobito_M00W * 2,kobito_M00H * 2);
         }
         else{
             m_default_size = Area(0,kobito_M00H,kobito_M00W,kobito_M00H * 2);
         }
     }else{
-        if((m_animationframe / 30) % 2 == 0){
+        if((m_animationframe / 20) % 2 == 0){
             m_default_size = Area(0 + kobito_M00W,kobito_M00H * 2,kobito_M00W * 2,kobito_M00H *  3);
         }
         else{
@@ -134,7 +134,7 @@ void kobito_M00::update(){
     }
     
     //アニメーションカウントが増えすぎるを防止.
-    if(m_animationframe > 60) m_animationframe = 0;
+    if(m_animationframe > 120) m_animationframe = 0;
     
     
 }

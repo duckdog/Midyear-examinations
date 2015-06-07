@@ -1,8 +1,12 @@
 #include "summonsCircle.h"
 #include "kobito_00.h"
+#include "kobito_M00.h"
+#include "kobito_L00.h"
 #include <vector>
 summonsCircle::summonsCircle():
-m_id(SpriteID::summons_circle),m_pass("summons_circle.png"){
+m_id(SpriteID::summons_circle),m_pass("summons_circle.png"),
+interval_count(0),
+m_kobito_icon_ref(KobitoIconSP(new chooseKobitoIcon())){
    
     
 }
@@ -38,19 +42,21 @@ void summonsCircle::createinterval(){
 }
 
 void summonsCircle::draw(){
-    gl::color(Color(1,1,1));
+    gl::color(ColorA(1,1,1,1));
       gl::draw(resourceManage::getinstace().getsprite(m_id),
-         m_default_size,
-         m_resize);
+               m_default_size,
+               m_resize);
+    m_kobito_icon_ref->draw();
 }
 
 void summonsCircle::update(){
     if(is_create) createinterval();
+    m_kobito_icon_ref->update();
 }
 
 
 void summonsCircle::touchesBegan(TouchEvent event){
-    
+    m_kobito_icon_ref->touchesBegan(event);
     for(std::vector<TouchEvent::Touch>::const_iterator touchIter = event.getTouches().begin();
         touchIter != event.getTouches().end();
         touchIter++){
@@ -63,7 +69,18 @@ void summonsCircle::touchesBegan(TouchEvent event){
            TouchPos.y > m_pos.y && TouchPos.y < m_pos.y + summons_H * 0.4){
            
             if(interval_count == 0){
-              kobito_00::create();
+                
+                if(m_kobito_icon_ref->gettypenumber() == 0){
+                   kobito_00::create();
+                }
+                else if(m_kobito_icon_ref->gettypenumber() == 1){
+                    kobito_M00::create();
+                }
+                else if(m_kobito_icon_ref->gettypenumber() == 2){
+                    kobito_L00::create();
+                }
+
+
               is_create = true;
               interval_count++;
             }
@@ -72,6 +89,7 @@ void summonsCircle::touchesBegan(TouchEvent event){
 }
 
 void summonsCircle::touchesMoved(TouchEvent event){
+     m_kobito_icon_ref->touchesMoved(event);
     for(std::vector<TouchEvent::Touch>::const_iterator touchIter = event.getTouches().begin();
         touchIter != event.getTouches().end();
         touchIter++){
@@ -84,7 +102,17 @@ void summonsCircle::touchesMoved(TouchEvent event){
            TouchPos.y > m_pos.y && TouchPos.y < m_pos.y + summons_H * 0.4){
             
             if(interval_count == 0){
-                kobito_00::create();
+                
+                if(m_kobito_icon_ref->gettypenumber() == 0){
+                    kobito_00::create();
+                }
+                else if(m_kobito_icon_ref->gettypenumber() == 1){
+                    kobito_M00::create();
+                }
+                else if(m_kobito_icon_ref->gettypenumber() == 2){
+                    kobito_L00::create();
+                }
+                
                 is_create = true;
                 interval_count++;
             }
@@ -92,5 +120,12 @@ void summonsCircle::touchesMoved(TouchEvent event){
         }
     }
 
+    
+}
+
+
+
+void summonsCircle::touchesEnded(TouchEvent event){
+    m_kobito_icon_ref->touchesEnded(event);
     
 }

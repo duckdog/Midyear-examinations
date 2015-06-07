@@ -3,7 +3,7 @@
 #include "sceneBase.h"
 #include "resources.h"
 #include "drawNumber.h"
-#include "chooceKobitoIcon.h"
+
 class mainScene : public sceneBase{
 public:
     mainScene(std::shared_ptr<sceneManage>);
@@ -12,7 +12,7 @@ public:
     
     void touchesBegan(cinder::app::TouchEvent event);
     void touchesMoved(cinder::app::TouchEvent event);
-    void touchesEnded(cinder::app::TouchEvent event){}
+    void touchesEnded(cinder::app::TouchEvent event);
 
     void mouseDown(cinder::app::MouseEvent event){}
     
@@ -24,5 +24,5 @@ private:
     const Area use_size;
     const Area base_size;
     drawNumberSP m_drawnumber;
-    KobitoIconSP m_kobitoicon;
+ 
 };

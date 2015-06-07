@@ -8,8 +8,6 @@ timeManage::timeManage() :
 gameworld_time(0){
     time(&timeValue);
     time_object = localtime(&timeValue);
-    console() << time_object << std::endl;
-    
 }
 
 timeManage& timeManage::getInstance(){
@@ -77,7 +75,7 @@ void timeManage::save_shutdown(){
     }
     else{
       ex_json = ci::JsonTree::makeObject(("Time"));
-      ex_json.addChild(JsonTree("year",1));
+      ex_json.addChild(JsonTree("year",time_object->tm_year));
       ex_json.addChild(JsonTree("month",time_object->tm_mon));
       ex_json.addChild(JsonTree("day",time_object->tm_mday));
       ex_json.addChild(JsonTree("hour",time_object->tm_hour));
@@ -112,11 +110,11 @@ void timeManage::check_timelag(){
     extern ci::fs::path getDocumentPath();
     Path = getDocumentPath();
     
- 
+  console() <<Path / "Save.json"<< std::endl;
     if(ci::fs::is_regular_file(Path / "Save.json")) {
     
     JsonTree ex_json(loadFile(Path / "Save.json"));
-        
+        console() <<Path / "Save.json"<< std::endl;
       int year,month,day,hour,minute,sec;
       year   = ex_json["Time"]["year"].getValue<float>();
       month  = ex_json["Time"]["month"].getValue<float>();
@@ -143,7 +141,7 @@ void timeManage::check_timelag(){
       (time_object->tm_sec);
     
       long time_lag = current_time - past_time;
-    
+        console() << "time_lag :" << time_lag /60 << std::endl;
       if(time_lag >= 60 * 60 * 60 * 3){
           gaptime = 60*(60 * 60 * 60 * 3);
       }

@@ -29,7 +29,7 @@ void MawasuHitoApp::prepareSetting(Settings *settings){
     settings->enableMultiTouch();
     settings->setResizable( false );
     settings->setWindowSize(getWindowSize());// FIXME :オブジェクトが横の伸びる危険性。後で直す
-    settings->setFrameRate(30.0f);
+    settings->setFrameRate(60.0f);
 }
 
 
@@ -77,8 +77,7 @@ void MawasuHitoApp::update()
     timeManage::getInstance().gameworld_time++;
     Particle->update();
     Frame->update();
-   
-  
+    
 }
 void MawasuHitoApp::draw()
 {

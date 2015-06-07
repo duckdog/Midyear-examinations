@@ -23,7 +23,7 @@ kobito_L00SP kobito_L00::create(){
         obj->m_condition      = 60 * 10;
         obj->random_dir       = randBool();
         obj->obj_number       = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
-        obj->m_color          = Color(randFloat(0.2,0.4),randFloat(0.8,1),randFloat(0.7,1));
+        obj->m_color          = Color(1,1,1);
         obj->m_animationframe = 0;
         obj->m_pos            = Vec2f(.0f,getWindowHeight()/2 - (kobito_L00Resize * 3));
         obj->m_resize         = Area(obj->m_pos.x,obj->m_pos.y,
@@ -49,7 +49,7 @@ kobito_L00SP kobito_L00::create(Vec2f pos,int condition){
     obj->m_condition    = 60 * 10;
     obj->random_dir     = randBool();
     obj->obj_number     = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
-    obj->m_color        = Color(randFloat(0.2,0.4),randFloat(0.8,1),randFloat(0.7,1));
+    obj->m_color        = Color(1,1,1);
     obj->m_animationframe = 0;
     obj->m_pos          = Vec2f(pos);
     resourceManage::getinstace().add(obj->m_id,obj->m_pass);

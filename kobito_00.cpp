@@ -4,7 +4,7 @@
 
 #include <vector>
 kobito_00::kobito_00() :
-m_id(SpriteID::kobito_s00),m_pass(("kobito_M00.png"))
+m_id(SpriteID::kobito_s00),m_pass(("kobito_s00.png"))
 {
   
 }

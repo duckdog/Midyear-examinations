@@ -18,7 +18,7 @@ kobito_M00SP kobito_M00::create(){
         
         resourceManage::getinstace().add(obj->m_id,obj->m_pass);
         obj->m_object_id      = ObjectID::Kobito_m00;
-        obj->m_rote_power     = 0.6f;
+        obj->m_rote_power     = 0.7f;
         obj->ry               = 0;
         obj->m_condition      = 60 * 10;
         obj->m_animationframe = 0;
@@ -44,7 +44,7 @@ kobito_M00SP kobito_M00::create(Vec2f pos,int condition){
     kobito_M00SP obj = kobito_M00SP(new kobito_M00());
     
     obj->m_object_id    = ObjectID::Kobito_m00;
-    obj->m_rote_power   = 0.6f;
+    obj->m_rote_power   = 0.7f;
     obj->ry             = 0;
     obj->m_condition    = 60 * 10;
     obj->random_dir     = randBool();

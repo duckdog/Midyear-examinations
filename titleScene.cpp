@@ -12,7 +12,7 @@ sceneBase(manage){
 }
 
 void titleScene::draw(){
-    
+    gl::clear(Color(1,1,1));
    }
 
 void titleScene::update(){

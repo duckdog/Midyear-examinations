@@ -161,21 +161,20 @@ void chooseKobitoIcon::touchesMoved(TouchEvent event){
         
         if(TouchPos.y > (getWindowHeight() * 0.5) - kobito_iconResize){
           if(!is_touchmove){
-          if(m_starting_touchpos.x > TouchPos.x + 1){
-            kobito_type_number--;
-              if(kobito_type_number < 0){
-                  kobito_type_number = 2;
-              }
-            is_touchmove = true;
+            if(m_starting_touchpos.x > TouchPos.x + 1){
+              kobito_type_number--;
+                if(kobito_type_number < 0){
+                    kobito_type_number = 2;
+                }
+              is_touchmove = true;
           }
-          if(m_starting_touchpos.x < TouchPos.x - 1){
-            kobito_type_number++;
-              if(kobito_type_number > 2){
-                  kobito_type_number = 0;
-              }
-
-            is_touchmove = true;
-          }
+            if(m_starting_touchpos.x < TouchPos.x - 1){
+              kobito_type_number++;
+                if(kobito_type_number > 2){
+                    kobito_type_number = 0;
+                }
+              is_touchmove = true;
+            }
           }
         }
     }

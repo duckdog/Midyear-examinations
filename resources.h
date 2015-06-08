@@ -10,9 +10,19 @@ enum SpriteID{
     kobito_m00,
     kobito_l00,
     kobito_icon,
+    message_icon,
+    message_base,
+    message_00,
+    message_01,
     summons_circle,
     tikyu,
     number,
+    menuicon,
+    closeicon,
+    
+    
+    
+   
     
     ALL_sprite,
 };

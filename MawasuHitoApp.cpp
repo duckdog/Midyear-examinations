@@ -2,6 +2,7 @@
 #include "sceneManage.h"
 #include "titleScene.h"
 #include "touchPaticle.h"
+#include "menuScene.h"
 #include "object.h"
 #include "timeManage.h"
 
@@ -42,8 +43,6 @@ void MawasuHitoApp::setup(){
     Frame = std::make_shared<sceneManage>();
     Particle = std::make_shared<touchParticle>();
     Frame->changeScene(std::make_shared<titleScene>(Frame));
-    
-    
     
     
 }

@@ -86,7 +86,7 @@ void earth::draw(){
 
   //なんかぐるぐるまわるドーナツ。
   gl::color(Color(1,1,0));
-  gl::rotate(Vec3f(100,m_rotation * 5,0));
+  gl::rotate(Vec3f(100,m_rotation ,0));
   gl::drawTorus(1.1f,0.05f);
   
   gl::drawCube(Vec3f( 1.2, 0.0,  0.0),cube_translate);
@@ -94,14 +94,14 @@ void earth::draw(){
   gl::drawCube(Vec3f(  .0, 1.2, 0.0),cube_translate);
   gl::drawCube(Vec3f(  .0,-1.2, 0.0),cube_translate);
   
-  gl::rotate(Vec3f(145,m_rotation * 5,0));
+  gl::rotate(Vec3f(145,m_rotation,0));
   gl::color(Color(1,1,1));
   gl::drawCube(Vec3f( 1.0, 1.0, 0.0),cube_translate * 0.5);
   gl::drawCube(Vec3f(-1.0,-1.0, 0.0),cube_translate * 0.5);
   
   //なんかぐるぐるまわるドーナツ2
   gl::color(Color(1,0,0));
-  gl::rotate(Vec3f(0,m_rotation * 5,100));
+  gl::rotate(Vec3f(0,m_rotation,100));
   gl::drawTorus(1.2f,0.06f);
   
   gl::drawCube(Vec3f( 1.2, 0.0,  0.0),cube_translate);
@@ -109,7 +109,7 @@ void earth::draw(){
   gl::drawCube(Vec3f(  .0, 1.2, 0.0),cube_translate);
   gl::drawCube(Vec3f(  .0,-1.2, 0.0),cube_translate);
   
-  gl::rotate(Vec3f(145,m_rotation * 5,100));
+  gl::rotate(Vec3f(145,m_rotation,100));
   gl::color(Color(1,1,0));
   gl::drawSphere(Vec3f( 1.0, 1.0, 0.0),0.1);
   gl::drawSphere(Vec3f(-1.0,-1.0, 0.0),0.1);

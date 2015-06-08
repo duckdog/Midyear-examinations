@@ -17,7 +17,7 @@ kobito_00SP kobito_00::create(){
       
     resourceManage::getinstace().add(obj->m_id,obj->m_pass);
     obj->m_object_id      = ObjectID::Kobito_s00;
-    obj->m_rote_power     = 10.6f;
+    obj->m_rote_power     = 0.6f;
     obj->ry               = 0;
     obj->m_condition      = 60 * 10;
     obj->random_dir       = randBool();
@@ -43,7 +43,7 @@ kobito_00SP kobito_00::create(Vec2f pos,int condition){
     kobito_00SP obj = kobito_00SP(new kobito_00());
     
     obj->m_object_id    = ObjectID::Kobito_s00;
-    obj->m_rote_power   = 10.6f;
+    obj->m_rote_power   = 0.6f;
     obj->ry             = 0;
     obj->m_condition    = 60 * 10;
     obj->random_dir     = randBool();
@@ -115,6 +115,7 @@ void kobito_00::update(){
         else{
             m_default_size = Area(0,0,kobito_sW,kobito_sH);
         }
+      
     }else if(!random_dir && m_condition > 0){
         if((m_animationframe / 10) % 2 == 0){
             m_default_size = Area(0 + kobito_sW,kobito_sH,kobito_sW * 2,kobito_sH * 2);
@@ -185,7 +186,9 @@ void kobito_00::touchesMoved(TouchEvent event){
            TouchPos.y > m_pos.y && TouchPos.y < m_pos.y + kobito_sResize){
             
             if(m_condition == 0){
+              
               m_life = 0;
+              
             }
             
             // object::remove();

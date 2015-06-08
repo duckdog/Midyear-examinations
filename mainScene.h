@@ -3,7 +3,7 @@
 #include "sceneBase.h"
 #include "resources.h"
 #include "drawNumber.h"
-
+#include "menuWindow.h"
 class mainScene : public sceneBase{
 public:
     mainScene(std::shared_ptr<sceneManage>);
@@ -24,5 +24,8 @@ private:
     const Area use_size;
     const Area base_size;
     drawNumberSP m_drawnumber;
+    menuWindowSP m_menuWindow;
  
+    bool is_changescene;
+    static bool first_play_mainScene;
 };

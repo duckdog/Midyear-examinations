@@ -78,7 +78,7 @@ void drawNumber::drawroteupdate(){
         leverage++;
         is_carry = false;
     }
-    rote_count = toString( static_cast<int>((*object::earth_date())->m_rotation / 360));
+    rote_count = toString( static_cast<int>((*object::earth_date())->m_rotation / 360)) + ("turn");
     
     /*    //m_rotation360で一周.1を表示.
     if((*object::earth_date())->m_rotation  >=  360  &&

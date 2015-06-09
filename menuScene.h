@@ -3,7 +3,7 @@
 
 #include "sceneBase.h"
 #include "massageIcon.h"
-//#include "kobito_00.h"
+#include "menuWindow.h"
 
 
 class menuScene : public sceneBase{
@@ -19,5 +19,7 @@ public:
     
 private:
     messageIconSP m_message_icon;
-    
+    menuWindowSP m_menuwindow;
+    Vec3f closeicon_translate;
+    Vec3f closeicon_scale;
 };

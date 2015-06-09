@@ -16,7 +16,7 @@ void object::shutdown(){
    
     extern ci::fs::path getDocumentPath();
     ci::fs::path Path = getDocumentPath();
-    ci::JsonTree ex_json[3];
+    ci::JsonTree ex_json[4];
     
     int kobito_s_count = 0;
     int kobito_m_count = 0;
@@ -24,17 +24,21 @@ void object::shutdown(){
     
     if(ci::fs::is_regular_file(Path / "Kobito_s.json") &&
        ci::fs::is_regular_file(Path / "Kobito_m.json") &&
-       ci::fs::is_regular_file(Path / "Kobito_l.json")){
+       ci::fs::is_regular_file(Path / "Kobito_l.json") &&
+       ci::fs::is_regular_file(Path / "earth_rotation.json")){
         
         ex_json[0] = JsonTree(loadFile(Path / "Kobito_s.json"));
         ex_json[1] = JsonTree(loadFile(Path / "Kobito_m.json"));
         ex_json[2] = JsonTree(loadFile(Path / "Kobito_l.json"));
+        ex_json[3] = JsonTree(loadFile(Path / "earth_rotation.json"));
         
     }
     else{
         ex_json[0].write(Path / "Kobito_s.json",JsonTree::WriteOptions().createDocument(true));
         ex_json[1].write(Path / "Kobito_m.json",JsonTree::WriteOptions().createDocument(true));
         ex_json[2].write(Path / "Kobito_l.json",JsonTree::WriteOptions().createDocument(true));
+        ex_json[3].write(Path / "earth_rotation.json",JsonTree::WriteOptions().createDocument(true));
+        
 
 
     }
@@ -42,10 +46,17 @@ void object::shutdown(){
     ex_json[0] = JsonTree::makeObject("Kobito_s00");
     ex_json[1] = JsonTree::makeObject("Kobito_m00");
     ex_json[2] = JsonTree::makeObject("Kobito_l00");
-
+    ex_json[3] = JsonTree::makeObject("earth_rotation");
     
     std::list<objectSP>::iterator it = m_objects.begin();
     while(it != m_objects.end()){
+        
+        
+        if(ObjectID::Earth == (*it)->m_object_id){
+            ex_json[3].pushBack(JsonTree("earth_rotation",(*it)->m_rotation));
+            
+        }
+        
         //オブジェクトが小人だったら、データを保存。
         if(ObjectID::Kobito_s00 == (*it)->m_object_id){
             
@@ -79,7 +90,8 @@ void object::shutdown(){
     ex_json[0].write(Path / "Kobito_s.json",JsonTree::WriteOptions().createDocument(true));
     ex_json[1].write(Path / "Kobito_m.json",JsonTree::WriteOptions().createDocument(true));
     ex_json[2].write(Path / "Kobito_l.json",JsonTree::WriteOptions().createDocument(true));
-    
+    ex_json[3].write(Path / "earth_rotation.json",JsonTree::WriteOptions().createDocument(true));
+
 
 }
 

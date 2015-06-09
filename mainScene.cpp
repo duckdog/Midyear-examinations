@@ -58,7 +58,7 @@ void mainScene::draw(){
     object::exDraw();
     m_drawnumber->drawrotecount();
     m_drawnumber->drawrimitcount();
-    m_menuWindow->draw();
+    m_menuWindow->draw(false);
     
 }
 

@@ -1,16 +1,18 @@
 
 
 #include "massageIcon.h"
-
+#include "object.h"
 
 
 messageIcon::messageIcon():
 m_id(SpriteID::message_icon),
 m_message_id{SpriteID::message_base,SpriteID::message_00,SpriteID::message_01},
 m_pass("message_icon.png"),
-m_message_pass{("message_base.png"),("message00.png"),("message01.png")}
+m_message_pass{("message_base.png"),("message00.png"),("message01.png")},
+m_swiparrow(swipArrowSP(new swipArrow(4.5)))
 {
    
+    earth_rotate_ref = (*object::earth_date())->m_rotation;
     resourceManage::getinstace().add(m_id,m_pass);
     m_Texture = resourceManage::getinstace().getsprite(m_id);
     for(int i = 0; i < 3; i++){
@@ -20,17 +22,21 @@ m_message_pass{("message_base.png"),("message00.png"),("message01.png")}
     translate = Vec3f(-100,1,1);
     scale = Vec3f(100,130,30);
     m_pos   = Vec3f(0,0,0);
+    m_message_pos = Vec3f(- getWindowWidth() * 0.5,-getWindowHeight() * 0.5 + 100,0);
     rx = ry = rz = 0;
     effect_count = 0;
     is_touch_message = false;
+    is_openmessage = false;
     def_pos = Vec3f(translate);
     tgt_pos = Vec3f(0,200,-100);
     defalt_size = Area(0,0,menu_WH,menu_WH);
-    resize      = Area(-getWindowWidth() * 0.5,-getWindowHeight() * 0.5 + 100,
-                       getWindowWidth()-getWindowWidth() * 0.5,getWindowHeight() * 0.5 -getWindowHeight() * 0.5+ 100);
+    resize      = Area(m_message_pos.x,m_message_pos.y,
+                       getWindowWidth()  + m_message_pos.x,getWindowHeight() * 0.5 + m_message_pos.y);
     
     
-    
+    current_message_number = 1;
+    max_message = 2;
+    message_alpfa = 0;
 }
 
 
@@ -38,8 +44,9 @@ m_message_pass{("message_base.png"),("message00.png"),("message01.png")}
 
 
 void messageIcon::update(){
-      effect_count += 0.1f;
-    
+    effect_count += 0.1f;
+    m_swiparrow->update(110);
+
     if(!is_touch_message){
       rx -= std::sin(effect_count);
         translate += (def_pos - translate) * 0.1f;
@@ -74,17 +81,23 @@ void messageIcon::draw(){
     
     gl::pushModelView();
     if(is_openmessage){
+      message_alpfa += (1 - message_alpfa) * 0.08f;
+      //massageのベースを表示.
       gl::color(ColorA(1,1,1,0.5));
       gl::draw(resourceManage::getinstace().getsprite(m_message_id[0]),
                defalt_size,resize);
       
-      gl::color(ColorA(1,1,1,1));
-      gl::draw(resourceManage::getinstace().getsprite(m_message_id[1]),
+      gl::color(ColorA(1,1,1,message_alpfa));
+      gl::draw(resourceManage::getinstace().getsprite(m_message_id[current_message_number]),
                defalt_size,resize);
+    
+      m_swiparrow->draw();
+
     }
     gl::popModelView();
 
 }
+
 
 
 
@@ -104,10 +117,12 @@ void messageIcon::touchesBegan(TouchEvent event){
             if(is_touch_message){
                 is_touch_message = false;
                 is_openmessage = false;
+                
             }
             else{
                 is_touch_message = true;
                 is_openmessage = true;
+                
             }
         }
 
@@ -123,12 +138,35 @@ void messageIcon::touchesMoved(TouchEvent event){
         Vec2f Window   = Vec2f(getWindowWidth() * 0.5, getWindowHeight() * 0.5);
         Vec2f TouchPos = Vec2f(touchIter->getX() - Window.x,
                                touchIter->getY() - Window.y);
-        
+        if(TouchPos.y < m_message_pos.y + getWindowHeight() * 0.5 &&
+           TouchPos.y > m_message_pos.y){
+            if(!is_touchmove){
+                //右にフリック
+                if(m_starting_touch_pos.x > TouchPos.x + 10){
+                    current_message_number--;
+                    if(current_message_number < 1){
+                        current_message_number = max_message;
+                    }
+                    is_touchmove = true;
+                    message_alpfa = 0;
+                }
+                //左にフリック
+                if(m_starting_touch_pos.x < TouchPos.x - 10){
+                    current_message_number++;
+                    if(current_message_number > max_message){
+                        current_message_number = 1;
+                    }
+                    is_touchmove = true;
+                    message_alpfa = 0;
+                }
+            }
+        }
         
         }
     
 }
 
 void messageIcon::touchesEnded(TouchEvent event){
+    is_touchmove = false;
     
 }

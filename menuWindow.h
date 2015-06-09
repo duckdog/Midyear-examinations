@@ -1,3 +1,4 @@
+#pragma once
 #include "common.h"
 #include "resources.h"
 
@@ -10,11 +11,12 @@ public:
     menuWindow();
     ~menuWindow(){}
     
-    
-    void draw();
+    void normaldraw(bool falseis_menu_png_trueis_close_png,Vec3f translate,Vec3f scale);
+    void draw(bool falseis_menu_png_trueis_close_png);
     void update();
  
     
+    void touchesBegan(TouchEvent event,Vec3f translate,Vec3f scale);
     void touchesBegan(TouchEvent event);
     void touchesMoved(TouchEvent event);
     void touchesEnded(TouchEvent event);
@@ -22,8 +24,6 @@ public:
 private:
     int touch_count;
     float effect_count;
-    bool is_touch;
-    bool is_touchmove;
     Vec2f m_touch_starting_pos;
     Vec3f m_pos[2];
     float rx,ry,rz;
@@ -33,6 +33,7 @@ private:
     const std::string m_pass[2];
     
     bool is_changescene;
-       
-  
+    bool is_touch;
+    bool is_touchmove;
+    bool is_close;
 };

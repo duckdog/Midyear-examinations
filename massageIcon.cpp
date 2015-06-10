@@ -15,6 +15,8 @@ m_swiparrow(swipArrowSP(new swipArrow(4.5)))
     earth_rotate_ref = (*object::earth_date())->m_rotation;
     resourceManage::getinstace().add(m_id,m_pass);
     m_Texture = resourceManage::getinstace().getsprite(m_id);
+    
+    
     for(int i = 0; i < 3; i++){
       resourceManage::getinstace().add(m_message_id[i],m_message_pass[i]);
     }
@@ -34,8 +36,15 @@ m_swiparrow(swipArrowSP(new swipArrow(4.5)))
                        getWindowWidth()  + m_message_pos.x,getWindowHeight() * 0.5 + m_message_pos.y);
     
     
-    current_message_number = 1;
-    max_message = 2;
+    
+//    if(earth_rotate_ref/360  >= 30){max_message = 4;}
+//    else if(earth_rotate_ref/360  >= 20){max_message = 3;}
+    if(earth_rotate_ref/360  >= 10){max_message = 2;}
+    else{ max_message = 1;}
+
+    current_message_number = max_message;
+    
+
     message_alpfa = 0;
 }
 
@@ -93,6 +102,8 @@ void messageIcon::draw(){
     
       m_swiparrow->draw();
 
+    }else{
+        message_alpfa = 0;
     }
     gl::popModelView();
 

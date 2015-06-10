@@ -9,7 +9,7 @@ m_id(SpriteID::kobito_s00),m_pass(("kobito_s00.png"))
   
 }
 
-kobito_00SP kobito_00::create(){
+kobito_00SP kobito_00::create(Vec2f touchpos){
     
     
   if((object::m_objects.size() - 2) < 50){
@@ -24,11 +24,11 @@ kobito_00SP kobito_00::create(){
     obj->obj_number       = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
     obj->m_color          = Color(randFloat(0.2,0.4),randFloat(0.8,1),randFloat(0.7,1));
     obj->m_animationframe = 0;
-    obj->m_pos            = Vec2f(.0f,getWindowHeight()/2 - (kobito_sResize * 3));
+    obj->m_pos            = touchpos;
     obj->m_resize         = Area(obj->m_pos.x,obj->m_pos.y,
                              kobito_sResize + obj->m_pos.x,kobito_sResize + obj->m_pos.y);
     obj->move_interval  = randInt(0,60);
-
+    obj->alpfa = 0.01f;
    
     object::m_objects.push_back(obj);
 
@@ -57,7 +57,7 @@ kobito_00SP kobito_00::create(Vec2f pos,int condition){
     
     obj->move_interval  = randInt(0,60);
     object::m_objects.push_back(obj);
-  
+    obj->alpfa = 0.01f;
   
     return obj;
 }
@@ -70,7 +70,8 @@ void kobito_00::update(){
 //   移動、画像アニメーション等
 //
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
+  
+  
     for(int i = 0; i <= timeManage::getInstance().gaptime * 60; i++ ){
         
         m_condition--;

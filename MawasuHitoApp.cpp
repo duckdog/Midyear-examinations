@@ -73,7 +73,7 @@ void MawasuHitoApp::shutdown(){
 
 void MawasuHitoApp::update()
 {
-    timeManage::getInstance().gameworld_time++;
+   
     Particle->update();
     Frame->update();
     

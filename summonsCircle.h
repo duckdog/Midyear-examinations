@@ -32,6 +32,6 @@ private:
     summonsCircle();
     bool is_create;
     int  interval_count;
-    
+    float alpfa;
     KobitoIconSP m_kobito_icon_ref;
 };

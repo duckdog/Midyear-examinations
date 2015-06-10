@@ -23,7 +23,7 @@ public:
     void update();
     void draw();
 
-    static kobito_00SP create();
+    static kobito_00SP create(Vec2f Touchpos);
     static kobito_00SP create(Vec2f m_pos,int m_condition);
    
     void touchesBegan(TouchEvent event);
@@ -43,7 +43,7 @@ private:
     Color m_color;
     bool random_dir;
     int  move_interval;
- 
+    float alpfa;
     float ry;
     Vec2f m_pos;
     Area m_default_size;

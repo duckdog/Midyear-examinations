@@ -1,7 +1,8 @@
 #pragma once
+#include "common.h"
 #include "titleScene.h"
 #include "mainScene.h"
-
+#include "resources.h"
 
 class sceneManage{
 public:
@@ -15,10 +16,17 @@ public:
     void touchesEnded(cinder::app::TouchEvent event);
 
     void changeScene(std::shared_ptr<sceneBase> scene);
+    bool Fadeout();
+    bool Fadein();
+
     
     
 private:
     std::shared_ptr<sceneBase> current_frame;
-    
+    SpriteID m_fade_id;
+    std::string m_fade_pass;
+    gl::Texture m_fadetexture;
+    float fadein_alpfa;
+    float fadeout_alpfa;
 };
 

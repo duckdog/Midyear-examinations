@@ -5,7 +5,8 @@
 #include "common.h"
 
 timeManage::timeManage() :
-gameworld_time(0){
+gameworld_time(0)
+{
     time(&timeValue);
     time_object = localtime(&timeValue);
 }

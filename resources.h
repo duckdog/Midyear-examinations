@@ -5,6 +5,7 @@
 #include <map>
 
 enum SpriteID{
+    fade,
     main_bg,
     kobito_s00,
     kobito_m00,
@@ -16,6 +17,12 @@ enum SpriteID{
     message_01,
     summons_circle,
     tikyu,
+    title_0,
+    title_1,
+    title_2,
+    title_3,
+    title_4,
+    title_5,
     number,
     menuicon,
     closeicon,

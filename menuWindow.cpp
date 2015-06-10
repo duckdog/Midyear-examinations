@@ -1,6 +1,6 @@
 
 #include "menuWindow.h"
-
+#include "chooceKobitoIcon.h"
 
 
 menuWindow::menuWindow() :
@@ -97,6 +97,7 @@ void menuWindow::draw(bool true_menu_false_close){
             touch_count = 0;
             is_touch = false;
             is_close = false;
+            m_pos[0] = Vec3f(-getWindowWidth(),-getWindowHeight(),0);
         }
     }
     gl::disableDepthWrite();
@@ -119,11 +120,16 @@ void menuWindow::touchesBegan(cinder::app::TouchEvent event){
         Vec2f Window   = Vec2f(getWindowWidth() * 0.5, getWindowHeight() * 0.5);
         Vec2f TouchPos = Vec2f(touch_Iter->getX() - Window.x,
                                touch_Iter->getY() - Window.y);
-        touch_count++;
+        
+        if(TouchPos.y < getWindowHeight() * 0.5  - kobito_iconResize){
+            touch_count++;
+        }
+
         m_touch_starting_pos = TouchPos;
         if(TouchPos.x > m_pos[0].x - m_tgt_scale.x * 0.5 && TouchPos.x < m_pos[0].x  + m_tgt_scale.x * 0.5 &&
            TouchPos.y > m_pos[0].y - m_tgt_scale.y * 0.5 && TouchPos.y < m_pos[0].y  + m_tgt_scale.y * 0.5){
             console() << "Open Menu" << std::endl;
+            if(!is_close)
             is_changescene = true;
         }
 
@@ -163,11 +169,14 @@ void menuWindow::touchesBegan(cinder::app::TouchEvent event,Vec3f translate, Vec
         Vec2f Window   = Vec2f(getWindowWidth() * 0.5, getWindowHeight() * 0.5);
         Vec2f TouchPos = Vec2f(touch_Iter->getX() - Window.x,
                                touch_Iter->getY() - Window.y);
-        touch_count++;
+        
+            touch_count++;
+
         m_touch_starting_pos = TouchPos;
         if(TouchPos.x > translate.x - scale.x * 0.5 && TouchPos.x < translate.x  + scale.x * 0.5 &&
            TouchPos.y > translate.y - scale.y * 0.5 && TouchPos.y < translate.y  + scale.y * 0.5){
-            is_changescene = true;
+            console() << "Open Menu" << std::endl;
+                        is_changescene = true;
         }
     }
         

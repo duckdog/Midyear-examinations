@@ -20,13 +20,15 @@ m_menuWindow(menuWindowSP(new menuWindow())){
  //背景画像を取得
  resourceManage::getinstace().add(m_id,m_pass);
  
- //残像オブジェクトを取得.
-    if(is_first_play){
-  summonsCircle::create();
-  earth::create();
-  object::survivor_kobitocreate();
-        is_first_play = false;
-    }
+  //残i像オブジェクトを取得.
+    
+  if(is_first_play){
+      object::destroy();
+    summonsCircle::create();
+    earth::create();
+    object::survivor_kobitocreate();
+    is_first_play = false;
+  }
 }
 
 
@@ -37,7 +39,7 @@ void mainScene::update(){
     m_drawnumber->drawrimitupdate(object::getKobitoamount(),50);
     m_menuWindow->update();
     timeManage::getInstance().checking_lag();
-    
+    timeManage::getInstance().gameworld_time++;
     if(m_menuWindow->changescene()){
         m_manage->changeScene(std::make_shared<menuScene>(m_manage));
     }
@@ -52,7 +54,6 @@ void mainScene::update(){
 
 void mainScene::draw(){
     cinder::gl::clear(cinder::Color(0,0,0));
-    
     gl::color(1,1,1);
     gl::draw(resourceManage::getinstace().getsprite(m_id),base_size,use_size);
     object::exDraw();
@@ -60,6 +61,10 @@ void mainScene::draw(){
     m_drawnumber->drawrimitcount();
     m_menuWindow->draw(false);
     
+    gl::pushModelView();
+    gl::translate(0,0,100);
+    m_manage->Fadein();
+    gl::popModelView();
 }
 
 

@@ -10,32 +10,14 @@ earthSP earth::create(){
 
   earthSP obj = earthSP(new earth());
   obj->m_object_id = ObjectID::Earth;
+  extern ci::fs::path getDocumentPath();
+  ci::fs::path Path = getDocumentPath();
+  JsonTree ex_json;
+  if(ci::fs::is_regular_file(Path / "earth_rotation.json")){
+    ex_json   = JsonTree(loadFile(Path/ "earth_rotation.json"));
+    obj->m_rotation = ex_json["earth_rotation"]["earth_rotation"].getValue<float>();
+  }
 
-  /*obj->rx = 20;
-  obj->ry = 0;
-  obj->rz = 0;
-  obj->scal  = Vec3f(50,50,50);
-  obj->trans = Vec3f(0,-getWindowHeight() * 0.5,700);
-  obj->rote  = Vec3f(obj->rx,obj->ry,obj->rz);
-  
-    obj->earthobj.push_back({ { -1, -1, -1 }, {  1,  1, -1 }, {  1, -1, -1 }, { 0, 1, 0.2 } });
-    obj->earthobj.push_back({ { -1, -1, -1 }, { -1,  1, -1 }, {  1,  1, -1 }, { 0, 1, 0.2 } });
-
-    obj->earthobj.push_back({ { -1,  1, -1 }, { -1,  1,  1 }, {  1,  1,  1 }, { 0, 1, 0.2 } });
-    obj->earthobj.push_back({ { -1,  1, -1 }, {  1,  1,  1 }, {  1,  1, -1 }, { 0, 0, 1 } });
-    
-    obj->earthobj.push_back({ {  1, -1, -1 }, {  1,  1, -1 }, {  1,  1,  1 }, { 0, 0, 1 } });
-    obj->earthobj.push_back({ {  1, -1, -1 }, {  1,  1,  1 }, {  1, -1,  1 }, { 0, 0.2, 1 } });
-    
-    obj->earthobj.push_back({ { -1, -1, -1 }, { -1, -1,  1 }, { -1,  1,  1 }, { 0, 0.2, 1 } });
-    obj->earthobj.push_back({ { -1, -1, -1 }, { -1,  1,  1 }, { -1,  1, -1 }, { 0, 0, 1 } });
-    
-    obj->earthobj.push_back({ { -1, -1, -1 }, {  1, -1, 1 }, { -1, -1,  1 }, { 0, 1, 0.2 } });
-    obj->earthobj.push_back({ { -1, -1, -1 }, {  1, -1, -1 }, {  1, -1,  1 }, { 0, 1, 0.2 } });
-    
-    obj->earthobj.push_back({ {  1,  1,  1 }, { -1,  1,  1 }, { -1, -1,  1 }, { 0, 1, 0.2 } });
-    obj->earthobj.push_back({ {  1,  1,  1 }, { -1, -1,  1 }, {  1, -1,  1 }, { 0, 0.1, 1 } });
-    */
   obj->m_rotation = 0;
   obj->is_move = false;
   resourceManage::getinstace().add(obj->m_id,obj->m_pass);
@@ -106,8 +88,8 @@ void earth::draw(){
   
   gl::drawCube(Vec3f( 1.2, 0.0,  0.0),cube_translate);
   gl::drawCube(Vec3f(-1.2, 0.0,  0.0),cube_translate);
-  gl::drawCube(Vec3f(  .0, 1.2, 0.0),cube_translate);
-  gl::drawCube(Vec3f(  .0,-1.2, 0.0),cube_translate);
+  gl::drawCube(Vec3f(  .0, 1.2,  0.0),cube_translate);
+  gl::drawCube(Vec3f(  .0,-1.2,  0.0),cube_translate);
   
   gl::rotate(Vec3f(145,m_rotation,100));
   gl::color(Color(1,1,0));

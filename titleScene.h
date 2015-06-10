@@ -1,7 +1,7 @@
 #pragma once
 
 #include "sceneBase.h"
-//#include "kobito_00.h"
+#include "shiningObj.h"
 
 
 class titleScene : public sceneBase{
@@ -17,5 +17,6 @@ public:
     void mouseDown(cinder::app::MouseEvent event);
 
 private:
-    bool test;
+    bool is_touch;
+    shiningObjSP m_shining_ref;
 };

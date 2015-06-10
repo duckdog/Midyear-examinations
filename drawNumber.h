@@ -4,8 +4,8 @@
 #include "cinder/Font.h"
 //#include "earthObject.h"
 
-class drawNumber;
-typedef std::unique_ptr<drawNumber> drawNumberSP;
+
+typedef std::unique_ptr<class drawNumber> drawNumberSP;
 
 class drawNumber{
 public:

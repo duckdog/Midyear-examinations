@@ -5,12 +5,13 @@
 
 #include <vector>
 kobito_M00::kobito_M00() :
-m_id(SpriteID::kobito_m00),m_pass(("kobito_M00.png"))
+m_id(SpriteID::kobito_m00),m_pass(("kobito_M00.png")),
+alpfa(0)
 {
     
 }
 
-kobito_M00SP kobito_M00::create(){
+kobito_M00SP kobito_M00::create(Vec2f Touchpos){
     
     
     if((object::m_objects.size() - 2) < 50){
@@ -25,7 +26,7 @@ kobito_M00SP kobito_M00::create(){
         obj->random_dir       = randBool();
         obj->obj_number       = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
         obj->m_color          = Color(1,1,1);
-        obj->m_pos            = Vec2f(.0f,getWindowHeight()/2 - (kobito_M00Resize * 3));
+        obj->m_pos            =  Touchpos - Vec2f(0,kobito_M00Resize);
         obj->m_resize         = Area(obj->m_pos.x,obj->m_pos.y,
                                      kobito_M00Resize + obj->m_pos.x,kobito_M00Resize + obj->m_pos.y);
         obj->move_interval  = randInt(0,60);
@@ -71,7 +72,7 @@ void kobito_M00::update(){
     //   移動、画像アニメーション等
     //
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
+      if(alpfa <= 1) alpfa += 0.045f;
     for(int i = 0; i <= timeManage::getInstance().gaptime * 60; i++ ){
         
         m_condition--;
@@ -141,7 +142,7 @@ void kobito_M00::update(){
 
 void kobito_M00::draw(){
     gl::pushModelView();
-    gl::color(m_color);
+    gl::color(ColorA(1,1,1,alpfa));
     m_resize = Area(m_pos.x,m_pos.y,kobito_M00Resize + m_pos.x,kobito_M00Resize + m_pos.y);
     gl::draw(resourceManage::getinstace().getsprite(m_id),m_default_size,m_resize);
     

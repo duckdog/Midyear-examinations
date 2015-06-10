@@ -3,8 +3,8 @@
 #include "cinder/TriMesh.h"
 #include "resources.h"
 
-class swipArrow;
-typedef std::shared_ptr<swipArrow> swipArrowSP;
+
+typedef std::shared_ptr<class swipArrow> swipArrowSP;
 class swipArrow{
 public:
     swipArrow();

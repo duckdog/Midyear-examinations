@@ -12,7 +12,7 @@
 typedef std::shared_ptr<class shiningObj> shiningObjSP;
 class shiningObj{
 public:
-    shiningObj(Vec2f Touchpos);
+    shiningObj();
     ~shiningObj(){}
     
     static shiningObj& getInstance();

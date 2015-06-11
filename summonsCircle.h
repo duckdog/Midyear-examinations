@@ -34,4 +34,8 @@ private:
     int  interval_count;
     float alpfa;
     KobitoIconSP m_kobito_icon_ref;
+    
+    audio::BufferPlayerNodeRef mBufferPlayerNode;
+    audio::GainNodeRef gain;
+    bool is_play;
 };

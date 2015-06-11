@@ -9,7 +9,24 @@ interval_count(0),
 alpfa(1),
 m_kobito_icon_ref(KobitoIconSP(new chooseKobitoIcon())){
    
+    // 出力デバイスをゲット
+    auto ctx = audio::Context::master();
     
+    // オーディオデータを読み込んで初期化
+    audio::SourceFileRef sourceFile = audio::load(loadAsset("clock.wav"));
+    audio::BufferRef buffer =sourceFile->loadBuffer();
+    mBufferPlayerNode= ctx->makeNode(new audio::BufferPlayerNode(buffer));
+   
+    gain = ctx->makeNode(new audio::GainNode(0.6f));
+    // 読み込んだオーディオを出力デバイスに関連付けておく
+    mBufferPlayerNode >> gain >> ctx->getOutput();
+    //gain >> ctx->getOutput();
+    //gain >> ctx->getOutput();
+    
+    is_play = false;
+    // 出力デバイスを有効にする
+    ctx->enable();
+
 }
 
 summonsCircleSP summonsCircle::create(){
@@ -36,7 +53,7 @@ summonsCircleSP summonsCircle::create(){
 void summonsCircle::createinterval(){
    
     interval_count++;
-    if(interval_count > 10){
+    if(interval_count > 20){
         is_create = false;
         interval_count = 0;
     }
@@ -107,7 +124,7 @@ void summonsCircle::touchesMoved(TouchEvent event){
            TouchPos.y > m_pos.y && TouchPos.y < m_pos.y + summons_H * 0.4){
             
             if(interval_count == 0){
-                
+                mBufferPlayerNode->start();
                 if(m_kobito_icon_ref->gettypenumber() == 0){
                     kobito_00::create(TouchPos);
                     alpfa = 0.05f;
@@ -135,5 +152,6 @@ void summonsCircle::touchesMoved(TouchEvent event){
 
 void summonsCircle::touchesEnded(TouchEvent event){
     m_kobito_icon_ref->touchesEnded(event);
-    
+    mBufferPlayerNode->stop();
+
 }

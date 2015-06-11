@@ -4,14 +4,14 @@
 
 
 
-shiningObj::shiningObj(Vec2f Touchpos){
+shiningObj::shiningObj(){
     
 
     is_touch = false;
     rx = ry = rz = 0;
     fade_count= 0;
-    translates = Vec3f(Touchpos.x,Touchpos.y,0);
-    scales = Vec3f(10,100,100);
+    translates = Vec3f(0,0,-100);
+    scales = Vec3f(80,80,80);
     
 }
 
@@ -31,26 +31,26 @@ void shiningObj::fadeout(){
     
 }
 void shiningObj::update(){
-    animation += 0.1f;
-    scales += std::sin(animation) * 3;
-    ry++;
-    rz++;
+    animation += 0.01f;
+   // scales += std::sin(animation);
+    ry += 0.4f;
+    rz += 0.5f;
 }
 
 void shiningObj::draw(){
     
-    if(is_touch){
+   
     gl::enableDepthRead();
     gl::enableDepthWrite();
   //  gl::enable(GL_CULL_FACE);
     gl::pushModelView();
     
     
-    gl::color(ColorA(1,1,1,0.5f));
+    gl::color(ColorA(0.1,0.1,1,1));
     gl::translate(translates);
     gl::rotate(Vec3f(rx,ry,rz));
     gl::scale(scales);
-    gl::drawSphere(Vec3f(0,0,0),1,10);
+    gl::drawSphere(Vec3f(0,0,0),1,100);
     
     gl::color(ColorA(1,0,0.8f,0.5f));
     gl::drawTorus(1.2f,0.06,10);
@@ -70,7 +70,7 @@ void shiningObj::draw(){
 
     gl::disableDepthRead();
     gl::disableDepthWrite();
-  }
+  
     
 }
 

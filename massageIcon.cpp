@@ -6,9 +6,11 @@
 
 messageIcon::messageIcon():
 m_id(SpriteID::message_icon),
-m_message_id{SpriteID::message_base,SpriteID::message_00,SpriteID::message_01},
+m_message_id{SpriteID::message_base,SpriteID::message_00,SpriteID::message_01,SpriteID::message_02,SpriteID::message_03,
+                                    SpriteID::message_04,SpriteID::message_05,SpriteID::message_06},
 m_pass("message_icon.png"),
-m_message_pass{("message_base.png"),("message00.png"),("message01.png")},
+m_message_pass{("message_base.png"),("message00.png"),("message01.png"),("message02.png"),("message03.png"),
+                                    ("message04.png"),("message05.png"),("message06.png")},
 m_swiparrow(swipArrowSP(new swipArrow(4.5)))
 {
    
@@ -17,7 +19,7 @@ m_swiparrow(swipArrowSP(new swipArrow(4.5)))
     m_Texture = resourceManage::getinstace().getsprite(m_id);
     
     
-    for(int i = 0; i < 3; i++){
+    for(int i = 0; i < 8; i++){
       resourceManage::getinstace().add(m_message_id[i],m_message_pass[i]);
     }
   
@@ -36,14 +38,19 @@ m_swiparrow(swipArrowSP(new swipArrow(4.5)))
                        getWindowWidth()  + m_message_pos.x,getWindowHeight() * 0.5 + m_message_pos.y);
     
     
-    
-//    if(earth_rotate_ref/360  >= 30){max_message = 4;}
-//    else if(earth_rotate_ref/360  >= 20){max_message = 3;}
-    if(earth_rotate_ref/360  >= 10){max_message = 2;}
+    int turn_amount = earth_rotate_ref/360;
+   
+    if(turn_amount  >= 60){max_message = 7;}
+    else if(turn_amount  >= 50){max_message = 6;}
+    else if(turn_amount  >= 40){max_message = 5;}
+    else if(turn_amount  >= 30){max_message = 4;}
+    else if(turn_amount  >= 20){max_message = 3;}
+    else if(turn_amount  >= 10){max_message = 2;}
     else{ max_message = 1;}
 
-    current_message_number = max_message;
+    max_message = 7;
     
+    current_message_number = max_message;
 
     message_alpfa = 0;
 }
@@ -90,9 +97,20 @@ void messageIcon::draw(){
     
     gl::pushModelView();
     if(is_openmessage){
+        
+        extern ci::fs::path getDocumentPath();
+        ci::fs::path Path = getDocumentPath();
+        JsonTree ex_json;
+        
+        if(ci::fs::is_regular_file(Path / "Message.json")){
+            ex_json = ci::JsonTree::makeObject(("Message"));
+            ex_json.addChild(JsonTree("unread",false));
+            ex_json.write(Path / "Message.json",JsonTree::WriteOptions().createDocument(true));
+        }
+
       message_alpfa += (1 - message_alpfa) * 0.08f;
       //massageのベースを表示.
-      gl::color(ColorA(1,1,1,0.5));
+      gl::color(ColorA(1,1,1,0.9));
       gl::draw(resourceManage::getinstace().getsprite(m_message_id[0]),
                defalt_size,resize);
       
@@ -154,21 +172,23 @@ void messageIcon::touchesMoved(TouchEvent event){
             if(!is_touchmove){
                 //右にフリック
                 if(m_starting_touch_pos.x > TouchPos.x + 10){
-                    current_message_number--;
-                    if(current_message_number < 1){
-                        current_message_number = max_message;
-                    }
-                    is_touchmove = true;
-                    message_alpfa = 0;
-                }
-                //左にフリック
-                if(m_starting_touch_pos.x < TouchPos.x - 10){
+                
                     current_message_number++;
                     if(current_message_number > max_message){
                         current_message_number = 1;
                     }
                     is_touchmove = true;
                     message_alpfa = 0;
+                }
+                //左にフリック
+                if(m_starting_touch_pos.x < TouchPos.x - 10){
+                    current_message_number--;
+                    if(current_message_number < 1){
+                        current_message_number = max_message;
+                    }
+                    is_touchmove = true;
+                    message_alpfa = 0;
+
                 }
             }
         }

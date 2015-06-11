@@ -8,8 +8,7 @@ std::list<objectSP>object::m_objects;
 object::object(): m_life(-1),m_condition(-1),m_rote_power(.0f),m_rotation(0),m_object_id(ObjectID::Null_object)
 {
     
- 
-}
+    }
 
 
 void object::shutdown(){
@@ -158,6 +157,7 @@ void object::exUpdate(){
     while(it != m_objects.end()){
         //lifeが0のオブジェクトを消去。
         if(0 == (*it)->m_life){
+            
             it = m_objects.erase(it);
             continue;
         }

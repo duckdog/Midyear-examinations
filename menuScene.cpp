@@ -7,6 +7,7 @@ m_menuwindow(menuWindowSP(new menuWindow()))
 {
     closeicon_translate = Vec3f(-100,getWindowHeight()/2 - 50,0);
     closeicon_scale = Vec3f(100,130,-1);
+    animation =0;
 }
 
 
@@ -20,8 +21,8 @@ void menuScene::update(){
 }
 
 void menuScene::draw(){
-    
-    cinder::gl::clear(cinder::Color(0,0,0));
+    animation += 0.01f;
+    cinder::gl::clear(cinder::Color(std::sin(animation * 2),0,std::sin(animation)));
     
     m_message_icon->draw();
     m_menuwindow->normaldraw(true,closeicon_translate,closeicon_scale);//(true);

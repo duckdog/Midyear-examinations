@@ -7,7 +7,7 @@
 #include "touchPaticle.h"
 #include "timeManage.h"
 #include "menuScene.h"
-
+#include "newMessage.h"
 static bool is_first_play = true;
 mainScene::mainScene(std::shared_ptr<sceneManage> manage) :
 sceneBase(manage),
@@ -23,12 +23,14 @@ m_menuWindow(menuWindowSP(new menuWindow())){
   //残i像オブジェクトを取得.
     
   if(is_first_play){
-      object::destroy();
-    summonsCircle::create();
+    object::destroy();
     earth::create();
+    summonsCircle::create();
     object::survivor_kobitocreate();
+    newMessage::create();
     is_first_play = false;
   }
+    
 }
 
 

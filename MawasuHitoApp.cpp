@@ -24,6 +24,9 @@ public:
 private:
     std::shared_ptr<touchParticle> Particle;
     std::shared_ptr<sceneManage> Frame;
+    audio::BufferPlayerNodeRef mBufferPlayerNode[3];
+    audio::GainNodeRef gain[3];
+    bool is_play[2];
  };
 
 void MawasuHitoApp::prepareSetting(Settings *settings){
@@ -45,6 +48,31 @@ void MawasuHitoApp::setup(){
     Frame->changeScene(std::make_shared<titleScene>(Frame));
     
     
+    // 出力デバイスをゲット
+    auto ctx = audio::Context::master();
+    
+    // オーディオデータを読み込んで初期化
+    audio::SourceFileRef sourceFile[3] =
+    {audio::load(loadAsset("choin.wav")),audio::load(loadAsset("main.wav")),audio::load(loadAsset("clock.wav"))};
+    audio::BufferRef buffer[3] =
+    {sourceFile[0]->loadBuffer(),sourceFile[1]->loadBuffer(),sourceFile[2]->loadBuffer()};
+    mBufferPlayerNode[0] = ctx->makeNode(new audio::BufferPlayerNode(buffer[0]));
+    mBufferPlayerNode[1] = ctx->makeNode(new audio::BufferPlayerNode(buffer[1]));
+    mBufferPlayerNode[2] = ctx->makeNode(new audio::BufferPlayerNode(buffer[2]));
+    gain[0] = ctx->makeNode(new audio::GainNode(0.8f));
+    gain[1] = ctx->makeNode(new audio::GainNode(0.5f));
+    gain[2] = ctx->makeNode(new audio::GainNode(0.6f));
+    // 読み込んだオーディオを出力デバイスに関連付けておく
+    mBufferPlayerNode[0] >> gain[0] >> ctx->getOutput();
+    mBufferPlayerNode[1] >> gain[1] >> ctx->getOutput();
+    mBufferPlayerNode[2] >> gain[2] >> ctx->getOutput();
+    //gain >> ctx->getOutput();
+    //gain >> ctx->getOutput();
+    
+    is_play[0] = false;
+    is_play[1] = false;
+    // 出力デバイスを有効にする
+    ctx->enable();
 }
 
 void MawasuHitoApp::mouseDown( MouseEvent event){
@@ -52,14 +80,25 @@ void MawasuHitoApp::mouseDown( MouseEvent event){
 }
 
 void MawasuHitoApp::touchesBegan(TouchEvent event){
+    mBufferPlayerNode[0]->start();
     Particle->touchesBegan(event);
     Frame->touchesBegan(event);
   }
 void MawasuHitoApp::touchesMoved(TouchEvent event){
+    
+  /*  if (!is_play[1]){
+        mBufferPlayerNode[2]->start();
+        is_play[1] = true;
+    }
+    if (mBufferPlayerNode[2]->isEof())
+        is_play[1] = false;*/
+    
     Particle->touchesMoved(event);
     Frame->touchesMoved(event);
 }
 void MawasuHitoApp::touchesEnded(TouchEvent event){
+  /*  mBufferPlayerNode[2]->stop();
+    is_play[1] = false;*/
     Particle->touchesEnded(event);
     Frame->touchesEnded(event);
 }
@@ -73,6 +112,13 @@ void MawasuHitoApp::shutdown(){
 
 void MawasuHitoApp::update()
 {
+    
+    if (!is_play[0]){
+        mBufferPlayerNode[1]->start();
+        is_play[0] = true;
+    }
+    if (mBufferPlayerNode[1]->isEof())
+        is_play[0] = false;
    
     Particle->update();
     Frame->update();
@@ -86,6 +132,7 @@ void MawasuHitoApp::draw()
     gl::translate(getWindowCenter());
     Frame->draw();
     Particle->draw();
+    
     gl::popModelView();
 }
 

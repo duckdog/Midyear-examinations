@@ -48,5 +48,8 @@ private:
     Vec2f m_pos;
     Area m_default_size;
     Area m_resize;
+    audio::BufferPlayerNodeRef mBufferPlayerNode;
+    audio::GainNodeRef gain;
+    bool is_play;
     
 };

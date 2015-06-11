@@ -25,6 +25,7 @@ public:
     
     
 private:
+    
     bool is_move;
     
     Vec3f m_translate;

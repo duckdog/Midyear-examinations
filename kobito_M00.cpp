@@ -8,7 +8,23 @@ kobito_M00::kobito_M00() :
 m_id(SpriteID::kobito_m00),m_pass(("kobito_M00.png")),
 alpfa(0)
 {
+    // 出力デバイスをゲット
+    auto ctx = audio::Context::master();
     
+    // オーディオデータを読み込んで初期化
+    audio::SourceFileRef sourceFile = audio::load(loadAsset("create.wav"));
+    audio::BufferRef buffer =sourceFile->loadBuffer();
+    mBufferPlayerNode= ctx->makeNode(new audio::BufferPlayerNode(buffer));
+    
+    gain = ctx->makeNode(new audio::GainNode(0.3f));
+    // 読み込んだオーディオを出力デバイスに関連付けておく
+    mBufferPlayerNode >> gain >> ctx->getOutput();
+    //gain >> ctx->getOutput();
+    //gain >> ctx->getOutput();
+    
+    is_play = false;
+    // 出力デバイスを有効にする
+    ctx->enable();
 }
 
 kobito_M00SP kobito_M00::create(Vec2f Touchpos){
@@ -19,9 +35,9 @@ kobito_M00SP kobito_M00::create(Vec2f Touchpos){
         
         resourceManage::getinstace().add(obj->m_id,obj->m_pass);
         obj->m_object_id      = ObjectID::Kobito_m00;
-        obj->m_rote_power     = 0.7f;
+        obj->m_rote_power     = 0.03f;
         obj->ry               = 0;
-        obj->m_condition      = 60 * 10;
+        obj->m_condition      = 60 * 30;
         obj->m_animationframe = 0;
         obj->random_dir       = randBool();
         obj->obj_number       = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
@@ -45,9 +61,9 @@ kobito_M00SP kobito_M00::create(Vec2f pos,int condition){
     kobito_M00SP obj = kobito_M00SP(new kobito_M00());
     
     obj->m_object_id    = ObjectID::Kobito_m00;
-    obj->m_rote_power   = 0.7f;
+    obj->m_rote_power   = 0.03f;
     obj->ry             = 0;
-    obj->m_condition    = 60 * 10;
+    obj->m_condition    = 60 * 30;
     obj->random_dir     = randBool();
     obj->obj_number     = 0 + (object::m_objects.size() - 2); //召喚円と地球分を引いた数。
     obj->m_color        = Color(1,1,1);
@@ -187,6 +203,7 @@ void kobito_M00::touchesMoved(TouchEvent event){
            TouchPos.y > m_pos.y && TouchPos.y < m_pos.y + kobito_M00Resize){
             
             if(m_condition == 0){
+                                mBufferPlayerNode->start();
                 m_life = 0;
             }
             

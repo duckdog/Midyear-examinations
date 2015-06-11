@@ -12,7 +12,7 @@ enum ObjectID{
     Kobito_s00,
     Kobito_m00,
     Kobito_l00,
-    
+    New_Message,
     ALL_Object,
 };
 
@@ -52,4 +52,7 @@ protected:
     static std::list<objectSP> m_objects;
   //  static int object_kobito_limit;
     
+private:
+    
+   
 };

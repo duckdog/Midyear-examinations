@@ -22,4 +22,5 @@ private:
     menuWindowSP m_menuwindow;
     Vec3f closeicon_translate;
     Vec3f closeicon_scale;
+    float animation;
 };

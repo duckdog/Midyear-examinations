@@ -1,7 +1,7 @@
 
 #pragma once
 #include <memory>
-
+#include "common.h"
 class sceneManage;
 class object;
 

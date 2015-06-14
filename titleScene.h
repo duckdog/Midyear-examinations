@@ -1,6 +1,7 @@
 #pragma once
 
 #include "sceneBase.h"
+#include "resources.h"
 #include "shiningObj.h"
 
 
@@ -10,6 +11,7 @@ public:
     void draw();
     void update();
     
+    void next();
     void touchesBegan(cinder::app::TouchEvent event);
     void touchesMoved(cinder::app::TouchEvent event){}
     void touchesEnded(cinder::app::TouchEvent event){}
@@ -18,5 +20,4 @@ public:
 
 private:
     bool is_touch;
-    shiningObjSP m_shining_ref;
-};
+  };

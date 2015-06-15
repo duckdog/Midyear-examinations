@@ -59,9 +59,9 @@ void MawasuHitoApp::setup(){
     mBufferPlayerNode[0] = ctx->makeNode(new audio::BufferPlayerNode(buffer[0]));
     mBufferPlayerNode[1] = ctx->makeNode(new audio::BufferPlayerNode(buffer[1]));
     mBufferPlayerNode[2] = ctx->makeNode(new audio::BufferPlayerNode(buffer[2]));
-    gain[0] = ctx->makeNode(new audio::GainNode(0.8f));
-    gain[1] = ctx->makeNode(new audio::GainNode(0.5f));
-    gain[2] = ctx->makeNode(new audio::GainNode(0.6f));
+    gain[0] = ctx->makeNode(new audio::GainNode(0.3f));
+    gain[1] = ctx->makeNode(new audio::GainNode(0.4f));
+    gain[2] = ctx->makeNode(new audio::GainNode(0.3f));
     // 読み込んだオーディオを出力デバイスに関連付けておく
     mBufferPlayerNode[0] >> gain[0] >> ctx->getOutput();
     mBufferPlayerNode[1] >> gain[1] >> ctx->getOutput();

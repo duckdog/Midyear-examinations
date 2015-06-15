@@ -17,7 +17,7 @@ m_kobito_icon_ref(KobitoIconSP(new chooseKobitoIcon())){
     audio::BufferRef buffer =sourceFile->loadBuffer();
     mBufferPlayerNode= ctx->makeNode(new audio::BufferPlayerNode(buffer));
    
-    gain = ctx->makeNode(new audio::GainNode(0.6f));
+    gain = ctx->makeNode(new audio::GainNode(0.4f));
     // 読み込んだオーディオを出力デバイスに関連付けておく
     mBufferPlayerNode >> gain >> ctx->getOutput();
     //gain >> ctx->getOutput();

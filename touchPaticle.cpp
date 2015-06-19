@@ -155,16 +155,17 @@ void touchParticle::touchesBegan(TouchEvent event){
                            touchIter->getY() - Window.y);
     
     
+    const float ajust_pos = 25.0f;
     translates[0].x = TouchPos.x;
-    translates[0].y = TouchPos.y + 25;
+    translates[0].y = TouchPos.y + ajust_pos;
     
     translates[1].x = TouchPos.x;
-    translates[1].y = TouchPos.y - 25;
+    translates[1].y = TouchPos.y - ajust_pos;
  
-    translates[2].x = TouchPos.x + 25;
+    translates[2].x = TouchPos.x + ajust_pos;
     translates[2].y = TouchPos.y;
  
-    translates[3].x = TouchPos.x - 25;
+    translates[3].x = TouchPos.x - ajust_pos;
     translates[3].y = TouchPos.y;
     
       // object::remove();

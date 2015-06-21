@@ -34,9 +34,16 @@ enum SpriteID{
     menuicon,
     closeicon,
     
+    introdaction_0,
+    introdaction_1,
+    introdaction_2,
+    introdaction_3,
+    tutorial_0,
+    tutorial_1,
+    tutorial_2,
+    tutorial_3,
+    tutorial_4,
     
-    
-   
     
     ALL_sprite,
 };

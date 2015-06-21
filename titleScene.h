@@ -20,4 +20,5 @@ public:
 
 private:
     bool is_touch;
+    shiningObjSP m_shining_ref;
   };

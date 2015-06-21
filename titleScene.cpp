@@ -1,4 +1,5 @@
 #include "titleScene.h"
+#include "TutorialScene.h"
 #include "sceneManage.h"
 #include "timeManage.h"
 #include "kobito_00.h"
@@ -23,7 +24,7 @@ void titleScene::draw(){
     m_shining_ref->draw();
    if(is_touch){
         if(m_manage->Fadeout()){
-            m_manage->changeScene(std::make_shared<mainScene>(m_manage));
+            m_manage->changeScene(std::make_shared<TutorialScene>(m_manage));
         }
     }
     
@@ -37,7 +38,7 @@ void titleScene::update(){
 //
 void titleScene::mouseDown(cinder::app::MouseEvent event){
     if(event.LEFT_DOWN)
-    m_manage->changeScene(std::make_shared<mainScene>(m_manage));
+        m_manage->changeScene(std::make_shared<TutorialScene>(m_manage));
 }
 
 //app用

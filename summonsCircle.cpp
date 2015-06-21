@@ -125,15 +125,15 @@ void summonsCircle::touchesMoved(TouchEvent event){
             
             if(interval_count == 0){
                 mBufferPlayerNode->start();
-                if(m_kobito_icon_ref->gettypenumber() == 0){
+                if(m_kobito_icon_ref->getTypeNumber() == 0){
                     kobito_00::create(TouchPos);
                     alpfa = 0.05f;
                 }
-                else if(m_kobito_icon_ref->gettypenumber() == 1){
+                else if(m_kobito_icon_ref->getTypeNumber() == 1){
                     kobito_M00::create(TouchPos);
                     alpfa = 0.05f;
                 }
-                else if(m_kobito_icon_ref->gettypenumber() == 2){
+                else if(m_kobito_icon_ref->getTypeNumber() == 2){
                     kobito_L00::create(TouchPos);
                     alpfa = 0.05f;
                 }

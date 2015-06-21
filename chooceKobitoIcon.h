@@ -29,7 +29,7 @@ public:
     void touchesBegan(TouchEvent event);
     void touchesMoved(TouchEvent event);
     void touchesEnded(TouchEvent event);
-    inline const int gettypenumber(){return  kobito_type_number;}
+    inline const int getTypeNumber() const {return  kobito_type_number;}
     
     
 private:

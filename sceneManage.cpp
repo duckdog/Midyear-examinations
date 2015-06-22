@@ -48,10 +48,7 @@ bool sceneManage::Fadeout(){
     fadeout_alpfa += 0.1f;
     gl::color(ColorA(1,1,1,fadeout_alpfa));
     gl::draw(m_fadetexture,Vec2f(-getWindowWidth() * 0.5,-getWindowHeight() * 0.5));
-    if(fadeout_alpfa > 1.5)
-        return true;
-    else
-        return false;
+    return fadeout_alpfa > 1.5;
     
 }
 
@@ -61,9 +58,6 @@ bool sceneManage::Fadein(){
     fadein_alpfa -= 0.1f;
     gl::color(ColorA(1,1,1,fadein_alpfa));
     gl::draw(m_fadetexture,Vec2f(-getWindowWidth() * 0.5,-getWindowHeight() * 0.5));
-    if(fadein_alpfa <= 0)
-        return true;
-    else
-        return false;
+    return fadein_alpfa <= 0;
     
 }

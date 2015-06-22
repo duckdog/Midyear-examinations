@@ -62,7 +62,7 @@ void chooseKobitoIcon::draw(){
 
 void chooseKobitoIcon::touchesBegan(TouchEvent event){
     
-    for(std::vector<TouchEvent::Touch>::const_iterator touchIter = event.getTouches().begin();
+    for(auto touchIter = event.getTouches().cbegin();
         touchIter != event.getTouches().end();
         touchIter++){
         //タッチの位置を取得。
@@ -74,7 +74,7 @@ void chooseKobitoIcon::touchesBegan(TouchEvent event){
 }
 
 void chooseKobitoIcon::touchesMoved(TouchEvent event){
-    for(std::vector<TouchEvent::Touch>::const_iterator touchIter = event.getTouches().begin();
+    for(auto touchIter = event.getTouches().cbegin();
         touchIter != event.getTouches().end();
         touchIter++){
         //タッチの位置を取得。

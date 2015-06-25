@@ -50,12 +50,18 @@ void TutorialScene::fadeText(){
 
 void TutorialScene::setIntordactionText(){
     //ストーリー説明が終わったら、チュートリアルに移るフラグを立てる.
-    if(current_text_number > 3){
+    if(current_text_number > 3 && !is_end_introdaction){
       is_end_introdaction = true;
       current_text_number = 0;
     }
     else{
-      m_current_text = resourceManage::getinstace().getsprite(m_intordaction_ids[current_text_number]);
+      //チュートリアルのせつめいが終わったら本編へ.
+      if(current_text_number >= m_intordaction_ids.size()) {
+          m_manage->changeScene(std::make_shared<mainScene>(m_manage));
+      }
+      else{
+          m_current_text = resourceManage::getinstace().getsprite(m_intordaction_ids[current_text_number]);
+      }
     }
 }
 

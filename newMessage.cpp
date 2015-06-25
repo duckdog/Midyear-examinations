@@ -43,14 +43,14 @@ newMessageSP newMessage::create(){
 }
 
 void newMessage::checkCreateMessage(){
-    int turn =  ((*object::earth_date())->m_rotation /360);
+    float turn =  ((*object::earth_date())->m_rotation /360);
     
-    if(turn == 10){ is_create_newmessage = true; saveUnreadMessage();}
-    if(turn == 20){ is_create_newmessage = true; saveUnreadMessage();}
-    if(turn == 30){ is_create_newmessage = true; saveUnreadMessage();}
-    if(turn == 40){ is_create_newmessage = true; saveUnreadMessage();}
-    if(turn == 50){ is_create_newmessage = true; saveUnreadMessage();}
-    if(turn == 60){ is_create_newmessage = true; saveUnreadMessage();}
+    if(turn == 10.0f){ is_create_newmessage = true; saveUnreadMessage();}
+    if(turn == 20.0f){ is_create_newmessage = true; saveUnreadMessage();}
+    if(turn == 30.0f){ is_create_newmessage = true; saveUnreadMessage();}
+    if(turn == 40.0f){ is_create_newmessage = true; saveUnreadMessage();}
+    if(turn == 50.0f){ is_create_newmessage = true; saveUnreadMessage();}
+    if(turn == 60.0f){ is_create_newmessage = true; saveUnreadMessage();}
     
     
     extern ci::fs::path getDocumentPath();

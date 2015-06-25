@@ -7,10 +7,10 @@
 messageIcon::messageIcon():
 m_id(SpriteID::message_icon),
 m_message_id{SpriteID::message_base,SpriteID::message_00,SpriteID::message_01,SpriteID::message_02,SpriteID::message_03,
-                                    SpriteID::message_04,SpriteID::message_05,SpriteID::message_06},
+                                    SpriteID::message_04,SpriteID::message_05},
 m_pass("message_icon.png"),
 m_message_pass{("message_base.png"),("message00.png"),("message01.png"),("message02.png"),("message03.png"),
-                                    ("message04.png"),("message05.png"),("message06.png")},
+                                    ("message04.png"),("message05.png")},
 m_swiparrow(swipArrowSP(new swipArrow(4.5)))
 {
    
@@ -40,16 +40,14 @@ m_swiparrow(swipArrowSP(new swipArrow(4.5)))
     
     int turn_amount = earth_rotate_ref/360;
    
-    if(turn_amount  >= 60){max_message = 7;}
-    else if(turn_amount  >= 50){max_message = 6;}
+    if(turn_amount  >= 50){max_message = 6;}
     else if(turn_amount  >= 40){max_message = 5;}
     else if(turn_amount  >= 30){max_message = 4;}
     else if(turn_amount  >= 20){max_message = 3;}
     else if(turn_amount  >= 10){max_message = 2;}
     else{ max_message = 1;}
 
-    max_message = 7;
-    
+   
     current_message_number = max_message;
 
     message_alpfa = 0;

@@ -13,7 +13,7 @@ m_menuwindow(menuWindowSP(new menuWindow()))
 
 void menuScene::update(){
     m_message_icon->update();
-//    m_menuwindow->update();
+    m_menuwindow->update();
     if(m_menuwindow->changescene())
     m_manage->changeScene(std::make_shared<mainScene>(m_manage));
 

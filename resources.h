@@ -43,6 +43,7 @@ enum SpriteID{
     tutorial_2,
     tutorial_3,
     tutorial_4,
+    tutorial_end,
     
     
     ALL_sprite,

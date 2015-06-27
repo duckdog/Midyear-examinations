@@ -21,15 +21,20 @@ public:
 private:
     bool is_touch;
     bool is_end_introdaction;
+    bool is_end_tutorial;
     const std::vector<SpriteID> m_intordaction_ids;
     const std::vector<SpriteID> m_tutorial_ids;
     const std::vector<std::string> m_introdaction_passes;
     const std::vector<std::string> m_tutorial_passes;
     Vec2i m_text_cutpos;
     Vec2i m_text_cutsize;
+    Vec2i m_endtext_cutpos;
+    Vec2i m_endtext_cutsize;
     Vec2i m_text_pos;
     Vec2i m_text_size;
-    
+    Vec2i m_endtext_pos;
+    Vec2i m_endtext_size;
+
 
     int current_text_number;
     gl::Texture m_past_text;
